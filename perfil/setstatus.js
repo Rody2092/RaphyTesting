@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
 
     if (!args[0]) {
-        const embed1 = new Discord.MessageEmbed()
+        var embed1 = new Discord.MessageEmbed()
             .setColor('#FF0000') // RED 
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'setstatus Um peixinho nadando no mar azul`')
@@ -15,22 +15,22 @@ exports.run = async (client, message, args) => {
     }
 
     if (args[20]) {
-        const embed15 = new Discord.MessageEmbed()
+        var embed15 = new Discord.MessageEmbed()
             .setColor('RED')
             .setTitle('É permito até 20 palavras no status.')
         return message.inlineReply(embed15)
     }
 
-    const status = args.join(' ')
+    var status = args.join(' ')
     var stat = db.get(`status_${message.author.id}`)
     if (status === stat) {
-        const iqualstats = new Discord.MessageEmbed()
+        var iqualstats = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setDescription('O seu status é igual ao do seu perfil.')
         return message.inlineReply(iqualstats)
     }
 
-    const confirm = new Discord.MessageEmbed()
+    var confirm = new Discord.MessageEmbed()
         .setColor('BLUE')
         .addFields(
             {
@@ -49,14 +49,14 @@ exports.run = async (client, message, args) => {
             if (reaction.emoji.name === '✅') { // Check
                 msg.delete()
                 db.set(`status_${message.author.id}`, status)
-                const embednewstatus = new Discord.MessageEmbed()
+                var embednewstatus = new Discord.MessageEmbed()
                     .setColor("GREEN")
                     .setTitle('Status alterado com sucesso!')
                 message.inlineReply(embednewstatus)
             }
             if (reaction.emoji.name === '❌') { // MPEmbed
                 msg.delete()
-                const cancel = new Discord.MessageEmbed()
+                var cancel = new Discord.MessageEmbed()
                     .setColor("GREEN")
                     .setTitle('Comando cancelado.')
                 message.inlineReply(cancel)

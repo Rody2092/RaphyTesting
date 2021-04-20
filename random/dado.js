@@ -6,15 +6,8 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-        const adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Manusear Mensagens" para utilizar esta função.')
-        return message.channel.send(adm)
-    }
-
     if (!args[0]) {
-        const dados = new Discord.MessageEmbed()
+        var dados = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('Quantos dados você quer rolar?')
             .setDescription('`Você pode usar ' + prefix + 'dado 1/2/3/4`' + '\n \n1 | 2 | 3 | 4 | ❌ - Cancelar')
@@ -33,7 +26,7 @@ exports.run = async (client, message, args) => {
                     var numb = ['1', '2', '3', '4', '5', '6']
                     var rand = numb[Math.floor(Math.random() * numb.length)]
 
-                    const embed = new Discord.MessageEmbed()
+                    var embed = new Discord.MessageEmbed()
                         .setColor('BLUE')
                         .setTitle('🎲 Rolando os dados...')
                     return message.channel.send(embed).then(msg => msg.delete({ timeout: 2500 })).then(msg => msg.channel.send("🎲 `" + rand + '`'))
@@ -43,7 +36,7 @@ exports.run = async (client, message, args) => {
                     var numb = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
                     var rand = numb[Math.floor(Math.random() * numb.length)]
 
-                    const embed = new Discord.MessageEmbed()
+                    var embed = new Discord.MessageEmbed()
                         .setColor('BLUE')
                         .setTitle('🎲 Rolando os dados...')
                     return message.channel.send(embed).then(msg => msg.delete({ timeout: 2500 })).then(msg => msg.channel.send("🎲 `" + rand + '`'))
@@ -53,7 +46,7 @@ exports.run = async (client, message, args) => {
                     var numb = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18']
                     var rand = numb[Math.floor(Math.random() * numb.length)]
 
-                    const embed = new Discord.MessageEmbed()
+                    var embed = new Discord.MessageEmbed()
                         .setColor('BLUE')
                         .setTitle('🎲 Rolando os dados...')
                     return message.channel.send(embed).then(msg => msg.delete({ timeout: 2500 })).then(msg => msg.channel.send("🎲 `" + rand + '`'))
@@ -63,7 +56,7 @@ exports.run = async (client, message, args) => {
                     var numb = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24']
                     var rand = numb[Math.floor(Math.random() * numb.length)]
 
-                    const embed = new Discord.MessageEmbed()
+                    var embed = new Discord.MessageEmbed()
                         .setColor('BLUE')
                         .setTitle('🎲 Rolando os dados...')
                     return message.channel.send(embed).then(msg => msg.delete({ timeout: 2500 })).then(msg => msg.channel.send("🎲 `" + rand + '`'))

@@ -8,14 +8,14 @@ exports.run = async (client, message, args) => {
    if (prefix === null) prefix = "-"
 
    if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
-      const adm = new Discord.MessageEmbed()
+      var adm = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Eu preciso da permissão "Manusear Cargos" para utilizar esta função.')
       return message.inlineReply(adm)
    }
 
    if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
-      const adm = new Discord.MessageEmbed()
+      var adm = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Eu preciso da permissão "Manusear Cargos" para utilizar esta função.')
       return message.inlineReply(adm)
@@ -23,18 +23,18 @@ exports.run = async (client, message, args) => {
 
    let perms = message.member.hasPermission("MANAGE_ROLES")
    if (!perms) {
-      const permss = new Discord.MessageEmbed()
+      var permss = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Permissão Necessária: Manusear Roles (cargos)')
       return message.inlineReply(permss)
    }
 
-   const logchannel = db.get(`logchannel_${message.guild.id}`)
+   var logchannel = db.get(`logchannel_${message.guild.id}`)
    if (logchannel === null) {
       let prefix = db.get(`prefix_${message.guild.id}`)
       if (prefix === null) prefix = "-"
 
-      const nolog = new Discord.MessageEmbed()
+      var nolog = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Não há Canal Log registrado.')
          .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
@@ -45,14 +45,14 @@ exports.run = async (client, message, args) => {
       let prefix = db.get(`prefix_${message.guild.id}`)
       if (prefix === null) prefix = "-"
 
-      const nolog = new Discord.MessageEmbed()
+      var nolog = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Parece que o canal log foi excluido.')
          .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
       return message.inlineReply(nolog)
    }
 
-   const role = message.guild.roles.cache.find(role => role.name === 'Muted')
+   var role = message.guild.roles.cache.find(role => role.name === 'Muted')
    if (!role) {
       try {
 
@@ -77,17 +77,17 @@ exports.run = async (client, message, args) => {
          console.log(error)
       }
       try {
-         const role7 = message.guild.roles.cache.find(role => role.name === 'Muted')
+         var role7 = message.guild.roles.cache.find(role => role.name === 'Muted')
 
-         const criando = new Discord.MessageEmbed()
+         var criando = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('🔄 Criando e configurando cargo, espere...')
 
-         const roleembedcreate = new Discord.MessageEmbed()
+         var roleembedcreate = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setDescription(`🔄 Buscando erros...`)
 
-         const criado = new Discord.MessageEmbed()
+         var criado = new Discord.MessageEmbed()
             .setColor('GREEN')
             .setTitle('Cargo criado e configurado com sucesso!')
 
@@ -98,10 +98,10 @@ exports.run = async (client, message, args) => {
    }
    if (!role) return
 
-   const member = message.mentions.members.first()
+   var member = message.mentions.members.first()
    args[0] = member
    if (!args[0]) {
-      const nomember = new Discord.MessageEmbed()
+      var nomember = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Por favor, mencione o usuário.')
          .setDescription('`' + prefix + 'mute @user 10s/m/h Razão`')
@@ -109,14 +109,14 @@ exports.run = async (client, message, args) => {
    }
 
    if (db.get(`whitelist_${member.id}`)) {// Rodrigo Couto
-      const banrody = new Discord.MessageEmbed()
+      var banrody = new Discord.MessageEmbed()
          .setColor('GREEN')
          .setTitle(member.user.username + ' está na whitelist.')
       return message.inlineReply(banrody)
    }
 
    if (!role.editable) {
-      const soberol = new Discord.MessageEmbed()
+      var soberol = new Discord.MessageEmbed()
          .setColor('BLUE')
          .setTitle('Meu cargo não é alto o suficiente.')
          .addFields(
@@ -126,7 +126,7 @@ exports.run = async (client, message, args) => {
             }
          )
 
-      const sobcarg = new Discord.MessageEmbed()
+      var sobcarg = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('🔄 Um erro foi encontrado. Buscando solução...')
 
@@ -137,7 +137,7 @@ exports.run = async (client, message, args) => {
    }
 
    if (member.id === message.author.id) {
-      const muteproprio = new Discord.MessageEmbed()
+      var muteproprio = new Discord.MessageEmbed()
          .setColor('BLUE')
          .setTitle('Tem certeza que deseja mutar você mesmo?')
 
@@ -148,7 +148,7 @@ exports.run = async (client, message, args) => {
          msg.awaitReactions((reaction, user) => {
             if (message.author.id !== user.id) return
 
-            const troll = new Discord.MessageEmbed()
+            var troll = new Discord.MessageEmbed()
                .setColor('GREEN')
                .setTitle('Se você tem cargo para usar este comando, você não pode mutar você mesmo. 😗')
 
@@ -164,14 +164,14 @@ exports.run = async (client, message, args) => {
    }
 
    if (member.id === message.guild.owner.id) {
-      const dono = new Discord.MessageEmbed()
+      var dono = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Mutar o dono do servidor não é uma opção.')
       return message.inlineReply(dono)
    }
 
    if (member.hasPermission('ADMINISTRATOR')) {
-      const unbannable = new Discord.MessageEmbed()
+      var unbannable = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Esta pessoa tem permissões importantes ou tem um cargo maior que o meu.')
       return message.inlineReply(unbannable)
@@ -179,13 +179,13 @@ exports.run = async (client, message, args) => {
 
    var time = args[1]
    if (!time) {
-      const notime = new Discord.MessageEmbed()
+      var notime = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Siga o padrão do comando!')
          .setDescription('`' + prefix + 'mute @user 5s/m/h Razão`')
          .setFooter('Deseja o ' + prefix + 'muteinfo' + '?')
 
-      const embeddetail = new Discord.MessageEmbed()
+      var embeddetail = new Discord.MessageEmbed()
          .setColor("BLUE")
          .setTitle('Comando Mute - Detalhes')
          .addFields(
@@ -229,7 +229,7 @@ exports.run = async (client, message, args) => {
          })
       })
    } else if (time.length > 4) {
-      const limitover = new Discord.MessageEmbed()
+      var limitover = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('O tempo não pode passar de 4 digitos.')
       return message.inlineReply(limitover)
@@ -239,7 +239,7 @@ exports.run = async (client, message, args) => {
    if (!reason)
       reason = `Razão não especificada por ${message.author.username}.`
 
-   const muteembed = new Discord.MessageEmbed()
+   var muteembed = new Discord.MessageEmbed()
       .setAuthor(`Sistema de Mute - ${member.guild.name}`)
       .setColor('#8B0000')
       .addFields(
@@ -274,7 +274,7 @@ exports.run = async (client, message, args) => {
       .setThumbnail(member.user.displayAvatarURL({ dynamic: true }))
       .setTimestamp()
 
-   const unmuteembed = new Discord.MessageEmbed()
+   var unmuteembed = new Discord.MessageEmbed()
       .setAuthor(`Sistema de Mute - ${member.guild.name}`)
       .setColor('#8B0000')
       .addFields(
@@ -288,7 +288,7 @@ exports.run = async (client, message, args) => {
       .setTimestamp()
 
    if (member.roles.cache.has(role.id)) {
-      const unbannable = new Discord.MessageEmbed()
+      var unbannable = new Discord.MessageEmbed()
          .setColor('BLUE')
          .setTitle(`Esta pessoa já está mutada. Deseja mutar ${member.user.username} novamente?`)
 
@@ -297,7 +297,7 @@ exports.run = async (client, message, args) => {
          msg.react('❌') // X
 
          msg.awaitReactions((reaction, user) => {
-            const logchannel = db.get(`logchannel_${member.guild.id}`)
+            var logchannel = db.get(`logchannel_${member.guild.id}`)
             if (message.author.id !== user.id) return
             if (reaction.emoji.name === '✅') { // home
                msg.delete()
@@ -309,7 +309,7 @@ exports.run = async (client, message, args) => {
                   client.channels.cache.get(logchannel).send(unmuteembed)
                }, ms(time))
 
-               const rela = new Discord.MessageEmbed()
+               var rela = new Discord.MessageEmbed()
                   .setColor('GREEN')
                   .setTitle(`${member.user.username} foi remutado com sucesso.`)
                   .setDescription(`Mais informações em ${client.channels.cache.get(logchannel).name}`)
@@ -328,12 +328,12 @@ exports.run = async (client, message, args) => {
       })
    }
 
-   const muteq = new Discord.MessageEmbed()
+   var muteq = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setDescription(`Mutar ${member.user} por ${time}?`)
 
    if (!member.roles.cache.has(role.id)) {
-      const logchannel = db.get(`logchannel_${member.guild.id}`)
+      var logchannel = db.get(`logchannel_${member.guild.id}`)
       await message.inlineReply(muteq).then(msg => {
          msg.react('✅') // Check
          msg.react('❌') // X
@@ -350,7 +350,7 @@ exports.run = async (client, message, args) => {
                   client.channels.cache.get(logchannel).send(unmuteembed)
                }, ms(time))
 
-               const rela = new Discord.MessageEmbed()
+               var rela = new Discord.MessageEmbed()
                   .setColor('GREEN')
                   .setTitle(`${member.user.username} foi mutado com sucesso.`)
                   .setDescription(`Mais informações em ${client.channels.cache.get(logchannel)}`)

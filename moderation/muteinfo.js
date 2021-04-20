@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
-    const embeddetail = new Discord.MessageEmbed()
+    var embeddetail = new Discord.MessageEmbed()
         .setColor("BLUE")
         .setTitle('Comando Mute - Detalhes')
         .addFields(

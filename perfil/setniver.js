@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
     if (prefix === null) { prefix = "-" }
 
     if (!args[0]) {
-        const noargs = new Discord.MessageEmbed()
+        var noargs = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('🎉 Data de Aniversário')
             .setDescription('Defina sua data de aniversário no seu perfil atráves deste comando. Claro, é tudo opicional.\n \nObs: É obrigatório o seguir o formato do exemplo! Com espaçamento e no formato DD/MM/AAAA')
@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(noargs)
     }
 
-    const erro = new Discord.MessageEmbed()
+    var erro = new Discord.MessageEmbed()
         .setColor('#FF0000')
         .setTitle('Siga o formato correto')
         .setDescription('Exemplo: `' + prefix + 'setniver 15 / 03 / 2007`')
@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
                 if (reaction.emoji.name === '✅') {
                     msg.delete()
                     db.delete(`aniversario_${message.author.id}`)
-                    const ok = new Discord.MessageEmbed()
+                    var ok = new Discord.MessageEmbed()
                         .setColor('GREEN')
                         .setTitle('✅ Sucesso!')
                         .setDescription('Sua data de aniversário foi deletada com sucesso.')
@@ -129,7 +129,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply('Esta já é sua data de aniversário atual.')
     }
 
-    const confirm = new Discord.MessageEmbed()
+    var confirm = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('Sua data de aniversário está correta?')
         .setDescription('`' + niver + '`')
@@ -146,7 +146,7 @@ exports.run = async (client, message, args) => {
             if (reaction.emoji.name === '✅') {
                 msg.delete()
                 db.set(`aniversario_${message.author.id}`, niver)
-                const ok = new Discord.MessageEmbed()
+                var ok = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('🎉 Sucesso!')
                     .setDescription('Sua data de aniversário foi salva com sucesso.')

@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
 
-    const embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
         .setColor("BLUE")
         .setTitle('💖 Maya Family System')
         .setDescription('Chame seus amigos mais próximos para sua familia.')

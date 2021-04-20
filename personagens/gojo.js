@@ -4,23 +4,25 @@ exports.run = async (client, message, args) => {
 
 
     var list = [
-        'https://imgur.com/B8gX2UL.gif',
-        'https://imgur.com/2etwv4a.gif',
-        'https://imgur.com/NcHlgkV.gif',
-        'https://imgur.com/xfvwpMk.gif',
-        'https://imgur.com/CIa9Gru.gif',
-        'https://imgur.com/iDzsPm8.gif',
-        'https://imgur.com/zfvczuE.gif',
-        'https://imgur.com/xDeE5fc.gif'
+        'https://imgur.com/vV4hpLj.gif',
+        'https://imgur.com/WzIRoEy.gif',
+        'https://imgur.com/kOrLZ2t.gif',
+        'https://imgur.com/hrEeTmx.gif',
+        'https://imgur.com/LpoqoCG.png',
+        'https://imgur.com/ey25jic.gif',
+        'https://imgur.com/BlRkTju.gif',
+        'https://imgur.com/vyrP2Q2.gif',
+        'https://imgur.com/M26RtNG.gif',
+        'https://imgur.com/acSah5H.gif'
     ]
 
     var gif = list[Math.floor(Math.random() * list.length)]
 
-    var Gifs = new Discord.MessageEmbed()
+    var gojo = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setImage(gif)
 
-    await message.inlineReply(Gifs).then(msg => {
+    await message.inlineReply(gojo).then(msg => {
         msg.react('🔄').catch(err => { return }) // 1º Embed
         msg.react('❌').catch(err => { return })
         setTimeout(function () { msg.reactions.removeAll() }, 30000)
@@ -30,10 +32,10 @@ exports.run = async (client, message, args) => {
 
             if (reaction.emoji.name === '🔄') { // 1º Embed - Principal
                 reaction.users.remove(user)
-                var Itachi = new Discord.MessageEmbed()
+                var gojo = new Discord.MessageEmbed()
                     .setColor('BLUE')
                     .setImage(list[Math.floor(Math.random() * list.length)])
-                msg.edit(Itachi)
+                msg.edit(gojo)
             }
             if (reaction.emoji.name === '❌') {
                 msg.delete()

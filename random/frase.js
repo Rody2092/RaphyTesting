@@ -26,7 +26,7 @@ exports.run = async (client, message, args) => {
     var rand = list[Math.floor(Math.random() * list.length)]
     let user = client.users.cache.get(args[0])
 
-    const HelpEmbed = new Discord.MessageEmbed()
+    var HelpEmbed = new Discord.MessageEmbed()
         .setColor('BLUE')
         .addFields(
             {

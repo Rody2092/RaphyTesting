@@ -2,16 +2,8 @@ const Discord = require("discord.js")
 const db = require("quick.db")
 
 exports.run = async (client, message, args) => {
-
-  if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Manusear Cargos" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
   if (!message.member.hasPermission(["MANAGE_ROLES"])) {
-    const perms = new Discord.MessageEmbed()
+    var perms = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Permissão Necessária: Manusear Cargos')
     return message.inlineReply(perms)
@@ -22,7 +14,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const nolog = new Discord.MessageEmbed()
+    var nolog = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Não há Canal Log registrado.')
       .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
@@ -33,19 +25,19 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const nolog1 = new Discord.MessageEmbed()
+    var nolog1 = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Parece que o canal log foi excluido.')
       .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
     return message.inlineReply(nolog1)
   }
 
-  const user = message.mentions.members.first()
+  var user = message.mentions.members.first()
   if (!user) {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const nouser = new Discord.MessageEmbed()
+    var nouser = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'warn @user Razão (opcional)`')
@@ -53,28 +45,28 @@ exports.run = async (client, message, args) => {
   }
 
   if (db.get(`whitelist_${user.id}`)) {// Rodrigo Couto
-    const banrody = new Discord.MessageEmbed()
+    var banrody = new Discord.MessageEmbed()
       .setColor('GREEN')
       .setTitle(user.user.username + ' está na whitelist.')
     return message.inlineReply(banrody)
   }
 
   if (message.mentions.users.first().bot) {
-    const nobot = new Discord.MessageEmbed()
+    var nobot = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Bots não podem receber warns.')
     return message.inlineReply(nobot)
   }
 
   if (message.author.id === user.id) {
-    const autowarn = new Discord.MessageEmbed()
+    var autowarn = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Auto warn não é uma opção.')
     return message.inlineReply(autowarn)
   }
 
   if (user.id === message.guild.owner.id) {
-    const owner = new Discord.MessageEmbed()
+    var owner = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Warn no dono do servidor não é uma opção.')
     return message.inlineReply(owner)
@@ -85,7 +77,7 @@ exports.run = async (client, message, args) => {
 
   let warnings = db.get(`warnings_${message.guild.id}_${user.id}`)
   if (warnings === 5) {
-    const limit = new Discord.MessageEmbed()
+    var limit = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle(`Limite de warns atingido`)
       .setDescription(`${user} atingiu 4 warns. Está na hora de uma punição maior. Mute? Kick? Ban?`)
@@ -94,7 +86,7 @@ exports.run = async (client, message, args) => {
 
   if (warnings === null) {
     db.set(`warnings_${message.guild.id}_${user.id}`, 1)
-    const newwarn = new Discord.MessageEmbed()
+    var newwarn = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('Alerta de Aviso')
       .setDescription(`Você recebeu um aviso no servidor ${message.guild.name}\n \nRazão: ${reason}`)
@@ -125,7 +117,7 @@ exports.run = async (client, message, args) => {
       .setTimestamp()
       .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
 
-    const sucess = new Discord.MessageEmbed()
+    var sucess = new Discord.MessageEmbed()
       .setColor('GREEN')
       .setDescription(`Warn adicionado! Estou enviando mais informações no ${client.channels.cache.get(logchannel)}.`)
 
@@ -134,7 +126,7 @@ exports.run = async (client, message, args) => {
 
   } else if (warnings !== null) {
     db.add(`warnings_${message.guild.id}_${user.id}`, 1)
-    const newwarn = new Discord.MessageEmbed()
+    var newwarn = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('Alerta de Aviso')
       .setDescription(`Você recebeu um aviso no servidor **${message.guild.name}**`)
@@ -165,7 +157,7 @@ exports.run = async (client, message, args) => {
       .setTimestamp()
       .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
 
-    const sucess = new Discord.MessageEmbed()
+    var sucess = new Discord.MessageEmbed()
       .setColor('GREEN')
       .setDescription(`O Warn foi um sucesso! Estou enviando mais informações no ${client.channels.cache.get(logchannel)}.`)
 

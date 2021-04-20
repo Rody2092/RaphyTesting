@@ -28,7 +28,7 @@ exports.run = async (client, message, args) => {
             .setColor('#FF0000')
             .setTitle('🔗 Sistema Ant-link')
             .setDescription('O meu sistem detecta links que membros enviam no servidor e eu deleto avisando o membro que não pode enviar links.')
-            .addField('Comando', '`' + prefix + 'setlink on`\n' + '`' + prefix + 'setlink off`')
+            .addField('Comando', '`' + prefix + 'antlink on`\n' + '`' + prefix + 'antlink off`')
             .addField('⚠️ Atenção', 'Com o sistema antlink ativado, não será possível enviar GIFS.')
         return message.inlineReply(format)
     }

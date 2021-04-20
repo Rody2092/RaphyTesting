@@ -2,30 +2,31 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-        const adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-        return message.inlineReply(adm)
-    }
 
     var list = [
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        '',
-        ''
+        'https://i.pinimg.com/originals/78/72/6a/78726a6ec74ba506137966e9f9250bd1.gif',
+        'https://i.pinimg.com/originals/b1/b8/94/b1b8947fbb9e61d279125f678ff263ab.gif',
+        'https://imgur.com/OT0UPBi.gif',
+        'https://imgur.com/GU8ibL7.gif',
+        'https://imgur.com/I6sD8Lx.gif',
+        'https://imgur.com/enjWiGi.gif',
+        'https://imgur.com/IJjLeQD.gif',
+        'https://imgur.com/BxYPajz.gif',
+        'https://imgur.com/hwNQ58W.jpeg',
+        'https://imgur.com/rV6PdG9.jpeg',
+        'https://imgur.com/oUzads1.gif',
+        'https://imgur.com/NGIzV5A.gif',
+        'https://imgur.com/zNQTktf.jpeg',
+        'https://imgur.com/TT4Cc3S.gif',
+        'https://imgur.com/SKUribQ.gif',
+        'https://imgur.com/jv3LyDG.gif'
     ]
 
     var gif = list[Math.floor(Math.random() * list.length)]
 
-    const Itachi = new Discord.MessageEmbed()
+    var Itachi = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setImage(gif)
-    return message.inlineReply(`Coletando gifs para o código... Comando disponivel dentro de 2 dias\nQuer enviar seus gifs? Usa o -help e entra no meu servidor :hearts:`)
 
     await message.inlineReply(Itachi).then(msg => {
         msg.react('🔄').catch(err => { return }) // 1º Embed
@@ -37,7 +38,7 @@ exports.run = async (client, message, args) => {
 
             if (reaction.emoji.name === '🔄') { // 1º Embed - Principal
                 reaction.users.remove(user)
-                const Itachi = new Discord.MessageEmbed()
+                var Itachi = new Discord.MessageEmbed()
                     .setColor('BLUE')
                     .setImage(list[Math.floor(Math.random() * list.length)])
                 msg.edit(Itachi)

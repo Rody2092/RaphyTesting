@@ -1,14 +1,6 @@
 const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
-
-        if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-                const adm = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
-                        .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-                return message.inlineReply(adm)
-        }
-
         var list = [
                 'https://imgur.com/jVL0mbR.gif',
                 'https://imgur.com/TRHBCon.gif'
@@ -16,9 +8,8 @@ exports.run = async (client, message, args) => {
 
         var rand = list[Math.floor(Math.random() * list.length)]
 
-        const embed = new Discord.MessageEmbed()
+        var embed = new Discord.MessageEmbed()
                 .setColor('BLUE')
                 .setImage(rand)
-
         await message.inlineReply(embed)
 }

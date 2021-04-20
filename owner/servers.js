@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
 
     let page = args[0]
     if (!page) {
-        const pag = new Discord.MessageEmbed()
+        var pag = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('Qual a pagina?')
         return message.inlineReply(pag).then(msg => msg.delete({ timeout: 5000 })).catch(err => { return })

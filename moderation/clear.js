@@ -2,20 +2,21 @@ const Discord = require("discord.js")
 
 exports.run = async (client, message, args) => {
 
-  if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Manusear Mensagens" para utilizar esta função.')
-    return message.channel.send(adm)
-  }
-
   if (!message.member.permissions.has("MANAGE_MESSAGES")) {
-    const perms = new Discord.MessageEmbed()
+    var perms = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Permissão Necessária: Manusear Mensagens')
     return message.channel.send(perms).then(message => message.delete({ timeout: 5000 })).catch(err => { return })
   }
-  const clearembed = new Discord.MessageEmbed()
+
+  if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+    var adm = new Discord.MessageEmbed()
+      .setColor('#FF0000')
+      .setTitle('Eu preciso da permissão "Manusear Mensagens" para utilizar esta função.')
+    return message.channel.send(adm)
+  }
+  
+  var clearembed = new Discord.MessageEmbed()
     .setColor("BLUE")
     .setTitle("🧹 Comando Clear 🧹")
     .setDescription("Use o comando clear para fazer aquela limpa nas mensagens")

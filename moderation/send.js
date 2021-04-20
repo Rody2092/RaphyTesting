@@ -6,24 +6,17 @@ exports.run = async (client, message, args) => {
     var prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = '-' }
 
-    if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) {
-        const adm = new Discord.MessageEmbed()
+    if (!message.member.hasPermission('MANAGE_MESSAGES')) {
+        var perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Manusear Canais" para utilizar esta função.')
-        return message.inlineReply(adm)
-    }
-
-    if (!message.member.hasPermission('MANAGE_CHANNELS')) {
-        const perms = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Permissão Necessária: Manusear Canais')
+            .setTitle('Permissão Necessária: Manusear Mensagens')
         return message.inlineReply(perms)
     }
 
     var canal = message.mentions.channels.first()
     args[0] = canal
     if (!canal) {
-        const nocanal = new Discord.MessageEmbed()
+        var nocanal = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'send #canal Sua mensagem`')
@@ -31,7 +24,7 @@ exports.run = async (client, message, args) => {
     }
 
     if (!args[1]) {
-        const noargs = new Discord.MessageEmbed()
+        var noargs = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'send #canal Sua mensagem`')
@@ -40,7 +33,7 @@ exports.run = async (client, message, args) => {
 
     var mensagem = args.slice(1).join(" ")
     if (!mensagem) {
-        const nomensagem = new Discord.MessageEmbed()
+        var nomensagem = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'send #canal Sua mensagem`')

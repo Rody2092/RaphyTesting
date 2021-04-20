@@ -6,13 +6,6 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) {
-        var adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Manusear Canais" para utilizar esta função.')
-        return message.inlineReply(adm)
-    }
-
     if (!message.member.hasPermission('MANAGE_CHANNELS')) {
         var perms = new Discord.MessageEmbed()
             .setColor('#FF0000')

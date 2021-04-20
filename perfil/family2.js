@@ -3,7 +3,7 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-	const member = message.mentions.users.first()
+	var member = message.mentions.users.first()
 
 	if (!member) {
 		return message.inlineReply('Ei, me fala quem você quer convidar para sua familia.')
@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
 		return message.inlineReply('Você quer entrar na sua familia? Não entendi...')
 	}
 
-	const bot = member.bot
+	var bot = member.bot
 	if (bot) {
 		return message.inlineReply('Você não pode convidar um bot pra sua familia.')
 	}

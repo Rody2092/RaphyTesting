@@ -2,12 +2,7 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
-  if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
+
 
   var list = [
     'https://imgur.com/I18iVJC.gif',
@@ -34,7 +29,7 @@ exports.run = async (client, message, args) => {
   var texto = args.join(" ")
   if (!texto) texto = `${message.author}`
 
-  const embed = new Discord.MessageEmbed()
+  var embed = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setDescription(`${texto}`)
     .setImage(rand)
@@ -51,7 +46,7 @@ exports.run = async (client, message, args) => {
       if (reaction.emoji.name === '🔄') { // 1º Embed - Principal
         reaction.users.remove(user)
 
-        const embed = new Discord.MessageEmbed()
+        var embed = new Discord.MessageEmbed()
           .setColor('BLUE')
           .setDescription(`${texto}`)
           .setImage(list[Math.floor(Math.random() * list.length)])

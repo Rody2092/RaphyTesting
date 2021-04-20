@@ -3,25 +3,25 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) {
-        const adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Manusear Canais" para utilizar esta função.')
-        return message.inlineReply(adm)
-    }
-
     if (!message.member.hasPermission('MANAGE_CHANNELS')) {
-        const perms = new Discord.MessageEmbed()
+        var perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Permissão Necessária: Manusear Canais')
         return message.inlineReply(perms)
+    }
+
+    if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) {
+        var adm = new Discord.MessageEmbed()
+            .setColor('#FF0000')
+            .setTitle('Eu preciso da permissão "Manusear Canais" para utilizar esta função.')
+        return message.inlineReply(adm)
     }
 
     if (!args[0]) {
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
 
-        const noargs = new Discord.MessageEmbed()
+        var noargs = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'deletechannel #Canal`')
@@ -33,14 +33,14 @@ exports.run = async (client, message, args) => {
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
 
-        const nochannel = new Discord.MessageEmbed()
+        var nochannel = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'deletechannel #Canal`')
         return message.inlineReply(nochannel)
     }
 
-    const confirm = new Discord.MessageEmbed()
+    var confirm = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setDescription('Este é um comando perigoso, deseja prosseguir?')
 
@@ -54,7 +54,7 @@ exports.run = async (client, message, args) => {
             if (reaction.emoji.name === '✅') { // sim
                 msg.delete().catch(err => { return })
 
-                const confirm2 = new Discord.MessageEmbed()
+                var confirm2 = new Discord.MessageEmbed()
                     .setColor('BLUE')
                     .setDescription(`O canal ${channel} será excluido e não será possivel recupera-lo, deseja prosseguir?`)
 
@@ -68,7 +68,7 @@ exports.run = async (client, message, args) => {
                         if (reaction.emoji.name === '✅') { // sim
                             msg.delete().catch(err => { return })
 
-                            const confirm3 = new Discord.MessageEmbed()
+                            var confirm3 = new Discord.MessageEmbed()
                                 .setColor('BLUE')
                                 .setDescription(`Último aviso. Você realmente deseja prosseguir com a exclusão do canal ${channel}?`)
 
@@ -82,7 +82,7 @@ exports.run = async (client, message, args) => {
                                     if (reaction.emoji.name === '✅') { // sim
                                         msg.delete().catch(err => { return })
 
-                                        const sucess = new Discord.MessageEmbed()
+                                        var sucess = new Discord.MessageEmbed()
                                             .setColor('GREEN')
                                             .setDescription(`${message.author} excluiu o canal #${channel.name}`)
                                         message.inlineReply(sucess)
@@ -95,7 +95,7 @@ exports.run = async (client, message, args) => {
                                     if (reaction.emoji.name === '❌') { // MPEmbed
                                         msg.delete().catch(err => { return })
 
-                                        const canceled3 = new Discord.MessageEmbed()
+                                        var canceled3 = new Discord.MessageEmbed()
                                             .setColor('GREEN')
                                             .setTitle('Comando cancelado.')
                                         message.inlineReply(canceled3)
@@ -106,7 +106,7 @@ exports.run = async (client, message, args) => {
                         if (reaction.emoji.name === '❌') { // MPEmbed
                             msg.delete().catch(err => { return })
 
-                            const canceled2 = new Discord.MessageEmbed()
+                            var canceled2 = new Discord.MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle('Comando cancelado.')
                             message.inlineReply(canceled2)
@@ -116,7 +116,7 @@ exports.run = async (client, message, args) => {
             }
             if (reaction.emoji.name === '❌') { // MPEmbed
                 msg.delete().catch(err => { return })
-                const canceled = new Discord.MessageEmbed()
+                var canceled = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('Comando cancelado.')
                 message.inlineReply(canceled)

@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
         })
     }
 
-    const embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
         .setColor("#FF0000")
         .setTitle("Blacklist Maya blocksystem")
     lb.forEach(d => {

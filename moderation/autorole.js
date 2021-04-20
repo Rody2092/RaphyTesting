@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
 
     if (role) {
-        const autoroleautal = new Discord.MessageEmbed()
+        var autoroleautal = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('Autorole System está ativado')
             .setDescription(`Cargo atual: <@&${role}>`)
@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
     }
 
     if (role === null) {
-        const autoroleautal = new Discord.MessageEmbed()
+        var autoroleautal = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('Autorole System está desativado')
             .setDescription(`Cargo atual: Nenhum`)

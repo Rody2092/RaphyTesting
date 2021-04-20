@@ -2,7 +2,7 @@ const db = require("quick.db")
 
 exports.run = async (client, message, args) => {
 
-  const rody = message.author.id === ("451619591320371213")
+  var rody = message.author.id === ("451619591320371213")
   if (!rody)
     return message.inlineReply('⚠️ Este comando é um comando restrito.')
 

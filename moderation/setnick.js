@@ -4,7 +4,7 @@ const db = require('quick.db')
 exports.run = async (client, message, args) => {
 
   if (!message.guild.me.hasPermission("MANAGE_NICKNAMES")) {
-    const adm = new Discord.MessageEmbed()
+    var adm = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Eu preciso da permissão "Manusear Nicknames (Nomes/Apelidos)" para utilizar esta função.')
     return message.inlineReply(adm)
@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
   if (prefix === null) prefix = "-"
 
   if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
-    const noperms = new Discord.MessageEmbed()
+    var noperms = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Permissão necessária: Manusear Nicknames (Nomes/Apelidos)')
     return message.inlineReply(noperms)
@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
 
   let user = message.mentions.users.first()
   if (!user) {
-    const format = new Discord.MessageEmbed()
+    var format = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'setnick @user NovoNome`')
@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
 
   let nick = args.slice(1).join(" ")
   if (!nick) {
-    const format = new Discord.MessageEmbed()
+    var format = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'setnick @user NovoNome`')
@@ -43,7 +43,7 @@ exports.run = async (client, message, args) => {
   member.setNickname(nick).catch(err => {
 
     if (err) {
-      const erro = new Discord.MessageEmbed()
+      var erro = new Discord.MessageEmbed()
         .setColor('#FF0000')
         .setTitle('Um erro foi encontrado')
         .setDescription('\n \n`' + err + '`')
@@ -73,7 +73,7 @@ exports.run = async (client, message, args) => {
     }
   })
 
-  const sucess = new Discord.MessageEmbed()
+  var sucess = new Discord.MessageEmbed()
     .setColor('GREEN')
     .setDescription(`O nickname de ${user.tag} foi alterado para ${nick}`)
   return message.inlineReply(sucess)

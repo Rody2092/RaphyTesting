@@ -3,15 +3,15 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-	const member = message.mentions.users.first()
+	var member = message.mentions.users.first()
 
-	const user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member || message.mentions.users.first()
+	var user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member || message.mentions.users.first()
 
 	let prefix = db.get(`prefix_${message.guild.id}`)
 	if (prefix === null) prefix = "-"
 
 	if (!args[0]) {
-		const noargs = new Discord.MessageEmbed()
+		var noargs = new Discord.MessageEmbed()
 			.setColor('BLUE')
 			.setTitle('Casamento')
 			.setDescription('Você pode se casar no Sistema Maya. Siga o comando e se case. Veja também em `' + prefix + 'perfil`')
@@ -28,7 +28,7 @@ exports.run = async (client, message, args) => {
 	if (level === null) level = 0
 
 	if (level < 10) {
-		const block = new Discord.MessageEmbed()
+		var block = new Discord.MessageEmbed()
 			.setColor('#FF0000')
 			.setTitle('🚫  O casal precisa atingir o level 10')
 		return message.inlineReply(block)
@@ -46,7 +46,7 @@ exports.run = async (client, message, args) => {
 		return message.inlineReply('É... Não sei se meu pai me deixaria casar contigo. Acho melhor a gente ser apenas amigos. :)')
 	}
 
-	const bot = member.bot
+	var bot = member.bot
 	if (bot) {
 		return message.inlineReply('Você não pode se casar com um bot.')
 	}
@@ -66,6 +66,7 @@ exports.run = async (client, message, args) => {
 			.setDescription(`${message.author.username} está pedindo a mão de ${member.username} em casamento.\n\n${member}, você aceita se casar com ${message.author}?`)
 			.setThumbnail(gif)
 			.setFooter('Clique no anel para aceitar o pedido de casamento.')
+			
 		message.inlineReply(casar).then(msg => {
 			msg.react('💍')
 

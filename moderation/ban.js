@@ -3,18 +3,18 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-  if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Banir Membros" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
   if (!message.member.hasPermission('BAN_MEMBERS')) {
-    const permss = new Discord.MessageEmbed()
+    var permss = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Permissão Necessária: Banir Membros')
     return message.inlineReply(permss)
+  }
+
+  if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
+    var adm = new Discord.MessageEmbed()
+      .setColor('#FF0000')
+      .setTitle('Eu preciso da permissão "Banir Membros" para utilizar esta função.')
+    return message.inlineReply(adm)
   }
 
   let logchannel = db.get(`logchannel_${message.guild.id}`)
@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const nolog = new Discord.MessageEmbed()
+    var nolog = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Não há Canal Log registrado.')
       .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
@@ -33,7 +33,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const nolog1 = new Discord.MessageEmbed()
+    var nolog1 = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Parece que o canal log foi excluido.')
       .setDescription('`' + prefix + 'setlogchannel #CanalLog`')
@@ -45,7 +45,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const nouser = new Discord.MessageEmbed()
+    var nouser = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Siga o formato')
       .setDescription('`' + prefix + 'ban @user Razão`')
@@ -53,28 +53,28 @@ exports.run = async (client, message, args) => {
   }
 
   if (db.get(`whitelist_${user.id}`)) {// Rodrigo Couto
-    const banrody = new Discord.MessageEmbed()
+    var banrody = new Discord.MessageEmbed()
       .setColor('GREEN')
       .setTitle(user.user.username + ' está na whitelist.')
     return message.inlineReply(banrody)
   }
 
   if (user.id === message.author.id) {
-    const autoban = new Discord.MessageEmbed()
+    var autoban = new Discord.MessageEmbed()
       .setColor('#ff0000')
       .setTitle('Banir você mesmo não é uma opção.')
     return message.inlineReply(autoban)
   }
 
   if (user.id === message.guild.owner.id) {
-    const banowner = new Discord.MessageEmbed()
+    var banowner = new Discord.MessageEmbed()
       .setColor('#ff0000')
       .setTitle('Banir o dono do servidor não é uma opção.')
     return message.inlineReply(banowner)
   }
 
   if (user.hasPermission('BAN_MEMBERS')) {
-    const banperm = new Discord.MessageEmbed()
+    var banperm = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle(`${user.user.username} tem permissões importantes neste servidor, não posso banir.`)
     return message.inlineReply(banperm)
@@ -83,7 +83,7 @@ exports.run = async (client, message, args) => {
   var reason = args.slice(1).join(" ")
   if (!reason) reason = message.author.username + ' não especificou nenhuma razão.'
 
-  const banEmbed = new Discord.MessageEmbed()
+  var banEmbed = new Discord.MessageEmbed()
     .setTitle(`Sistema de Banimento - ${message.guild.name}`)
     .setColor('#FF0000')
     .addFields(
@@ -114,7 +114,7 @@ exports.run = async (client, message, args) => {
     .setTimestamp()
     .setFooter('Data')
 
-  const startban = new Discord.MessageEmbed()
+  var startban = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setDescription(`Você realmente deseja banir ${user.user} do servidor?`)
 
@@ -128,7 +128,7 @@ exports.run = async (client, message, args) => {
       if (reaction.emoji.name === '✅') { // Sim
         msg.delete()
 
-        const banned = new Discord.MessageEmbed()
+        var banned = new Discord.MessageEmbed()
           .setColor('GREEN')
           .setTitle(`Você baniu ${user.username} com sucesso.`)
           .setDescription(`Relatório enviado ao ${client.channels.cache.get(logchannel)}`)
@@ -139,7 +139,7 @@ exports.run = async (client, message, args) => {
       }
       if (reaction.emoji.name === '❌') { // Não
         msg.delete()
-        const cancel = new Discord.MessageEmbed()
+        var cancel = new Discord.MessageEmbed()
           .setColor('GREY')
           .setTitle('Comando cancelado.')
 

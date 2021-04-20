@@ -10,13 +10,13 @@ exports.run = async (client, message, args) => {
         return message.inlineReply('Por favor, mande apenas o comando. `' + prefix + 'setsigno`')
     }
 
-    const embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
         .setColor('#AE24C0')
         .setTitle('Escolha seu signo')
         .setDescription('♈ Áries\n♉ Touro\n♊ Gêmeos\n♋ Câncer\n♌ Leão\n♍ Virgem\n♎ Libra\n♏ Escorpião\n♐ Sargitário\n♑ Capricórnio\n♒ Aquário\n♓ Peixes')
         .setFooter('Auto delete em 30 segundos.')
 
-    const sucess = new Discord.MessageEmbed()
+    var sucess = new Discord.MessageEmbed()
         .setColor('GREEN')
         .setTitle('✅ Signo alterado com sucesso!')
 

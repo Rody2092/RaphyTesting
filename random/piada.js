@@ -42,7 +42,7 @@ exports.run = async (client, message, args) => {
 
     var rand = list[Math.floor(Math.random() * list.length)]
 
-    const PiadaEmbed = new Discord.MessageEmbed()
+    var PiadaEmbed = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('Piadinha saindo do forno...')
         .setDescription(rand)

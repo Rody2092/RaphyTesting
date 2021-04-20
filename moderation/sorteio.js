@@ -4,24 +4,10 @@ const ms = require("ms")
 
 exports.run = async (client, message, args) => {
 
-  if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) {
-    const adm = new Discord.MessageEmbed()
+  if (!message.member.hasPermission('MANAGE_MESSAGES')) {
+    var perms = new Discord.MessageEmbed()
       .setColor('#FF0000')
-      .setTitle('Eu preciso das permissões "Manusear Canais" e "Adicionar Reações" para utilizar esta função.')
-    return message.channel.send(adm)
-  }
-
-  if (!message.guild.me.hasPermission("ADD_REACTIONS")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso das permissões "Manusear Canais" e "Adicionar Reações" para utilizar esta função.')
-    return message.channel.send(adm)
-  }
-
-  if (!message.member.hasPermission('MANAGE_CHANNELS')) {
-    const perms = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Permissão Necessária: Manusear Canais')
+      .setTitle('Permissão Necessária: Manusear Mensagens')
     return message.channel.send(perms)
   }
 
@@ -29,7 +15,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const format = new Discord.MessageEmbed()
+    var format = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'sorteio 1s/m/h #CanalDoSorteio Prêmio`')
@@ -46,7 +32,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const format = new Discord.MessageEmbed()
+    var format = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'sorteio 1s/m/h #CanalDoSorteio Prêmio`')
@@ -60,7 +46,7 @@ exports.run = async (client, message, args) => {
   }
 
   if (args[0].length > 3) {
-    const nop = new Discord.MessageEmbed()
+    var nop = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Tempo limite é de 99h')
     return message.channel.send(nop)
@@ -70,7 +56,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const format = new Discord.MessageEmbed()
+    var format = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'sorteio 1s/m/h #CanalDoSorteio Prêmio`')
@@ -89,7 +75,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const format = new Discord.MessageEmbed()
+    var format = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'sorteio 1s/m/h #CanalDoSorteio Prêmio`')
@@ -107,7 +93,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const format = new Discord.MessageEmbed()
+    var format = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'sorteio 1s/m/h #CanalDoSorteio Prêmio`')
@@ -131,14 +117,14 @@ exports.run = async (client, message, args) => {
   let m = await channel.send(`:tada:🥳 **NOVO SORTEIO** 🥳:tada:`, Embed)
   m.react("🎉")
 
-  const ok = new Discord.MessageEmbed()
+  var ok = new Discord.MessageEmbed()
     .setColor('GREEN')
     .setDescription(`Sorteio criado em ${channel} com sucesso.`)
   message.channel.send(ok)
 
   setTimeout(() => {
     if (m.reactions.cache.get("🎉").count <= 1) {
-      const cancel = new Discord.MessageEmbed()
+      var cancel = new Discord.MessageEmbed()
         .setColor('#067aff')
         .setTitle('Sorteio cancelado por falta de participantes.')
       return channel.send(cancel)

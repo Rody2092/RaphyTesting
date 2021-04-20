@@ -3,15 +3,8 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) {
-        const adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Manusear Canais" para utilizar esta função.')
-        return message.inlineReply(adm)
-    }
-
     if (!message.member.hasPermission('MANAGE_CHANNELS')) {
-        const perms = new Discord.MessageEmbed()
+        var perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Permissão Necessária: Manusear Canais')
         return message.inlineReply(perms)
@@ -21,7 +14,7 @@ exports.run = async (client, message, args) => {
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
 
-        const noargs = new Discord.MessageEmbed()
+        var noargs = new Discord.MessageEmbed()
             .setColor('#FF0000') // red
             .setTitle('`' + prefix + 'setlogchannel #CanalLog`')
         return message.inlineReply(noargs)
@@ -31,7 +24,7 @@ exports.run = async (client, message, args) => {
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
 
-        const semcanal = new Discord.MessageEmbed()
+        var semcanal = new Discord.MessageEmbed()
             .setColor('#ff0000')
             .setTitle('O logchannel não pode ser desativado.')
             .setDescription('Caso queira trocar de canal, use o comando \n`' + prefix + 'setlogchannel #CanalLog`')
@@ -44,7 +37,7 @@ exports.run = async (client, message, args) => {
     if (!channel) {
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
-        const nochannel = new Discord.MessageEmbed()
+        var nochannel = new Discord.MessageEmbed()
             .setColor('#FF0000') // red
             .setTitle('' + prefix + 'setlogchannel #Canallogs')
 
@@ -54,7 +47,7 @@ exports.run = async (client, message, args) => {
     var atual = db.get(`logchannel_${message.guild.id}`)
     if (channel.id === atual) {
 
-        const iqual = new Discord.MessageEmbed()
+        var iqual = new Discord.MessageEmbed()
             .setColor('#FF0000') // Red
             .setTitle('Este canal já foi definido como Canal Log!')
 
@@ -62,7 +55,7 @@ exports.run = async (client, message, args) => {
     } else if (args[0] !== atual) {
         db.set(`logchannel_${message.guild.id}`, channel.id)
 
-        const sucess = new Discord.MessageEmbed()
+        var sucess = new Discord.MessageEmbed()
             .setColor('GREEN')
             .setTitle('Log System Ativado!')
             .setDescription(`Canal escolhido: ${channel}`)

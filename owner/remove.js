@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
     if (prefix === null) { prefix = "-" }
 
     if (!args[0]) {
-        const commands = new Discord.MessageEmbed()
+        var commands = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('📋 Comandos Exclusivos de Remoção (OWNER)')
             .setDescription('Com este comando, o meu criador torna possivel a remoção de qualquer item do slot de qualquer pessoa.')
@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(commands)
     }
 
-    const rody = message.author.id === ("451619591320371213")
+    var rody = message.author.id === ("451619591320371213")
     if (!rody) {
         message.delete()
         return message.inlineReply('⚠️ Este comando é um comando restrito.').then(msg => msg.delete({ timeout: 5000 }))

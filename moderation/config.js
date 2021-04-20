@@ -4,9 +4,12 @@ var linkgit = 'https://github.com/rodycouto/MayaCommands/blob/main/README.md#%EF
 
 exports.run = async (client, message, args) => {
 
-    const configuração = new Discord.MessageEmbed()
+    let prefix = db.get(`prefix_${message.guild.id}`)
+    if (prefix === null) prefix = "-"
+
+    var configuração = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('🛠️ Configurações Disponiveis (opicional)')
-        .setDescription(`Para informações mais detalhadas, acesse os [comandos administrativos](${linkgit})\n \n` + '`-setwelcome` Canal de mensagem de boas vindas\n`-setlink on/off` Sistema Ant Link\n`-setwelcomemsg` Escolha a mensagem\n`-setleave` Canal de saida\n`-setleavemsg` Escolha a mensagem\n`-setxpchannel` Canal de Level up\n`-setreportchannel` Canal para receber reports\n`-setideiachannel` Canal de ideias\n`-setlogchannel` Canal log de ações mod\n`-setautorole` Autorole normal\n`-setpescachannel` Canal de pesca\n`-setminechannel` Canal para minerar')
+        .setDescription(`Para informações mais detalhadas, acesse os [comandos administrativos](${linkgit})\n \n` + '`' + prefix + 'setwelcome` Canal de mensagem de boas vindas\n`' + prefix + 'setlink on/off` Sistema Ant Link\n`' + prefix + 'setwelcomemsg` Escolha a mensagem\n`' + prefix + 'setleave` Canal de saida\n`' + prefix + 'setleavemsg` Escolha a mensagem\n`' + prefix + 'setxpchannel` Canal de Level up\n`' + prefix + 'setreportchannel` Canal para receber reports\n`' + prefix + 'setideiachannel` Canal de ideias\n`' + prefix + 'setlogchannel` Canal log de ações mod\n`' + prefix + 'setautorole` Autorole normal\n`' + prefix + 'setpescachannel` Canal de pesca\n`' + prefix + 'setminechannel` Canal para minerar')
     return message.inlineReply(configuração)
 }

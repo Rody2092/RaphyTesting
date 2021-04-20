@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
         })
     }
 
-    const embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
         .setColor("GREEN")
         .setTitle("Whitelist Maya Protection")
     lb.forEach(d => {
