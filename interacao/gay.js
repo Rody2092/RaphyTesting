@@ -3,13 +3,6 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-  if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
   var gif = 'https://imgur.com/8SbJOzL.gif'
   var num = Math.floor(Math.random() * 100) + 1
 
@@ -18,7 +11,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const nouser = new Discord.MessageEmbed()
+    var nouser = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Siga o formato correto')
       .setDescription('`' + prefix + 'gay @user`')
@@ -36,7 +29,7 @@ exports.run = async (client, message, args) => {
   var rand = ['YELLOW', 'RED', 'GREEN', 'PURPLE']
   var calors = rand[Math.floor(Math.random() * rand.length)]
 
-  const gay = new Discord.MessageEmbed()
+  var gay = new Discord.MessageEmbed()
     .setColor(calors)
     .setTitle('🏳️‍🌈 Maya Gaymometro')
     .setDescription(`Pela minha análise, ${user} é ${num}% gay.`)

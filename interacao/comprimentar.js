@@ -3,13 +3,6 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
- if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
   var list = [
     'https://imgur.com/CPTozLv.gif',
     'https://imgur.com/5aq8D6c.gif',
@@ -52,7 +45,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const nouser = new Discord.MessageEmbed()
+    var nouser = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Erroooou')
       .setDescription('`' + prefix + 'comprimentar @user`')
@@ -61,12 +54,12 @@ exports.run = async (client, message, args) => {
 
   if (user.id === '821471191578574888') {
     let avatar = message.author.displayAvatarURL({ format: 'png' })
-    const embed1 = new Discord.MessageEmbed()
+    var embed1 = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setAuthor(message.author.username + ` está comprimentando ${user.username}`, avatar)
       .setImage(rand)
 
-    const embed3 = new Discord.MessageEmbed()
+    var embed3 = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setDescription(`Olá ${message.author.username}`)
       .setImage(rand1)
@@ -80,13 +73,13 @@ exports.run = async (client, message, args) => {
 
   let avatar = message.author.displayAvatarURL({ format: 'png' })
   let avatar1 = user.displayAvatarURL({ format: 'png' })
-  const embed = new Discord.MessageEmbed()
+  var embed = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setAuthor(message.author.username + ` está comprimentando ${user.username}`, avatar)
     .setImage(rand)
     .setFooter('Clique em 🔁 para retribuir')
 
-  const embed2 = new Discord.MessageEmbed()
+  var embed2 = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setAuthor(user.username + ` comprimentou ${message.author.username} de volta`, avatar1)
     .setImage(rand1)

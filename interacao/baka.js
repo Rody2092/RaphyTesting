@@ -2,13 +2,6 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
-  if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
   var list = [
     'https://imgur.com/RMxwAN7.gif',
     'https://imgur.com/I6bM3F2.gif',
@@ -31,7 +24,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply('Você não pode usar este comando com você mesmo.')
   }
 
-  const embed = new Discord.MessageEmbed()
+  var embed = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setAuthor(`${message.author.username} chamou ${user.username} de baka`, avatar)
     .setImage(rand)

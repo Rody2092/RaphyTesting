@@ -2,7 +2,7 @@ const moment = require('moment')
 
 exports.run = async (client, message, args) => {
 
-    const duration = moment.duration(client.ontime)
+    var duration = moment.duration(client.ontime)
     let u = convertMS(client.uptime)
     let ontime = `**${u.h}**` + " Hora(s) " + `**${u.m}**` + " Minutos, " + `**${u.s}**` + " Segundos"
 

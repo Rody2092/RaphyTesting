@@ -3,13 +3,6 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
- if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
   var list = [
     'https://imgur.com/ox15B5R.gif',
     'https://imgur.com/vpv5tE0.gif',
@@ -44,7 +37,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const nouser = new Discord.MessageEmbed()
+    var nouser = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Erroooou')
       .setDescription('`' + prefix + 'highfive @user`')
@@ -52,8 +45,8 @@ exports.run = async (client, message, args) => {
   }
 
   if (user.id === '821471191578574888') {
-     
-    const embed1 = new Discord.MessageEmbed()
+
+    var embed1 = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setDescription(`${message.author.username} & ${user.username} mandaram um HIGHFIVE!`)
       .setImage(rand)
@@ -64,18 +57,20 @@ exports.run = async (client, message, args) => {
     return message.inlineReply('Você não pode usar este comando com você mesmo.')
   }
 
-  const embed = new Discord.MessageEmbed()
+  var embed = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setDescription(`Highfive ${user}?`)
     .setFooter('Clique em 🔁 para aceitar o highfive')
 
-  const embed2 = new Discord.MessageEmbed()
+  var embed2 = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setDescription(`${message.author.username} & ${user.username} mandaram um HIGHFIVE!`)
     .setImage(rand1)
 
   await message.inlineReply(embed).then(msg => {
-    msg.react('🔁')
+    msg.react('🔁').catch(err => { return })
+    msg.delete({ timeout: 20000 }).catch(err => { return })
+
     msg.awaitReactions((reaction, user) => {
       if (message.mentions.users.first().id !== user.id) return
 

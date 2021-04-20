@@ -3,13 +3,6 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
- if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
   var list = [
     'https://imgur.com/gVpxrzK.gif',
     'https://imgur.com/Nemm1pQ.gif',
@@ -38,7 +31,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const nouser = new Discord.MessageEmbed()
+    var nouser = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Erroooou')
       .setDescription('`' + prefix + 'explodir @user`')
@@ -55,19 +48,19 @@ exports.run = async (client, message, args) => {
 
   let avatar = message.author.displayAvatarURL({ format: 'png' })
   let avatar1 = user.displayAvatarURL({ format: 'png' })
-  const embed = new Discord.MessageEmbed()
+  var embed = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setAuthor(message.author.username + ` explodiu ${user.username}`, avatar)
     .setImage(rand)
     .setFooter('Clique em 🔁 para retribuir')
 
-  const embed2 = new Discord.MessageEmbed()
+  var embed2 = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setAuthor(user.username + ` explodiu ${message.author.username} de volta`, avatar1)
     .setImage(rand1)
 
   await message.inlineReply(embed).then(msg => {
-    msg.react('🔁')
+    msg.react('🔁').catch(err => { return })
     msg.awaitReactions((reaction, user) => {
       if (message.mentions.users.first().id !== user.id) return
 

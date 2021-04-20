@@ -5,7 +5,7 @@ exports.run = async (client, message, args) => {
     var linksupport = 'https://forms.gle/vtJ5qBqFDd9rL5JU8'
     var linkservidor = 'https://discord.gg/YpFWgJuuUV'
 
-    const Support = new Discord.MessageEmbed()
+    var Support = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('💬 Centralzinha de Suporte 💬')
         .setURL('https://forms.gle/vtJ5qBqFDd9rL5JU8')

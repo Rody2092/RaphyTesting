@@ -3,19 +3,12 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-        const adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-        return message.inlineReply(adm)
-    }
-
     var user = message.mentions.members.first()
     if (!user) {
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
 
-        const nouser = new Discord.MessageEmbed()
+        var nouser = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Use formato correto')
             .setDescription('`' + prefix + 'lutar @user`')
@@ -23,31 +16,31 @@ exports.run = async (client, message, args) => {
     }
 
     if (user.id === message.author.id) {
-      return message.inlineReply('Você não pode usar este comando com você mesmo.')
+        return message.inlineReply('Você não pode usar este comando com você mesmo.')
     }
 
     var list = ['win', 'lose']
     var result = list[Math.floor(Math.random() * list.length)]
 
-    const lutando = new Discord.MessageEmbed()
+    var lutando = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('⚔️ Lutando...')
 
     if (result === 'win') {
-        const vitória = new Discord.MessageEmbed()
+        var vitória = new Discord.MessageEmbed()
             .setColor('GREEN')
             .setTitle('👑 Vitória')
-            .setDescription(`Você ganhou a luta contra ${user.user.username}`)
+            .setDescription(`${message.author} ganhou a luta contra ${user}`)
 
-        return message.inlineReply(lutando)
+        return message.inlineReply(lutando).then(msg => msg.delete({ timeout: 5000 })).then(msg => msg.channel.send(vitória))
     }
 
     if (result === 'lose') {
-        const derrota = new Discord.MessageEmbed()
+        var derrota = new Discord.MessageEmbed()
             .setColor('RED')
             .setTitle('⛑️ Derrota')
-            .setDescription(`Você perdeu a luta contra ${user.user.username}`)
+            .setDescription(`${message.author} perdeu a luta contra ${user}`)
 
-        return message.inlineReply(lutando)
+        return message.inlineReply(lutando).then(msg => msg.delete({ timeout: 5000 })).then(msg => msg.channel.send(derrota))
     }
 }

@@ -3,13 +3,6 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
- if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
   var list = [
     'https://imgur.com/qERXcxZ.gif',
     'https://imgur.com/z8FmWuo.gif',
@@ -26,7 +19,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const no = new Discord.MessageEmbed()
+    var no = new Discord.MessageEmbed()
       .setColor('#FF0000')
       .setTitle('Tente usar o comando correto')
       .setDescription('`' + prefix + 'onegai @user`')
@@ -41,7 +34,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply('Você não pode usar este comando com você mesmo.')
   }
 
-  const embed = new Discord.MessageEmbed()
+  var embed = new Discord.MessageEmbed()
     .setColor('#000000')
     .setDescription(`${message.author} esta implorando ${user}`)
     .setImage(rand)

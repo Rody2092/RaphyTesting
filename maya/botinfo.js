@@ -3,14 +3,7 @@ const os = require('os')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-        const adm = new Discord.MessageEmbed()
-            .setColor('#FF0000')
-            .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-        return message.inlineReply(adm)
-    }
-
-    const embed = new Discord.MessageEmbed()
+    var embed = new Discord.MessageEmbed()
         .setThumbnail(client.user.displayAvatarURL())
         .setTitle('📃 Centralzinha de Informações 📃')
         .setColor('BLUE')
@@ -22,7 +15,7 @@ exports.run = async (client, message, args) => {
             }
         )
 
-    const embed2 = new Discord.MessageEmbed()
+    var embed2 = new Discord.MessageEmbed()
         .setThumbnail(client.user.displayAvatarURL())
         .setTitle('⚙️ Centralzinha Tecnica ⚙️')
         .setColor("BLUE")
@@ -33,7 +26,7 @@ exports.run = async (client, message, args) => {
             }
         )
 
-    const Thanks = new Discord.MessageEmbed()
+    var Thanks = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setThumbnail(client.user.displayAvatarURL())
         .setTitle(':hearts:Eu só digo OBRIGADA a todos que deram suas ideias!:hearts:')
@@ -61,7 +54,7 @@ exports.run = async (client, message, args) => {
         )
         .setImage('https://imgur.com/MkQo0Lh.gif')
 
-    const support = new Discord.MessageEmbed()
+    var support = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('💬 Centralzinha de Suporte 💬')
         .setURL('https://forms.gle/vtJ5qBqFDd9rL5JU8')

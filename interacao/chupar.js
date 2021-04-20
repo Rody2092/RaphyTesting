@@ -3,13 +3,6 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-   if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-      const adm = new Discord.MessageEmbed()
-         .setColor('#FF0000')
-         .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-      return message.inlineReply(adm)
-   }
-
    var list = [
       'https://imgur.com/ghtNfE9.gif',
       'https://imgur.com/xyCAFWc.gif',
@@ -36,7 +29,7 @@ exports.run = async (client, message, args) => {
       let prefix = db.get(`prefix_${message.guild.id}`)
       if (prefix === null) prefix = "-"
 
-      const nouser = new Discord.MessageEmbed()
+      var nouser = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Erroooou')
          .setDescription('`' + prefix + 'chupar @user`')
@@ -48,18 +41,18 @@ exports.run = async (client, message, args) => {
    }
 
    if (user.id === message.author.id) {
-     return message.inlineReply('Você não pode usar este comando com você mesmo.')
+      return message.inlineReply('Você não pode usar este comando com você mesmo.')
    }
 
    let avatar = message.author.displayAvatarURL({ format: 'png' })
    let avatar1 = user.displayAvatarURL({ format: 'png' })
-   const embed = new Discord.MessageEmbed()
+   var embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setDescription(`${message.author} está chupando ${user}`, avatar)
       .setImage(rand)
       .setFooter('Clique em 🔁 para retribuir')
 
-   const embed2 = new Discord.MessageEmbed()
+   var embed2 = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setDescription(`${user} devolveu a chupada ${message.author}, que safadeza.`, avatar1)
       .setImage(rand1)

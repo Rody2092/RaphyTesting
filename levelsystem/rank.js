@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
             })
         }
 
-        const embedxp = new Discord.MessageEmbed()
+        var embedxp = new Discord.MessageEmbed()
             .setTitle("👑 Ranking Global - XP")
             .setColor("YELLOW")
         lb.forEach(d => {
@@ -68,7 +68,7 @@ exports.run = async (client, message, args) => {
             })
         }
 
-        const embedxp = new Discord.MessageEmbed()
+        var embedxp = new Discord.MessageEmbed()
             .setTitle("👑 Ranking Global - MPoints")
             .setDescription("")
             .setColor("YELLOW")

@@ -3,16 +3,9 @@ const Discord = require("discord.js")
 
 exports.run = async (client, message, args) => {
 
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-      const adm = new Discord.MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Eu preciso da permissão "Manusear Mensagens" para utilizar esta função.')
-      return message.inlineReply(adm)
-    }
-
     if (!message.member.hasPermission("ADMINISTRATOR")) {
-         
-        const noperm = new Discord.MessageEmbed()
+
+        var noperm = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Permissão Necessária: Administrador')
 
@@ -22,13 +15,13 @@ exports.run = async (client, message, args) => {
     var channel = message.mentions.channels.first() || message.channel
 
     if (!db.get(`blockchannel_${channel.id}`)) {
-        const ok = new Discord.MessageEmbed()
+        var ok = new Discord.MessageEmbed()
             .setColor('GREEN')
             .setDescription(`${channel} não está desbloqueado.`)
         return message.inlineReply(ok)
     }
 
-    const confirm = new Discord.MessageEmbed()
+    var confirm = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setDescription(`Você deseja desbloquear todos os meus comandos no canal ${channel}?`)
 
@@ -43,7 +36,7 @@ exports.run = async (client, message, args) => {
                 msg.delete()
 
                 db.delete(`blockchannel_${channel.id}`, channel.id)
-                const ok = new Discord.MessageEmbed()
+                var ok = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setDescription(`Meus comandos no canal ${channel} foram desbloqueados.`)
                 return message.inlineReply(ok)

@@ -8,20 +8,20 @@ exports.run = async (client, message, args) => {
 
     let perms = message.member.hasPermission("ADMINISTRATOR")
     if (!perms) {
-        const noperms = new Discord.MessageEmbed()
+        var noperms = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('Permissão necessária: Administrador')
         return message.inlineReply(noperms)
     }
 
     if (prefix === "-") {
-        const iqual = new Discord.MessageEmbed()
+        var iqual = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('O meu prefixo definido já é o padrão.')
         return message.inlineReply(iqual)
     }
 
-    const resprefix = new Discord.MessageEmbed()
+    var resprefix = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('Você deseja resetar meu prefix para `-`?')
 
@@ -36,14 +36,14 @@ exports.run = async (client, message, args) => {
                 msg.delete()
                 db.delete(`prefix_${message.guild.id}`)
 
-                const resetprefix = new Discord.MessageEmbed()
+                var resetprefix = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle("✅ " + message.author.username + ' resetou meu prefixo para `-`')
                 message.inlineReply(resetprefix)
             }
             if (reaction.emoji.name === '❌') { // Não
                 msg.delete()
-                const cancelado = new Discord.MessageEmbed()
+                var cancelado = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('Comando cancelado')
                 message.inlineReply(cancelado)

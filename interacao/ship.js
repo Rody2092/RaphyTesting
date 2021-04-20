@@ -2,13 +2,6 @@ const Discord = require("discord.js")
 
 exports.run = async (client, message, args) => {
 
-  if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
   let user = message.mentions.members.first()
   if (!user || message.author.id === user.id)
     return message.inlineReply("Você não pode fazer um Ship com você mesmo. Tenta assim `-ship @user`")
@@ -20,12 +13,12 @@ exports.run = async (client, message, args) => {
     return message.inlineReply('Você não pode usar este comando com você mesmo.')
   }
 
-  const love = Math.random() * 100
-  const loveIndex = Math.floor(love / 10)
-  const loveLevel = "💖".repeat(loveIndex) + "💔".repeat(10 - loveIndex)
-  const avatar = message.author.displayAvatarURL({ format: 'png' })
+  var love = Math.random() * 100
+  var loveIndex = Math.floor(love / 10)
+  var loveLevel = "💖".repeat(loveIndex) + "💔".repeat(10 - loveIndex)
+  var avatar = message.author.displayAvatarURL({ format: 'png' })
 
-  const embed = new Discord.MessageEmbed()
+  var embed = new Discord.MessageEmbed()
     .setAuthor(message.author.username, avatar)
     .setColor("RED")
     .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))

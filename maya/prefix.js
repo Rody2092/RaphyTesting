@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    const prefixembed = new Discord.MessageEmbed()
+    var prefixembed = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('ℹ️ Informações sobre Prefixo')
         .setDescription('Prefixo é o simbolo que você utiliza para executar um comando em um bot no Discord.\nExemplo: `' + prefix + 'prefix` ou `' + prefix + 'help`')

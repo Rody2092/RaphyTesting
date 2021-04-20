@@ -3,13 +3,6 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
- if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
-    const adm = new Discord.MessageEmbed()
-      .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.')
-    return message.inlineReply(adm)
-  }
-
    var list = [
       'https://imgur.com/fm49srQ.gif',
       'https://imgur.com/4MQkDKm.gif',
@@ -72,7 +65,7 @@ exports.run = async (client, message, args) => {
       let prefix = db.get(`prefix_${message.guild.id}`)
       if (prefix === null) prefix = "-"
 
-      const nouser = new Discord.MessageEmbed()
+      var nouser = new Discord.MessageEmbed()
          .setColor('#FF0000')
          .setTitle('Erroooou')
          .setDescription('`' + prefix + 'tapa @user`')
@@ -89,13 +82,13 @@ exports.run = async (client, message, args) => {
 
    let avatar = message.author.displayAvatarURL({ format: 'png' })
    let avatar1 = user.displayAvatarURL({ format: 'png' })
-   const embed = new Discord.MessageEmbed()
+   var embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setDescription(`${message.author} está te dando tapas ${user}`, avatar)
       .setImage(rand)
       .setFooter('Clique em 🔁 para retribuir')
 
-   const embed2 = new Discord.MessageEmbed()
+   var embed2 = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setDescription(`${user} te devolveu os tapas ${message.author} `, avatar1)
       .setImage(rand1)

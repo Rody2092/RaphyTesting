@@ -3,7 +3,7 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    const canal = client.channels.cache.get('833670563301556235')
+    var canal = client.channels.cache.get('833670563301556235')
 
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
