@@ -2,14 +2,8 @@ const Discord = require("discord.js")
 const db = require("quick.db")
 const ms = require('parse-ms')
 
-var slotItems = ["💸", "💵", "💶", "💷", "💴"]
-
 exports.run = async (client, message, args) => {
 
-    return message.channel.send('Reformando para balanceamento.')
-
-    let user = message.author
-    let win = false
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
 
@@ -27,164 +21,98 @@ exports.run = async (client, message, args) => {
         return message.inlineReply(presomax)
     } else {
 
-        let timeout5 = 380000
-        let roletatime = await db.fetch(`roletatimeout_${message.author.id}`)
-        if (roletatime !== null && timeout5 - (Date.now() - roletatime) > 0) {
-            let time = ms(timeout5 - (Date.now() - roletatime))
-            return message.inlineReply(`Calminha! As maquinas precisam recarregar. Tempo de recarga completa: ${time.minutes}m, e ${time.seconds}s`)
+        let timeout1 = 7600000
+        let author1 = await db.fetch(`roletatimeout_${message.author.id}`)
+
+        if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
+            let time = ms(timeout1 - (Date.now() - author1))
+
+            return message.channel.send(`❌ ${message.author}, as roletas estão voltando ao lugar, volte em: ${time.minutes}m e ${time.seconds}s`)
         } else {
 
-            if (!args[0]) {
-                var noargs = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
-                    .setTitle('Roleta Maya')
-                    .setDescription('Aqui você pode apostar ou perder o dinheiro apostado, então cuidado.\n \n**Observações**\nPerdeu? Você perde o valor apostado.\nVitória? Você pode ganhar 3x mais o valor apostado.')
-                    .addFields(
-                        {
-                            name: 'Comando',
-                            value: '`' + prefix + 'roleta valor`'
-                        }
-                    )
-                return message.inlineReply(noargs)
-            }
-
-            if (['all', 'tudo'].includes(args[0])) {
-                let atual = db.get(`money_${message.author.id}`)
-                let money = db.get(`money_${message.author.id}`)
-
-                if (args[1]) {
-                    return message.inlineReply('Por favor, não digite nada após o argumento **ALL/TUDO**')
-                }
-
-                if (money === null) {
-                    var nota = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
-                        .setDescription(`${message.author}, você não tem dinheiro para apostar.`)
-                    return message.inlineReply(nota)
-                }
-
-                if (!db.get(`money_${message.author.id}`)) { money = 0 }
-
-                if (money < 0) {
-                    var nota = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
-                        .setDescription(`${message.author}, você não pode jogar com divida.`)
-                    return message.inlineReply(nota)
-                }
-
-                if (money == 0) {
-                    var nota = new Discord.MessageEmbed()
-                        .setColor('#FF0000')
-                        .setDescription(`${message.author}, você não tem dinheiro para apostar.`)
-                    return message.inlineReply(nota)
-                }
-
-                let number = []
-                for (i = 0; i < 3; i++) { number[i] = Math.floor(Math.random() * slotItems.length) }
-
-                if (number[0] == number[1] && number[1] == number[2]) {
-                    money *= 0.5
-                    win = true
-                } else if (number[0] == number[1] || number[0] == number[2] || number[1] == number[2]) {
-                    money *= 1.2
-                    win = true
-                }
-                if (win) {
-                    let slotsEmbed1 = new Discord.MessageEmbed()
-                        .setColor("GREEN")
-                        .setTitle('🎰 GANHOU')
-                        .setDescription(`${slotItems[number[0]]} | ${slotItems[number[1]]} | ${slotItems[number[2]]}\n\n${message.author} apostou ${atual} e ganhou ${money} <:StarPoint:766794021128765469>`)
-                    db.add(`money_${message.author.id}`, money)
-                    db.set(`roletatimeout_${message.author.id}`, Date.now())
-                    return message.inlineReply(slotsEmbed1)
-                } else {
-                    let slotsEmbed = new Discord.MessageEmbed()
-                        .setColor("#FF0000")
-                        .setTitle('🎰 PERDEU')
-                        .setDescription(`${slotItems[number[0]]} | ${slotItems[number[1]]} | ${slotItems[number[2]]}\n\n${message.author} apostou ${atual} e perdeu ${money} <:StarPoint:766794021128765469>`)
-                    db.subtract(`money_${message.author.id}`, money)
-                    db.add(`bank_${client.user.id}`, money)
-                    db.set(`roletatimeout_${message.author.id}`, Date.now())
-                    return message.inlineReply(slotsEmbed)
-                }
-            }
-
-            if (isNaN(args[0])) {
-                var nonumber = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
-                    .setTitle(`${args[0]}, digite um número.`)
-                    .setDescription('`' + prefix + 'roleta valor`')
-                return message.inlineReply(nonumber)
-            }
-
-            if (args[1]) {
-                var nonumber = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
-                    .setTitle('Por favor, digite um número válido')
-                    .setDescription('`' + prefix + 'roleta valor`')
-                return message.inlineReply(nonumber)
-            }
-
+            let fichas = db.get(`fichas_${message.author.id}`)
             let money = db.get(`money_${message.author.id}`)
 
-            if (money === null) {
-                var nota = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
-                    .setDescription(`${message.author}, você não tem dinheiro para apostar.`)
-                return message.inlineReply(nota)
+            let formato = 'Siga o formato correto: `' + prefix + 'roleta valor`'
+            let valor = args[0]
+
+            var chances = ["win", "lose", "empate"]
+            let result = chances[Math.floor(Math.random() * chances.length)]
+
+            let winmoney2 = valor
+            let winmoney3 = valor / 2
+            let winmoney4 = valor / 4
+            let winratemoney = [winmoney2, winmoney3, winmoney4, winmoney3, winmoney2, winmoney4, winmoney3, winmoney4, winmoney3, winmoney4]
+            let winprize = winratemoney[Math.floor(Math.random() * winratemoney.length)]
+
+            var roletaembed = new Discord.MessageEmbed()
+                .setColor('BLUE')
+                .setTitle('🎲 Roleta Maya')
+                .setDescription('<:pikachu:833378638291271680> Seja muito bem vindo a Roleta Maya!\n \n❓ **O que é a Roleta Maya?**\n- A Roleta é um simples jogo onde você ganha ou perde dinheiro.\n \nA Roleta consiste em uma variavel de sorte, onde depende de um resultado aleatório para você ganhar.')
+                .addField('📜 Como jogar', '1. Compre algumas fichas na `' + prefix + 'loja`\n2. Digite `' + prefix + 'roleta Valor que quer apostar`\n Prontinho, é só isso.')
+                .addField('📌 Informações adicionais', '**1.** Todo o dinheiro perdido, vai para o meu banco\n**2.** O resultado de vitória é de 20%, derrota é de 40% e empate 40%\n**3. Resultado**\nVitória: Recebe de volta até o dobro do valor apostado\nEmpate: Recebe de volta o dinheiro apostado\nDerrota: O dinheiro apostado vai para o meu banco.')
+                .setFooter('A Maya não se responsabiliza por dinheiro perdido.')
+
+            if (!args[0]) { return message.inlineReply(roletaembed) }
+            if (['help', 'ajuda'].includes(args[0])) { return message.inlineReply(roletaembed) }
+            if (['all', 'tudo'].includes(args[0])) { return message.inlineReply('Um momento amigo, este comando está quase pronto.') }
+            if (fichas === null) { return message.inlineReply('Você não tem fichas para jogar.') }
+            if (fichas === 0) { return message.inlineReply('Você não tem fichas para jogar.') }
+            if (fichas < 0) { return message.inlineReply('Você não tem fichas para jogar.') }
+            if (isNaN(args[0])) { return message.inlineReply(`**${args.join(" ")}** não é um número.\n${formato}`) }
+            if (money === null) { money = '0' }
+            if (money === '0') { return message.inlineReply('Você não tem dinheiro para jogar.') }
+            if (money < valor) { return message.inlineReply('Você não possui todo esse dinheiro na carteira.') }
+            if (valor < '0' || valor === '0') { return message.inlineReply('Informe uma quantia maior que 0.') }
+            if (args[1]) { return message.inlineReply(formato) }
+
+            var jogando = new Discord.MessageEmbed()
+                .setColor('BLUE')
+                .setDescription(`🔄 ${message.author} iniciou um jogo na roleta...`)
+
+            var winembed = new Discord.MessageEmbed()
+                .setColor('GREEN')
+                .setTitle('💰 GANHOU!')
+                .setDescription(`${message.author} apostou ${args[0]} na roleta e faturou ${winprize}<:StarPoint:766794021128765469>MPoints`)
+
+            var loseembed = new Discord.MessageEmbed()
+                .setColor('#FF0000')
+                .setTitle('❌ PERDEU!')
+                .setDescription(`${message.author} jogou na roleta e perdeu ${valor}<:StarPoint:766794021128765469>MPoints`)
+
+            var empateembed = new Discord.MessageEmbed()
+                .setColor('YELLOW')
+                .setTitle('🏷️ EMPATE')
+                .setDescription(`${message.author} jogou na roleta e não ganhou nada.`)
+
+            if (result === "win") {
+                setTimeout(function () {
+                    db.set(`roletatimeout_${message.author.id}`, Date.now())
+                    db.subtract(`fichas_${message.author.id}`, 1)
+                    db.add(`money_${message.author.id}`, winprize)
+                    message.inlineReply(winembed)
+                }, 6300)
+                return message.inlineReply(jogando).then(msg => msg.delete({ timeout: 6000 }).catch(err => { return }))
             }
 
-
-            if (!db.get(`money_${message.author.id}`)) { money = 0 }
-
-            if (money < 0) {
-                var nota = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
-                    .setDescription(`${message.author}, você não pode jogar com divida.`)
-                return message.inlineReply(nota)
+            if (result === "lose") {
+                setTimeout(function () {
+                    db.set(`roletatimeout_${message.author.id}`, Date.now())
+                    db.subtract(`fichas_${message.author.id}`, 1)
+                    db.subtract(`money_${message.author.id}`, valor)
+                    db.add(`bank_${client.user.id}`, valor)
+                    message.inlineReply(loseembed)
+                }, 6300)
+                return message.inlineReply(jogando).then(msg => msg.delete({ timeout: 6000 }).catch(err => { return }))
             }
 
-            if (money == 0) {
-                var nota = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
-                    .setDescription(`${message.author}, você não tem dinheiro para apostar.`)
-                return message.inlineReply(nota)
-            }
-
-            if (args[0] > money) {
-                var nota = new Discord.MessageEmbed()
-                    .setColor('#FF0000')
-                    .setDescription(`${message.author}, você não tem todo esse dinheiro.`)
-                return message.inlineReply(nota)
-            }
-
-            let number = []
-            for (i = 0; i < 3; i++) { number[i] = Math.floor(Math.random() * slotItems.length) }
-
-            if (number[0] == number[1] && number[1] == number[2]) {
-                money *= 2
-                win = true
-            } else if (number[0] == number[1] || number[0] == number[2] || number[1] == number[2]) {
-                money *= 3
-                win = true
-            }
-            if (win) {
-                let slotsEmbed1 = new Discord.MessageEmbed()
-                    .setColor("GREEN")
-                    .setTitle('🎰 GANHOU')
-                    .setDescription(`${slotItems[number[0]]} | ${slotItems[number[1]]} | ${slotItems[number[2]]}\n\n${message.author} apostou ${args[0]} e ganhou ${money} <:StarPoint:766794021128765469>`)
-                message.inlineReply(slotsEmbed1)
-                db.add(`money_${message.author.id}`, money)
-                db.set(`roletatimeout_${message.author.id}`, Date.now())
-            } else {
-                let slotsEmbed = new Discord.MessageEmbed()
-                    .setColor("#FF0000")
-                    .setTitle('🎰 PERDEU')
-                    .setDescription(`${slotItems[number[0]]} | ${slotItems[number[1]]} | ${slotItems[number[2]]}\n\n${message.author} apostou ${args[0]} e perdeu ${money} <:StarPoint:766794021128765469>`)
-                message.inlineReply(slotsEmbed)
-                db.subtract(`money_${message.author.id}`, money)
-                db.add(`bank_${client.user.id}`, money)
-                db.set(`roletatimeout_${message.author.id}`, Date.now())
+            if (result === "empate") {
+                setTimeout(function () {
+                    db.set(`roletatimeout_${message.author.id}`, Date.now())
+                    db.subtract(`fichas_${message.author.id}`, 1)
+                    message.inlineReply(empateembed)
+                }, 6300)
+                return message.inlineReply(jogando).then(msg => msg.delete({ timeout: 6000 }).catch(err => { return }))
             }
         }
     }
