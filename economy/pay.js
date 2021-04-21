@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
     } else {
 
         let user = message.mentions.members.first()
-        let bot = user.bot
+        let bot = message.mentions.bot
         let nomoney = 'Dinheiro insuficiente.'
 
         let money = db.get(`money_${message.author.id}`)

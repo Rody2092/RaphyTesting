@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
         var noargs = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('🎉 Data de Aniversário')
-            .setDescription('Defina sua data de aniversário no seu perfil atráves deste comando. Claro, é tudo opicional.\n \nObs: É obrigatório o seguir o formato do exemplo! Com espaçamento e no formato DD/MM/AAAA')
+            .setDescription('Defina sua data de aniversário no seu perfil atráves deste comando. Claro, é tudo opicional.\n \nObs: É obrigatório seguir o formato do exemplo! Com espaçamento e no formato DD/MM/AAAA')
             .addField('`' + prefix + 'setniver 15 / 03 / 2007`', '**Desative**\n`' + prefix + 'setniver off`')
             .setFooter('Siga o formato, ok?')
         return message.inlineReply(noargs)
