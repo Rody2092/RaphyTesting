@@ -42,7 +42,7 @@ exports.run = async (client, message, args) => {
 
         if (!args[0]) { return message.inlineReply(noargs) }
         if (!args[1]) { return message.inlineReply(formato) }
-        if (user.id === message.author.id) { return message.inlineReply('Você não pode pagar você mesmo.') }
+        if (user === message.author) { return message.inlineReply('Você não pode pagar você mesmo.') }
         if (bot) { return message.inlineReply('Você não pode pagar bots.') }
         if (money < args[1]) { return message.inlineReply(`Você precisa ter ${args[1]}<:StarPoint:766794021128765469> na carteira para poder pagar ${user.user.username}.`) }
         if (args[1] < 0) { return message.inlineReply(nomoney) }
