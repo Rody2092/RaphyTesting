@@ -2,6 +2,8 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
+  if (args[0]) { return message.inlineReply('Por favor, utilize apenas o comando, sem nada na frente. Informações desnecessárias atrapalham meu processamento.') }
+
   var games = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setTitle('Existe 2 jogos com o apelido Brawl no meu banco de dados')

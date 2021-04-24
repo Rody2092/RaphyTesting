@@ -8,16 +8,13 @@ exports.run = async (client, message, args) => {
     if (prefix === null) prefix = "-"
 
     var baseUrl = "https://corona.lmao.ninja/v2"
-    let url, response, corona;
+    let url, response, corona
 
     try {
         url = args[0] ? `${baseUrl}/countries/${args[0]}` : `${baseUrl}/all`
         response = await axios.get(url)
         corona = response.data
     } catch (error) {
-        var loading = new Discord.MessageEmbed()
-            .setColor('BLUE')
-            .setTitle('🔄 Loading...')
 
             var noerl = new Discord.MessageEmbed()
             .setColor('#FF0000')
@@ -28,7 +25,7 @@ exports.run = async (client, message, args) => {
                     value: '`' + prefix + 'covid BR/AR/USA/FR...`'
                 }
             )
-        return message.inlineReply(loading).then(msg => msg.delete({ timeout: 4000 })).then(msg => message.inlineReply(noerl))
+        return message.inlineReply('<a:loading:834782920287846430> Loading...').then(msg => msg.delete({ timeout: 4000 })).then(msg => message.inlineReply(noerl))
     }
 
     var embed = new Discord.MessageEmbed()

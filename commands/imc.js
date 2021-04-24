@@ -25,13 +25,8 @@ exports.run = async (client, message, args) => {
         )
         .setFooter('Alguns resultados podem dar errado por não levar em consideração a idade.')
 
-    if (!args[0] || !args[1]) {
-        return message.inlineReply(imcError)
-    }
-
-    if (isNaN(args[0]) || isNaN(args[1])) {
-        return message.inlineReply(imcError)
-    }
+    if (!args[0] || !args[1]) { return message.inlineReply(imcError) }
+    if (isNaN(args[0]) || isNaN(args[1])) { return message.inlineReply(imcError) }
 
     var imc = (weight / ((height * height) / 10000)).toFixed(2)
 

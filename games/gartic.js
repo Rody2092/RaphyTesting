@@ -2,6 +2,8 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
+  if (args[0]) { return message.inlineReply('Por favor, utilize apenas o comando, sem nada na frente. Informações desnecessárias atrapalham meu processamento.') }
+
   var game = 'Gartic'
   var link1 = 'https://gartic.com.br/'
   var link2 = 'https://play.google.com/store/apps/details?id=com.gartic.Gartic&hl=pt_BR'

@@ -16,10 +16,10 @@ exports.run = async (client, message, args) => {
         .addField('Item Necessário', '🔫 Arma')
 
     if (!args[0]) { return message.inlineReply(noargs1) }
-    let gunuser = db.get(`arma_${user.id}`)
     let user = message.mentions.members.first()
     if (!user) { return message.inlineReply(formato) }
     let arma = await db.get(`arma_${message.author.id}`)
+    let gunuser = db.get(`arma_${user.id}`)
 
     let usermoney = db.get(`mpoints_${user.id}`)
     let autormoney = db.get(`mpoints_${message.author.id}`)

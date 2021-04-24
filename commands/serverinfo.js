@@ -2,6 +2,8 @@ const Discord = require('discord.js')
 
 exports.run = async (client, message, args) => {
 
+    if (args[0]) { return message.inlineReply('Por favor, use apenas o comando, sem nada na frente. Informações desnecessárias atrapalham meu processamento.') }
+
     let region
     switch (message.guild.region) {
         case "europe":

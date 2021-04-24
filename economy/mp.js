@@ -29,7 +29,8 @@ exports.run = async (client, message, args) => {
     'A roleta é uma boa forma de ganhar e perder dinheiro',
     'Já pescou hoje?',
     'Já minerou hoje?',
-    'A rifa é um bom lugar para os sortudos'
+    'A loteria é um bom lugar para os sortudos',
+    'Já apostou na loteria hoje?'
   ]
 
   let frase = list[Math.floor(Math.random() * list.length)]

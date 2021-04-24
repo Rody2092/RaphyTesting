@@ -7,37 +7,27 @@ exports.run = async (client, message, args) => {
   let prefix = db.get(`prefix_${message.guild.id}`)
   if (prefix === null) { prefix = "-" }
 
-  if (!args[0]) {
-    const noargs = new Discord.MessageEmbed()
-      .setColor('BLUE')
-      .setTitle('⛅ Estação de Tempo da Maya')
-      .setDescription('• Aqui você pode ver o clima de qualquer lugar do mundo, explore o clima dos paises e cidades.')
-      .addField("Comando", '`' + prefix + 'clima SP/RJ/MG ou o nome da Cidade/Estado`')
-      .addField("Exemplo", '`' + prefix + 'clima SP ou São Paulo`')
-    return message.inlineReply(noargs)
-  }
+  var noargs = new Discord.MessageEmbed()
+    .setColor('BLUE')
+    .setTitle('⛅ Estação de Tempo da Maya')
+    .setDescription('• Aqui você pode ver o clima de qualquer lugar do mundo, explore o clima dos paises e cidades.')
+    .addField("Comando", '`' + prefix + 'clima SP/RJ/MG ou o nome da Cidade/Estado`')
+    .addField("Exemplo", '`' + prefix + 'clima SP ou São Paulo`')
+
+  if (!args[0]) { return message.inlineReply(noargs) }
 
   let city = args.join(" ")
   let degreetype = "C" // Mude para Fahrenheit F
 
   await weather.find({ search: city, degreeType: degreetype }, function (err, result) {
 
-    if (!city) {
+    var noresult = new Discord.MessageEmbed()
+      .setColor('#FF0000')
+      .setTitle('Parece que ocorreu um erro no meu sistema de busca')
+      .setDescription('`Nenhuma cidade/estado foi encontrado`')
 
-      var nocity = new Discord.MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Siga o formato correto')
-        .setDescription('`' + prefix + 'clima SP/RJ/MG ou o nome da Cidade/Estado`')
-      return message.inlineReply(nocity)
-    }
-
-    if (err || result === undefined || result.length === 0) {
-      const noresult = new Discord.MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Parece que ocorreu um erro no meu sistema de busca')
-        .setDescription('`Nenhuma cidade/estado foi encontrado`')
-      return message.inlineReply(noresult)
-    }
+    if (!city) { return message.inlineReply(':x: Formato incorreto! | `' + prefix + 'clima SP/RJ/MG ou o nome da Cidade/Estado`') }
+    if (err || result === undefined || result.length === 0) { return message.inlineReply(':x: Nenhuma cidade/estado foi encontrado, verifique a ortografia.') }
 
     let current = result[0].current
     let location = result[0].location

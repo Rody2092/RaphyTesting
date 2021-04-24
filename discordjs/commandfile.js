@@ -3,11 +3,9 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member || message.mentions.users.first()
-    var level = await db.fetch(`level_${user.id}`)
-    if (level < 10) {
-        return message.inlineReply('🚫 Libere este comando no level 10')
-    }
+    let level = await db.fetch(`level_${message.author.id}`)
+    if (level < 10) { return message.inlineReply('🚫 Libere este comando no level 10') }
+    if (args[0]) { return message.inlineReply('Por favor, utilize apenas o comando, sem nada na frente. Informações desnecessárias atrapalham meu processamento.') }
 
     var linkserver = 'https://discord.gg/YpFWgJuuUV'
     var embed = new Discord.MessageEmbed()
@@ -28,10 +26,6 @@ exports.run = async (client, message, args) => {
         )
         .setFooter('Apoio Maya - Developers')
 
-    function code() {
-        message.inlineReply("```js\n    try {\n      const commandFile = require(`./NOME DA PASTA AQUI/${command}.js`)\n      commandFile.run(client, message, args)\n    } catch (err) { }\n```")
-    }
-
     message.inlineReply(embed)
-    setTimeout(code, 1000)
+    setTimeout(function () { message.inlineReply("```js\n    try {\n      const commandFile = require(`./NOME DA PASTA AQUI/${command}.js`)\n      commandFile.run(client, message, args)\n    } catch (err) { }\n```") }, 1000)
 }
