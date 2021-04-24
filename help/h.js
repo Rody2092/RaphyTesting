@@ -102,7 +102,7 @@ exports.run = async (client, message, args) => {
       .setColor('BLUE')
       .setTitle('❓ Ué? Help no Help?')
       .setDescription('Bom, vou deixar comandos do help aqui')
-      .addField('• Comandos Online: (9)', '`' + prefix + 'help`\n' + '`' + prefix + 'ajuda`\n' + '`' + prefix + 'h`\n' + '`' + prefix + 'thanks`\n' + '`' + prefix + 'afkhelp`\n' + '`' + prefix + 'bjhelp/blackjackhelp`')
+      .addField('• Comandos Online: (9)', '`' + prefix + 'help`\n' + '`' + prefix + 'ajuda`\n' + '`' + prefix + 'h`\n' + '`' + prefix + 'thanks`\n' + '`' + prefix + 'bjhelp/blackjackhelp`')
       .addField('• Comandos Offline: (0)',)
       .setFooter('• Comandos em construção: (361)')
     return message.inlineReply(embed)
