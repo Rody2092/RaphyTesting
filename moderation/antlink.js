@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
     if (!args[0]) { return message.inlineReply(new Discord.MessageEmbed().setColor('#FF0000').setTitle('🔗 Sistema Ant-link').setDescription('O meu sistema detecta links que membros enviam no servidor e eu deleto avisando o membro que não pode enviar links.').addField('Comando', '`' + prefix + 'antlink on`\n' + '`' + prefix + 'antlink off`').addField('⚠️ Atenção', 'Com o sistema antlink ativado, não será possível enviar GIFS.').setFooter('Administradores tem passe livre neste comando.')) }
 
     if (args[0] === 'on') {
-        if (nolink) { return message.inlineReply('✅ O sistema ant-link já está ativado.') }
+        if (nolink) { return message.inlineReply('<a:Check:836347816036663309> O sistema ant-link já está ativado.') }
 
         var confirm = new Discord.MessageEmbed()
             .setColor('BLUE')
@@ -32,9 +32,9 @@ exports.run = async (client, message, args) => {
                     db.set(`nolink_${message.guild.id}`, "ON")
                     var ok = new Discord.MessageEmbed()
                         .setColor('GREEN')
-                        .setTitle('Sistema Ant-Link ativado com sucesso!')
+                        .setDescription('<a:Check:836347816036663309> Sistema Ant-Link ativado com sucesso!')
                     setTimeout(function () { message.channel.send(ok) }, 3700)
-                    return message.inlineReply('<a:carregando:835294939096940575> Ativando sistema ant link...').then(msg => msg.delete({ timeout: 4000 }).catch(err => { return }))
+                    return message.inlineReply('<a:carregando:836101628083437608> Ativando sistema ant link...').then(msg => msg.delete({ timeout: 4000 }).catch(err => { return }))
                 }
                 if (reaction.emoji.name === '❌') { // Não
                     msg.delete().catch(err => { return })
@@ -45,7 +45,7 @@ exports.run = async (client, message, args) => {
     }
 
     if (args[0] === 'off') {
-        if (nolink === null) { return message.inlineReply('✅ O sistema ant-link já está desativado.') }
+        if (nolink === null) { return message.inlineReply('<a:Check:836347816036663309> O sistema ant-link já está desativado.') }
 
         var confirm = new Discord.MessageEmbed()
             .setColor('BLUE')
@@ -63,9 +63,9 @@ exports.run = async (client, message, args) => {
                     db.delete(`nolink_${message.guild.id}`)
                     var ok = new Discord.MessageEmbed()
                         .setColor('GREEN')
-                        .setTitle('Sistema Ant-Link desativado com sucesso!')
+                        .setTitle('<a:Check:836347816036663309> Sistema Ant-Link desativado com sucesso!')
                     setTimeout(function () { message.channel.send(ok) }, 3700)
-                    return message.inlineReply('<a:carregando:835294939096940575> Desativando sistema ant link...').then(msg => msg.delete({ timeout: 4000 }).catch(err => { return }))
+                    return message.inlineReply('<a:carregando:836101628083437608> Desativando sistema ant link...').then(msg => msg.delete({ timeout: 4000 }).catch(err => { return }))
                 }
                 if (reaction.emoji.name === '❌') { // Não
                     msg.delete().catch(err => { return })

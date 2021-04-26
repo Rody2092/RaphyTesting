@@ -82,7 +82,7 @@ exports.run = async (client, message, args) => {
 
           message.guild.roles.create({ data: { name: RoleName, color: "#B1B1B1" } })
 
-          return message.channel.send("<a:carregando:835294939096940575> Criando cargo...").then(msg => msg.delete({ timeout: 2000 })).then(msg => msg.channel.send("✅ Cargo criado com sucesso!"))
+          return message.channel.send("<a:carregando:836101628083437608> Criando cargo...").then(msg => msg.delete({ timeout: 2000 })).then(msg => msg.channel.send("<a:Check:836347816036663309> Cargo criado com sucesso!"))
         }
 
         if (reaction.emoji.name === '❌') { // Não
@@ -109,7 +109,7 @@ exports.run = async (client, message, args) => {
 
       var sobcarg = new Discord.MessageEmbed()
         .setColor('#FF0000')
-        .setDescription('<a:carregando:835294939096940575> Um erro foi encontrado. Buscando solução...')
+        .setDescription('<a:carregando:836101628083437608> Um erro foi encontrado. Buscando solução...')
 
       setTimeout(function () {
         message.inlineReply(soberol)
@@ -134,7 +134,7 @@ exports.run = async (client, message, args) => {
 
           RoleToDelete.delete()
 
-          return message.channel.send("<a:carregando:835294939096940575> Deletando cargo...").then(msg => msg.delete({ timeout: 2000 })).then(msg => msg.channel.send("✅ Cargo deletado com sucesso!"))
+          return message.channel.send("<a:carregando:836101628083437608> Deletando cargo...").then(msg => msg.delete({ timeout: 2000 })).then(msg => msg.channel.send("<a:Check:836347816036663309> Cargo deletado com sucesso!"))
         }
 
         if (reaction.emoji.name === '❌') { // Não

@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
 
                 var resetprefix = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle("✅ " + message.author.username + ' resetou meu prefixo para `-`')
+                    .setTitle("<a:Check:836347816036663309> " + message.author.username + ' resetou meu prefixo para `-`')
                 message.inlineReply(resetprefix)
             }
             if (reaction.emoji.name === '❌') { // Não

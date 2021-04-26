@@ -70,9 +70,9 @@ exports.run = async (client, message, args) => {
 
                     var desativado = new Discord.MessageEmbed()
                         .setColor('GREEN')
-                        .setTitle('✅ Autorole System foi desativado com sucesso.')
+                        .setTitle('<a:Check:836347816036663309> Autorole System foi desativado com sucesso.')
 
-                    return message.channel.send('<a:carregando:835294939096940575> Desativando o Autorole System...').then(msg => msg.delete({ timeout: 3400 })).then(msg => msg.channel.send(desativado))
+                    return message.channel.send('<a:carregando:836101628083437608> Desativando o Autorole System...').then(msg => msg.delete({ timeout: 3400 })).then(msg => msg.channel.send(desativado))
                 }
 
                 if (reaction.emoji.name === '❌') { // MPEmbed
@@ -100,7 +100,7 @@ exports.run = async (client, message, args) => {
 
     var sobcarg = new Discord.MessageEmbed()
         .setColor('#FF0000')
-        .setDescription('<a:carregando:835294939096940575> Um erro foi encontrado. Buscando solução...')
+        .setDescription('<a:carregando:836101628083437608> Um erro foi encontrado. Buscando solução...')
 
     var iqual = new Discord.MessageEmbed()
         .setColor('#FF0000') // Red
@@ -126,11 +126,11 @@ exports.run = async (client, message, args) => {
 
                 var redefine = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setDescription(`✅ O cargo ${role} foi definido como autorole com sucesso.`)
+                    .setDescription(`<a:Check:836347816036663309> O cargo ${role} foi definido como autorole com sucesso.`)
 
                 var timing = new Discord.MessageEmbed()
                     .setColor('BLUE')
-                    .setDescription(`<a:carregando:835294939096940575> Autenticando o cargo no banco de dados do servidor **${message.guild.name}**...`)
+                    .setDescription(`<a:carregando:836101628083437608> Autenticando o cargo no banco de dados do servidor **${message.guild.name}**...`)
 
                 return message.channel.send(timing).then(msg => msg.delete({ timeout: 8000 })).then(msg => msg.channel.send(redefine))
             }

@@ -22,13 +22,13 @@ client.on("message", async (message) => {
         if (message.content.toLowerCase() === "desativar avisos de level up") {
             if (db.get(`semavisos_${message.author.id}`)) { return message.author.send('O sistema de mensagens de level up no privado já esta desativado.') }
             db.set(`semavisos_${message.author.id}`, "ON")
-            return message.author.send('<a:carregando:835294939096940575> Desativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('✅ Você não receberá mais mensagens de level up! ~~ Se quiser recebe-las novamente, diga "Ativar avisos de level up"'))
+            return message.author.send('<a:carregando:836101628083437608> Desativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('<a:Check:836347816036663309> Você não receberá mais mensagens de level up! ~~ Se quiser recebe-las novamente, diga "Ativar avisos de level up"'))
         }
 
         if (message.content.toLowerCase() === "ativar avisos de level up") {
             if (!db.get(`semavisos_${message.author.id}`)) { return message.author.send('O sistema de mensagens de level up no privado já esta ativado.') }
             db.delete(`semavisos_${message.author.id}`)
-            return message.author.send('<a:carregando:835294939096940575> Ativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('✅ Você ativou as mensagens de level up! ~~ Se quiser desativa-las novamente, diga "Desativar avisos de level up"'))
+            return message.author.send('<a:carregando:836101628083437608> Ativando...').then(msg => msg.delete({ timeout: 5000 })).then(msg => message.author.send('<a:Check:836347816036663309> Você ativou as mensagens de level up! ~~ Se quiser desativa-las novamente, diga "Desativar avisos de level up"'))
         }
 
         var dmEmbed = new Discord.MessageEmbed()
@@ -65,12 +65,12 @@ client.on("message", async (message) => {
 
     if (db.get(`afk_${message.author.id}+${message.guild.id}`)) {
         db.delete(`afk_${message.author.id}+${message.guild.id}`)
-        message.inlineReply(`✅ O modo AFK foi desativado.`).then(msg => msg.delete({ timeout: 3000 })).catch(err => { return })
+        message.inlineReply(`<a:Check:836347816036663309> O modo AFK foi desativado.`).then(msg => msg.delete({ timeout: 3000 })).catch(err => { return })
     }
 
     if (db.get(`afk_${message.author.id}+${message.author.id}`)) {
         db.delete(`afk_${message.author.id}+${message.author.id}`)
-        message.inlineReply(`✅ O modo AFK Global foi desativado.`).then(msg => msg.delete({ timeout: 3000 })).catch(err => { return })
+        message.inlineReply(`<a:Check:836347816036663309> O modo AFK Global foi desativado.`).then(msg => msg.delete({ timeout: 3000 })).catch(err => { return })
     }
 
     if (message.mentions.members.first()) {
@@ -128,8 +128,8 @@ client.on("message", async (message) => {
         }
     }
 
-    if (message.content.startsWith(`${prefix}check`)) { message.react("✅") }
-    if (message.content.startsWith(`${prefix}inline`)) { return message.inlineReply("✅ Inline Reply funcionando corretamente") }
+    if (message.content.startsWith(`${prefix}check`)) { message.react("") }
+    if (message.content.startsWith(`${prefix}inline`)) { return message.inlineReply("<a:Check:836347816036663309> Inline Reply funcionando corretamente") }
 
     try {
         const commandFile = require(`./afksystem/${command}.js`)

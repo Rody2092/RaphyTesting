@@ -18,5 +18,5 @@ exports.run = async (client, message, args) => {
 
     db.delete(`warnings_${message.guild.id}_${user.id}`)
 
-    message.inlineReply(new Discord.MessageEmbed().setColor('GREEN').setTitle(`✅ O warns de ${user.user.username} foi resatado com sucesso.`))
+    message.inlineReply(new Discord.MessageEmbed().setColor('GREEN').setTitle(`<a:Check:836347816036663309> O warns de ${user.user.username} foram resetados com sucesso!`))
 }

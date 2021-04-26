@@ -49,7 +49,7 @@ exports.run = async (client, message, args) => {
 
                 var buypesca = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou uma 🎣` + ' `Vara de Pesca`')
                 return message.inlineReply(buypesca)
             }
@@ -70,7 +70,7 @@ exports.run = async (client, message, args) => {
 
                 var buypesca = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou um 🪓` + ' `Machado`')
                 return message.inlineReply(buypesca)
             }
@@ -90,7 +90,7 @@ exports.run = async (client, message, args) => {
                 db.set(`arma_${message.author.id}`, "Arma")
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou uma 🔫` + ' `Arma`')
                 return message.inlineReply(buyarma)
             }
@@ -110,7 +110,7 @@ exports.run = async (client, message, args) => {
             db.add('loteria', args[1] * 10)
             var buyarma = new Discord.MessageEmbed()
                 .setColor('GREEN')
-                .setTitle('✅ Compra aprovada')
+                .setTitle('<a:Check:836347816036663309> Compra aprovada')
                 .setDescription(`${message.author}, você comprou ${args[1]}` + ' 🎫 `Tickets da Loteria`')
             return message.inlineReply(buyarma)
         }
@@ -139,7 +139,7 @@ exports.run = async (client, message, args) => {
             db.add(`banco_${client.user.id}`, args[1] * 2)
             var buyarma = new Discord.MessageEmbed()
                 .setColor('GREEN')
-                .setTitle('✅ Compra aprovada')
+                .setTitle('<a:Check:836347816036663309> Compra aprovada')
                 .setDescription(`${message.author}, você comprou ${args[1]} ` + '🎟️ `Fichas`')
             return message.inlineReply(buyarma)
         }
@@ -169,7 +169,7 @@ exports.run = async (client, message, args) => {
                 db.add(`banco_${client.user.id}`, args[1])
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou ${args[1]} ` + '🥤 `Copos de água`')
                 return message.inlineReply(buyarma)
             }
@@ -190,7 +190,7 @@ exports.run = async (client, message, args) => {
                 db.set(`offpicareta_${message.author.id}`, 50)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou uma ⛏️` + ' `Picareta`')
                 return message.inlineReply(buyarma)
             }
@@ -210,13 +210,13 @@ exports.run = async (client, message, args) => {
                 db.set(`title_${message.author.id}`, "ON")
                 var buyTitle = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou a permissão 🔰` + '`Título`')
                 message.inlineReply(buyTitle)
 
                 var premium = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Você liberou uma nova função')
+                    .setTitle('<a:Check:836347816036663309> Você liberou uma nova função')
                     .setDescription(`${message.author}, você agora consegue escolher um Título que será mostrado no seu perfil.`)
                     .addFields(
                         {
@@ -254,7 +254,7 @@ exports.run = async (client, message, args) => {
                 db.add(`banco_${client.user.id}`, args[1])
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}` + ', ' + 'você comprou ' + `${args[1]}` + ' 🪱 `Iscas`')
                 return message.inlineReply(buyarma)
             }
@@ -284,7 +284,7 @@ exports.run = async (client, message, args) => {
                 db.add(`banco_${client.user.id}`, args[1] * 2)
                 var buycomida = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author} você comprou ${args[1]} 🥘 ` + '`Comidas`')
                 return message.inlineReply(buycomida)
         }
@@ -313,7 +313,7 @@ exports.run = async (client, message, args) => {
             db.add(`banco_${client.user.id}`, args[1])
             var buycarta = new Discord.MessageEmbed()
                 .setColor('GREEN')
-                .setTitle('✅ Compra aprovada')
+                .setTitle('<a:Check:836347816036663309> Compra aprovada')
                 .setDescription(`${message.author}, você comprou ${args[1]}` + ' 💌 `Cartas de Amor`')
             return message.inlineReply(buycarta)
         }
@@ -337,7 +337,7 @@ exports.run = async (client, message, args) => {
 
                 var buyStar1 = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou <:starM:832974891635572787>` + '`Estrela 1`')
                 return message.inlineReply(buyStar1)
             }
@@ -359,7 +359,7 @@ exports.run = async (client, message, args) => {
 
                 var buyStar1 = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 2`')
                 return message.inlineReply(buyStar1)
             }
@@ -381,7 +381,7 @@ exports.run = async (client, message, args) => {
 
                 var buyStar1 = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 3`')
                 return message.inlineReply(buyStar1)
             }
@@ -403,7 +403,7 @@ exports.run = async (client, message, args) => {
 
                 var buyStar1 = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 4`')
                 return message.inlineReply(buyStar1)
             }
@@ -425,7 +425,7 @@ exports.run = async (client, message, args) => {
 
                 var buyStar1 = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Compra aprovada')
+                    .setTitle('<a:Check:836347816036663309> Compra aprovada')
                     .setDescription(`${message.author}, você comprou <:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787>` + '`Estrela 5`')
                 return message.inlineReply(buyStar1)
             }

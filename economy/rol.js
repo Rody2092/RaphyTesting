@@ -76,7 +76,7 @@ exports.run = async (client, message, args) => {
                 var winembed = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('💰 GANHOU!')
-                    .setDescription(`${message.author} apostou tudo na roleta e faturou ${winprize}<:StarPoint:766794021128765469>MPoints`)
+                    .setDescription(`<a:Check:836347816036663309> ${message.author} apostou tudo na roleta e faturou ${winprize}<:StarPoint:766794021128765469>MPoints`)
 
                 var loseembed = new Discord.MessageEmbed()
                     .setColor('#FF0000')
@@ -148,7 +148,7 @@ exports.run = async (client, message, args) => {
             var winembed = new Discord.MessageEmbed()
                 .setColor('GREEN')
                 .setTitle('💰 GANHOU!')
-                .setDescription(`${message.author} apostou ${args[0]} na roleta e faturou ${winprize}<:StarPoint:766794021128765469>MPoints`)
+                .setDescription(`<a:Check:836347816036663309> ${message.author} apostou ${args[0]} na roleta e faturou ${winprize}<:StarPoint:766794021128765469>MPoints`)
 
             var loseembed = new Discord.MessageEmbed()
                 .setColor('#FF0000')

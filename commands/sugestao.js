@@ -61,7 +61,7 @@ exports.run = async (client, message, args) => {
       .setFooter(`💡 ${prefix}ideia`)
   )
 
-  await message.inlineReply(`✅ A sua ideia foi enviada com sucesso no canal ${client.channels.cache.get(canal)}`)
+  await message.inlineReply(`<a:Check:836347816036663309> A sua ideia foi enviada com sucesso no canal ${client.channels.cache.get(canal)}`)
 
   var emojis = ["✅", "❌", "❔"]
 

@@ -33,5 +33,6 @@ exports.run = async (client, message, args) => {
     if (mensagem.length > 150) { return message.inlineReply('Por favor, não ultrapasse mais de 150 caracteres.') }
 
     canal.send(newideia)
-    return message.inlineReply('✅ Ideia enviada com sucesso!')
+    setTimeout(function () { message.inlineReply('<a:Check:836347816036663309> ideia enviada com sucesso!') }, 4100)
+    return message.inlineReply('<a:carregando:836101628083437608> Enviando sua ideia ao Servidor Central...').then(msg => msg.delete({ timeout: 4000 }))
 }

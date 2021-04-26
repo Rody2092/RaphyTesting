@@ -47,7 +47,7 @@ exports.run = async (client, message, args) => {
 
                         var wins = new Discord.MessageEmbed()
                             .setColor('GREEN')
-                            .setTitle('✅ Você fugiu da detenção com sucesso.')
+                            .setDescription('<a:Check:836347816036663309> Você fugiu da detenção com sucesso.')
 
                         var lose = new Discord.MessageEmbed()
                             .setColor('#FF0000')

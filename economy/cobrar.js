@@ -126,7 +126,7 @@ exports.run = async (client, message, args) => {
 
                     var embed2 = new Discord.MessageEmbed()
                         .setColor('GREEN')
-                        .setTitle('✅Transação concluida!')
+                        .setTitle('<a:Check:836347816036663309> Transação concluida!')
                         .setDescription(`${user} pagou ${args[1]}<:StarPoint:766794021128765469>MPoints para ${message.author}`)
 
                     return message.inlineReply(embed2)

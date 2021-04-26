@@ -55,7 +55,7 @@ exports.run = async (client, message, args) => {
       .setTimestamp()
       .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
 
-    message.inlineReply((`✅ Warn adicionado! Estou enviando mais informações no ${client.channels.cache.get(logchannel)}.`))
+    message.inlineReply(`<a:Check:836347816036663309> Warn adicionado! Estou enviando mais informações no ${client.channels.cache.get(logchannel)}.`)
     client.channels.cache.get(logchannel).send(msg1)
 
   } else if (warnings !== null) {
@@ -86,7 +86,7 @@ exports.run = async (client, message, args) => {
       .setTimestamp()
       .setThumbnail(user.user.displayAvatarURL({ dynamic: true }))
 
-    message.inlineReply(`✅ O Warn foi um sucesso! Estou enviando mais informações no ${client.channels.cache.get(logchannel)}.`)
+    message.inlineReply(`<a:Check:836347816036663309> O Warn foi um sucesso! Estou enviando mais informações no ${client.channels.cache.get(logchannel)}.`)
     client.channels.cache.get(logchannel).send(msg2)
   }
 }

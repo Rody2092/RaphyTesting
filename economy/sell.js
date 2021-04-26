@@ -75,7 +75,7 @@ exports.run = async (client, message, args) => {
                 db.add(`mpoints_${message.author.id}`, args[1] * 3)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Venda aprovada')
+                    .setTitle('<a:Check:836347816036663309> Venda aprovada')
                     .setDescription(`${message.author} vendeu 🐟 ${args[1]} peixes e obteve ${args[1] * 3}<:StarPoint:766794021128765469>MPoints`)
                 return message.inlineReply(buyarma)
             }
@@ -94,7 +94,7 @@ exports.run = async (client, message, args) => {
                 db.add(`mpoints_${message.author.id}`, args[1] * 2)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Venda aprovada')
+                    .setTitle('<a:Check:836347816036663309> Venda aprovada')
                     .setDescription(`${message.author} vendeu 🦴 ${args[1]} ossos e obteve ${args[1] * 2}<:StarPoint:766794021128765469>MPoints`)
                 return message.inlineReply(buyarma)
             }
@@ -113,7 +113,7 @@ exports.run = async (client, message, args) => {
                 db.add(`mpoints_${message.author.id}`, args[1] * 4)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Venda aprovada')
+                    .setTitle('<a:Check:836347816036663309> Venda aprovada')
                     .setDescription(`${message.author} vendeu 🍤 ${args[1]} camarões e obteve ${args[1] * 4}<:StarPoint:766794021128765469>MPoints`)
                 return message.inlineReply(buyarma)
             }
@@ -132,7 +132,7 @@ exports.run = async (client, message, args) => {
                 db.add(`mpoints_${message.author.id}`, args[1] * 4)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Venda aprovada')
+                    .setTitle('<a:Check:836347816036663309> Venda aprovada')
                     .setDescription(`${message.author} vendeu 🪨 ${args[1]} minerios e obteve ${args[1] * 4}<:StarPoint:766794021128765469>MPoints`)
                 return message.inlineReply(buyarma)
             }
@@ -153,7 +153,7 @@ exports.run = async (client, message, args) => {
                 db.add(`mpoints_${message.author.id}`, args[1] * amoutrand)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Venda aprovada')
+                    .setTitle('<a:Check:836347816036663309> Venda aprovada')
                     .setDescription(`${message.author} vendeu 💎 ${args[1]} diamantes e obteve ${args[1] * amoutrand}<:StarPoint:766794021128765469>MPoints`)
                 return message.inlineReply(buyarma)
             }
@@ -173,7 +173,7 @@ exports.run = async (client, message, args) => {
                 db.add(`mpoints_${message.author.id}`, args[1] * 3)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Venda aprovada')
+                    .setTitle('<a:Check:836347816036663309> Venda aprovada')
                     .setDescription(`${message.author} vendeu 🌹 ${args[1]} rosas e obteve ${args[1] * 3}<:StarPoint:766794021128765469>MPoints`)
                 return message.inlineReply(buyarma)
             }
@@ -192,7 +192,7 @@ exports.run = async (client, message, args) => {
                 db.add(`mpoints_${message.author.id}`, args[1] * 2)
                 var buyarma = new Discord.MessageEmbed()
                     .setColor('GREEN')
-                    .setTitle('✅ Venda aprovada')
+                    .setTitle('<a:Check:836347816036663309> Venda aprovada')
                     .setDescription(`${message.author} vendeu 🍎 ${args[1]} maças e obteve ${args[1] * 2}<:StarPoint:766794021128765469>MPoints`)
                 return message.inlineReply(buyarma)
             }

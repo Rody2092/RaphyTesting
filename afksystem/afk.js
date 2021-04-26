@@ -32,7 +32,7 @@ exports.run = async (client, message, args) => {
                 if (reaction.emoji.name === '✅') { // Sim
                     msg.delete().catch(err => { return })
                     db.set(`afk_${message.author.id}+${message.guild.id}`, 'Nenhuma razão especificada.')
-                    return message.inlineReply(`✅ Modo AFK ativado sem mensagem definida.`)
+                    return message.inlineReply(`<a:Check:836347816036663309> Modo AFK ativado sem mensagem definida.`)
                 }
 
                 if (reaction.emoji.name === '❌') { // Não
@@ -47,7 +47,7 @@ exports.run = async (client, message, args) => {
 
         if (!content1) {
             db.set(`afk_${message.author.id}+${message.author.id}`, 'Nenhuma razão especificada.')
-            return message.inlineReply(`✅ Modo AFK Global ativado sem mensagem definida.`)
+            return message.inlineReply(`<a:Check:836347816036663309> Modo AFK Global ativado sem mensagem definida.`)
         }
 
         if (content1) {
@@ -55,7 +55,7 @@ exports.run = async (client, message, args) => {
             var embed = new Discord.MessageEmbed()
                 .setColor('GREEN')
                 .setDescription('```fix\n' + `${content1}` + '```')
-            return message.inlineReply(`✅ Você ativou o modo AFK Global.`, embed)
+            return message.inlineReply(`<a:Check:836347816036663309> Você ativou o modo AFK Global.`, embed)
         }
     }
 
@@ -64,6 +64,6 @@ exports.run = async (client, message, args) => {
         var embed = new Discord.MessageEmbed()
             .setColor('GREEN')
             .setDescription('```fix\n' + `${content}` + '```')
-        return message.inlineReply(`✅ Você ativou o modo AFK no Servidor.`, embed)
+        return message.inlineReply(`<a:Check:836347816036663309> Você ativou o modo AFK no Servidor.`, embed)
     }
 }
