@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(format)
   }
 
-  let linksupport = 'https://forms.gle/vtJ5qBqFDd9rL5JU8'
+  let linksupport = 'https://discord.gg/TC26m4ZRV3'
   let member = message.guild.members.cache.get(user.id)
   member.setNickname(nick).catch(err => {
 

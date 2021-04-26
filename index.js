@@ -271,7 +271,7 @@ client.on("guildMemberAdd", (member) => {
 })
 
 client.on("ready", () => {
-    let activities = ['Me marca que eu falo o prefixo', '@maya', '412 Comandos Onlines', '#FiqueEmCasa']
+    let activities = ['Me marca que eu falo o prefixo', '@maya', '+300 Comandos Onlines', '#FiqueEmCasa']
     i = 0
     setInterval(() => client.user.setActivity(`${activities[i++ % activities.length]}`, { type: "WATCHING" }), 7000)
 })

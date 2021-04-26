@@ -95,7 +95,7 @@ exports.run = async (client, message, args) => {
     if (!reason) { reason = `${message.author.username} não especificou nenhuma razão` }
 
     var discordserver = 'https://discord.gg/YpFWgJuuUV'
-    var support = 'https://forms.gle/vtJ5qBqFDd9rL5JU8'
+    var support = 'https://discord.gg/TC26m4ZRV3'
 
     var kickembed = new Discord.MessageEmbed()
         .setColor('GRAY')
