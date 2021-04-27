@@ -68,7 +68,7 @@ exports.run = async (client, message, args) => {
                 var num = ['win', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose']
                 var rand = num[Math.floor(Math.random() * num.length)]
 
-                var a = ['wiin', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'cachorro', 'nodog', 'bola', 'nodog', 'nodog', 'nodog', 'nodog']
+                var a = ['wiin', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'remédio', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'loose', 'cachorro', 'nodog', 'bola', 'nodog', 'nodog', 'nodog', 'nodog']
                 var randa = a[Math.floor(Math.random() * a.length)]
                 db.set(`florestatiming_${message.author.id}`, Date.now())
                 db.subtract(`comida_${message.author.id}`, 1)
@@ -231,6 +231,37 @@ exports.run = async (client, message, args) => {
                             var PegadasEmbed = new Discord.MessageEmbed()
                                 .setColor('BLUE')
                                 .setTitle('🐾 Você encontrou pegadas do Brown.')
+                            return message.inlineReply(PegadasEmbed)
+                        }
+                    }
+
+                    var remedio = db.get(`remedio_${message.author.id}`)
+                    if (randa === "remédio") {
+                        if (remedio === null) {
+
+                            const embed = new Discord.MessageEmbed()
+                                .setColor('BLUE')
+                                .setTitle('💊 Remédio!!')
+                                .setDescription('Você achou o Remédio do Velho Welter!')
+
+                            db.set(`remedio_${message.author.id}`, "ON")
+
+                            return message.inlineReply(embed)
+
+                        } else if (!db.get(`remedio_${message.author.id}`)) {
+
+                            const embed = new Discord.MessageEmbed()
+                                .setColor('BLUE')
+                                .setTitle('💊 Remédio!!')
+                                .setDescription('Você achou o Remédio do Velho Welter!')
+
+                            db.set(`remedio_${message.author.id}`, "ON")
+
+                            return message.inlineReply(embed)
+                        } else {
+                            var PegadasEmbed = new Discord.MessageEmbed()
+                                .setColor('BLUE')
+                                .setTitle('💊 Você encontrou pilulas quebradas.')
                             return message.inlineReply(PegadasEmbed)
                         }
                     }
