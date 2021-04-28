@@ -3,7 +3,7 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.member.hasPermission('MANAGE_CHANNELS')) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Manusear Canais') }
+    if (!message.member.hasPermission('MANAGE_CHANNELS')) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Gerenciar Canais') }
 
     if (!args[0]) {
         let prefix = db.get(`prefix_${message.guild.id}`)

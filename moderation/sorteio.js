@@ -4,7 +4,7 @@ const ms = require("ms")
 
 exports.run = async (client, message, args) => {
 
-  if (!message.member.hasPermission('MANAGE_MESSAGES')) { return message.channel.send('<:xis:835943511932665926> Permissão Necessária: Manusear Mensagens') }
+  if (!message.member.hasPermission('MANAGE_MESSAGES')) { return message.channel.send('<:xis:835943511932665926> Permissão Necessária: Gerenciar Mensagens') }
 
   let prefix = db.get(`prefix_${message.guild.id}`)
   if (prefix === null) prefix = "-"

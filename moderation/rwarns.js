@@ -3,7 +3,7 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.member.hasPermission(["MANAGE_ROLES"])) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Manusear Cargos') }
+    if (!message.member.hasPermission(["MANAGE_ROLES"])) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Gerenciar Cargos') }
 
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"

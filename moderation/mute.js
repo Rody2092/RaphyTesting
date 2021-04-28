@@ -10,14 +10,14 @@ exports.run = async (client, message, args) => {
    if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
       let adm = new Discord.MessageEmbed()
          .setColor('#FF0000')
-         .setTitle('Eu preciso da permissão "Manusear Cargos" para utilizar esta função.')
+         .setTitle('Eu preciso da permissão "Gerenciar Cargos" para utilizar esta função.')
       return message.inlineReply(adm)
    }
 
    if (!message.guild.me.hasPermission("MANAGE_ROLES")) {
       let adm = new Discord.MessageEmbed()
          .setColor('#FF0000')
-         .setTitle('Eu preciso da permissão "Manusear Cargos" para utilizar esta função.')
+         .setTitle('Eu preciso da permissão "Gerenciar Cargos" para utilizar esta função.')
       return message.inlineReply(adm)
    }
 
@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
    if (!perms) {
       let permss = new Discord.MessageEmbed()
          .setColor('#FF0000')
-         .setTitle('Permissão Necessária: Manusear Roles (cargos)')
+         .setTitle('Permissão Necessária: Gerenciar Roles (cargos)')
       return message.inlineReply(permss)
    }
 

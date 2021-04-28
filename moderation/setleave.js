@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
     if (!message.member.hasPermission('MANAGE_CHANNELS')) {
         let perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
-            .setTitle('Permissão Necessária: Manusear Canais')
+            .setTitle('Permissão Necessária: Gerenciar Canais')
         return message.inlineReply(perms)
     }
 

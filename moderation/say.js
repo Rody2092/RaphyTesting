@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
   if (!message.member.hasPermission("MANAGE_MESSAGES")) {
     let noperms = new Discord.MessageEmbed()
       .setColor('#FF0000')
-      .setTitle('Permissão Necessária: Manusear Mensagens')
+      .setTitle('Permissão Necessária: Gerenciar Mensagens')
     return message.inlineReply(noperms)
   }
 

@@ -13,11 +13,11 @@ exports.run = async (client, message, args) => {
 
     let adm = new Discord.MessageEmbed()
         .setColor('#FF0000')
-        .setTitle('Eu preciso da permissão "Manusear Cargos" para utilizar esta função.')
+        .setTitle('Eu preciso da permissão "Gerenciar Cargos" para utilizar esta função.')
 
     let permss = new Discord.MessageEmbed()
         .setColor('#FF0000')
-        .setTitle('Permissão Necessária: Manusear Roles (cargos)')
+        .setTitle('Permissão Necessária: Gerenciar Roles (cargos)')
 
     let cargoatual = new Discord.MessageEmbed()
         .setColor('BLUE')
@@ -34,12 +34,7 @@ exports.run = async (client, message, args) => {
     if (!userperms) { return message.inlineReply(permss) }
 
     if (!args[0]) {
-
-        if (autorole !== null) {
-            return message.inlineReply(cargoatual)
-        } else {
-            return message.inlineReply(noargs)
-        }
+        if (autorole !== null) { return message.inlineReply(cargoatual) } else { return message.inlineReply(noargs) }
     }
 
     if (args[0] === 'off') {
@@ -113,6 +108,7 @@ exports.run = async (client, message, args) => {
     if (!role) { return message.channel.send(norole) }
     if (!role.editable) { return message.channel.send(sobcarg).then(msg => msg.delete({ timeout: 4000 })).then(msg => msg.channel.send(soberol)) }
     if (role.id === autorole) { return message.inlineReply(iqual) }
+    if (role.comparePositionTo(message.member.roles.highest) > -1) { return message.inlineReply(`<:xis:835943511932665926> Você não tem permissão para gerenciar o cargo ${role}.`) }
 
     await message.channel.send(confirm).then(msg => {
         msg.react('✅') // Check

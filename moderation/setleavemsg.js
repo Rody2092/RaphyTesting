@@ -6,14 +6,14 @@ exports.run = async (client, message, args) => {
     if (!message.member.hasPermission('MANAGE_CHANNELS')) {
         let perms = new Discord.MessageEmbed()
             .setColor('#FF0000')
-            .setTitle('Permissão Necessária: Manusear Canais, Manusear Mensagens')
+            .setTitle('Permissão Necessária: Gerenciar Canais, Gerenciar Mensagens')
         return message.inlineReply(perms)
     }
 
     if (!message.member.hasPermission("MANAGE_MESSAGES")) {
         let noperms = new Discord.MessageEmbed()
             .setColor('#FF0000')
-            .setTitle('Permissão Necessária: Manusear Canais, Manusear Mensagens')
+            .setTitle('Permissão Necessária: Gerenciar Canais, Gerenciar Mensagens')
         return message.inlineReply(noperms)
     }
 

@@ -4,7 +4,7 @@ const db = require('quick.db')
 exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission('ADMINISTRATOR')) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: ADMINISTRADOR') }
-    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) { return message.channel.send('<:xis:835943511932665926> Eu preciso da permissão "Manusear Mensagens" para utilizar esta função.') }
+    if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) { return message.channel.send('<:xis:835943511932665926> Eu preciso da permissão "Gerenciar Mensagens" para utilizar esta função.') }
 
     let nolink = db.get(`nolink_${message.guild.id}`)
 

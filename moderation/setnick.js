@@ -6,7 +6,7 @@ exports.run = async (client, message, args) => {
   if (!message.guild.me.hasPermission("MANAGE_NICKNAMES")) {
     let adm = new Discord.MessageEmbed()
       .setColor('#FF0000')
-      .setTitle('Eu preciso da permissão "Manusear Nicknames (Nomes/Apelidos)" para utilizar esta função.')
+      .setTitle('Eu preciso da permissão "Gerenciar Nicknames (Nomes/Apelidos)" para utilizar esta função.')
     return message.inlineReply(adm)
   }
 
@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
   if (!message.member.hasPermission("MANAGE_NICKNAMES")) {
     let noperms = new Discord.MessageEmbed()
       .setColor('#FF0000')
-      .setTitle('Permissão necessária: Manusear Nicknames (Nomes/Apelidos)')
+      .setTitle('Permissão Necessária: Gerenciar Nicknames (Nomes/Apelidos)')
     return message.inlineReply(noperms)
   }
 
