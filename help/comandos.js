@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(`Heey! Tudo bem ${message.author}?`, newhelp)
   }
 
-  if (['categoria', 'categorias'].includes(args[0])) {
+  if (['categoria', 'categorias'].includes(args[0].toLowerCase())) {
     let catego = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('📑 Todos os comandos sob categorias')
@@ -31,7 +31,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(catego)
   }
 
-  if (['afksystem', 'afk'].includes(args[0])) {
+  if (['afksystem', 'afk'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('📢 Maya - AFK Global System')
@@ -50,7 +50,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(`Se houver algúm bug, use **${prefix}support**`, embed)
   }
 
-  if (['anime', 'animes'].includes(args[0])) {
+  if (['anime', 'animes'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('📺 Anime Place')
@@ -61,7 +61,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['comandos', 'commands'].includes(args[0])) {
+  if (['comandos', 'commands'].includes(args[0].toLowerCase())) {
     let embed1 = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('<a:Check:836347816036663309> Comandos livres para todos usarem')
@@ -71,7 +71,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed1)
   }
 
-  if (['github', 'discordjs'].includes(args[0])) {
+  if (['github', 'discordjs'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('👨‍💻 Maya GitHub - BETA COMMAND')
@@ -81,7 +81,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['games', 'jogos', 'game', 'jogo'].includes(args[0])) {
+  if (['games', 'jogos', 'game', 'jogo'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('🎮 Link para acesso rápido a jogos')
@@ -91,7 +91,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['help', 'h', 'ajuda', 'comandos'].includes(args[0])) {
+  if (['help', 'h', 'ajuda', 'comandos'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('❓ Ué? Help no Help?')
@@ -101,7 +101,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['interacao', 'interação', 'interation'].includes(args[0])) {
+  if (['interacao', 'interação', 'interation'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('💞 Comandos Interativos')
@@ -111,7 +111,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['level', 'nivel', 'xp', 'levelsystem'].includes(args[0])) {
+  if (['level', 'nivel', 'xp', 'levelsystem'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('🌐 Level Global System')
@@ -121,7 +121,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['maya'].includes(args[0])) {
+  if (['maya'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('<:starM:832974891635572787> Meus comandos lindinhos')
@@ -131,7 +131,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['moderation', 'moderação', 'mod', 'administração', 'adm', 'administration'].includes(args[0])) {
+  if (['moderation', 'moderação', 'mod', 'administração', 'adm', 'administration'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('⚙️ Espaço para os Adms/Mods')
@@ -141,7 +141,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['economy', 'economia', 'mpoints', 'money', 'shop', 'loja', 'dinheiro'].includes(args[0])) {
+  if (['economy', 'economia', 'mpoints', 'money', 'shop', 'loja', 'dinheiro'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle(':coin: Economia Global System')
@@ -150,7 +150,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['doar', 'donate'].includes(args[0])) {
+  if (['doar', 'donate'].includes(args[0].toLowerCase())) {
     let ajuda = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('💸 Comando Doar')
@@ -160,7 +160,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(ajuda)
   }
 
-  if (['perfil', 'profile'].includes(args[0])) {
+  if (['perfil', 'profile'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('👩‍💻 Monte o seu Perfil')
@@ -170,7 +170,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['owner', 'rody', 'dono'].includes(args[0])) {
+  if (['owner', 'rody', 'dono'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle(':gear: Comandos exclusivos do Owner')
@@ -180,7 +180,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['quiz', 'trivia'].includes(args[0])) {
+  if (['quiz', 'trivia'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('✍️ Você é inteligente?')
@@ -190,7 +190,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['report', 'reporte', 'setreportchannel'].includes(args[0])) {
+  if (['report', 'reporte', 'setreportchannel'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE') // red
       .setTitle(':loudspeaker: Sistema de Report')
@@ -203,7 +203,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['random', 'aleatório', 'aleatorio'].includes(args[0])) {
+  if (['random', 'aleatório', 'aleatorio'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('📜 Comandos Aleatório')
@@ -214,7 +214,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['personagens'].includes(args[0])) {
+  if (['personagens'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('<:zeroheart:833378638475821088> Personagens de animes')
@@ -224,7 +224,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['react', 'reações'].includes(args[0])) {
+  if (['react', 'reações'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('💕 É bom mostrar como você se sente')
@@ -234,7 +234,7 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['autorole', 'setautorole'].includes(args[0])) {
+  if (['autorole', 'setautorole'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('🛠️ Autorole System')
@@ -246,14 +246,15 @@ exports.run = async (client, message, args) => {
     return message.inlineReply(embed)
   }
 
-  if (['role', 'cargo', 'roles', 'cargos'].includes(args[0])) {
+  if (['role', 'cargo', 'roles', 'cargos'].includes(args[0].toLowerCase())) {
     let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setTitle('🛠️ Gerenciamento de Cargos')
       .setDescription('Você pode gerenciar cargos rapidamente atráves de comandos simples e rapidos!')
       .addField('• Crie cargos', '`' + prefix + 'role create Nome Do Cargo`')
       .addField('• Exclua cargos', '`' + prefix + 'role delete Nome do Cargo`')
-      .addField('• Veja informações', '`' + prefix + 'role info @cargo`')
+      .addField('• Edite cargos', '`' + prefix + 'role edit nome @cargo Novo Nome do Cargo`\n' + '`' + prefix + 'role edit cor @cargo #CódigoHEX`\n')
+      .addField('• Quantos membros tem?', '`' + prefix + 'role membros @cargo`')
       .addField('• Autorole System', '`' + prefix + 'comandos autorole`')
       .setFooter(`${prefix}ideiamaya | ${prefix}bug`)
     return message.inlineReply(embed)

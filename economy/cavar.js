@@ -9,8 +9,7 @@ exports.run = async (client, message, args) => {
 
     if (author2 !== null && timeout2 - (Date.now() - author2) > 0) {
         let time = ms(timeout2 - (Date.now() - author2))
-
-        return message.inlineReply(`Espere mais ${time.seconds}s`)
+        return
     } else {
 
         let timeout1 = 9140000

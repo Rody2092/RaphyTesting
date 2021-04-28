@@ -70,7 +70,7 @@ exports.run = async (client, message, args) => {
                         db.add(`rosas_${message.mentions.members.first().id}`, quantiarosas)
                         db.delete(`cacherosas_${message.author.id}`)
                         db.add(`rp_${message.mentions.members.first().id}`, quantiarosas * 2)
-                        return message.channel.send(`<a:Check:836347816036663309> Transação efetuada com sucesso!\n${user} recebeu: ${quantiarosas * 2} Reputações e ${quantiarosas} 🌹 Rosas`).catch(err => { return })
+                        return message.channel.send(`<a:Check:836347816036663309> Transação efetuada com sucesso!\n${message.mentions.members.first()} recebeu: ${quantiarosas * 2} Reputações e ${quantiarosas} 🌹 Rosas`).catch(err => { return })
                     }
 
                     if (reaction.emoji.name === '❌') { // Não
@@ -150,7 +150,7 @@ exports.run = async (client, message, args) => {
 
                             db.add(`mpoints_${message.mentions.members.first().id}`, cachemoney2)
                             db.delete(`cachemoney2_${message.author.id}`, args[2])
-                            return message.channel.send(`<a:Check:836347816036663309> Transação efetuada com sucesso!\n${user.username} recebeu ${args[2]}<:StarPoint:766794021128765469>MPoints`).catch(err => { return })
+                            return message.channel.send(`<a:Check:836347816036663309> Transação efetuada com sucesso!\n${message.mentions.members.first()} recebeu ${args[2]}<:StarPoint:766794021128765469>MPoints`).catch(err => { return })
                         }
 
                         if (reaction.emoji.name === '❌') { // Não

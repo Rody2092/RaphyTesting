@@ -6,15 +6,15 @@ exports.run = async (client, message, args) => {
 
     let timeout1 = 9140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
-  
+
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
-  
+
         let presomax = new Discord.MessageEmbed()
             .setColor('#FF0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
-  
+
         return message.inlineReply(presomax)
     } else {
 
@@ -39,25 +39,11 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(cobre)
         }
 
-        if (user.id === '821471191578574888') {
-            return message.inlineReply('Sai pra lá, eu não to devendo ninguém :cry:')
-        }
-
-        if (user.id == message.author.id) {
-            return message.inlineReply('Você não pode cobrar você mesmo.')
-        }
-
-        if (!args[1]) {
-            return message.inlineReply(correto)
-        }
-
-        if (args[1] < '0') {
-            return message.inlineReply('Diga um valor maior que 0')
-        }
-
-        if (args[1] === '0') {
-            return message.inlineReply('Diga um valor maior que 0')
-        }
+        if (user.id === '821471191578574888') { return message.inlineReply('Sai pra lá, eu não to devendo ninguém :cry:') }
+        if (user.id == message.author.id) { return message.inlineReply('Você não pode cobrar você mesmo.') }
+        if (!args[1]) { return message.inlineReply(correto) }
+        if (args[1] < '0') { return message.inlineReply('Diga um valor maior que 0') }
+        if (args[1] === '0') { return message.inlineReply('Diga um valor maior que 0') }
 
         if (isNaN(args[1])) {
             let notnumber = new Discord.MessageEmbed()
@@ -67,9 +53,7 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(notnumber)
         }
 
-        if (args[2]) {
-            return message.inlineReply(correto)
-        }
+        if (args[2]) { return message.inlineReply(correto) }
 
         let cobrando = new Discord.MessageEmbed()
             .setColor('BLUE')
@@ -109,17 +93,9 @@ exports.run = async (client, message, args) => {
                         .setColor('#FF0000')
                         .setDescription('Você não tem todo esse dinheiro na carteira.')
 
-                    if (money === null) {
-                        return message.inlineReply(nomoney)
-                    }
-
-                    if (!money) {
-                        return message.inlineReply(nomoney)
-                    }
-
-                    if (money < args[1]) {
-                        return message.inlineReply(nomoney)
-                    }
+                    if (money === null) { return message.inlineReply(nomoney) }
+                    if (!money) { return message.inlineReply(nomoney) }
+                    if (money < args[1]) { return message.inlineReply(nomoney) }
 
                     db.subtract(`mpoints_${user.id}`, args[1])
                     db.add(`mpoints_${message.author.id}`, args[1])
