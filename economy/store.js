@@ -39,19 +39,11 @@ exports.run = async (client, message, args) => {
                     value: '🎫 `Ticket Loteria` 10 <:StarPoint:766794021128765469>MPoints' + `\nPrêmio Atual: ${loteria} <:StarPoint:766794021128765469>MPoints`
                 },
                 {
-                    name: 'Jogos',
-                    value: '<:Loli:831571527744356422> `Loli` (Pesca)\n🔪 `Faca` (Pesca)\n<:fossil:831859111578173450> `Fossil` (Mineração)\n🦣 `Mamute` (Mineração)\n🥎 `Bola do Brown` (Floresta Cammum)\n🐶 `Cachorro Brown` (Floresta Cammum)'
-                },
-                {
                     name: 'Perfil',
                     value: '<:starM:832974891635572787> `Estrela1` 500.000 <:StarPoint:766794021128765469>MPoints\n<:starM:832974891635572787><:starM:832974891635572787> `Estrela2` 1.000.000 <:StarPoint:766794021128765469>MPoints\n<:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787> `Estrela3` 2.000.000 <:StarPoint:766794021128765469>MPoints\n<:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787> `Estrela4` 4.000.000 <:StarPoint:766794021128765469>MPoints\n<:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787><:starM:832974891635572787> `Estrela5` 10.000.000 <:StarPoint:766794021128765469>MPoints\n🔰 `Título` 10.000<:StarPoint:766794021128765469>MPoints'
-                },
-                {
-                    name: 'Itens Coletaveis',
-                    value: '🍤 `Camarões` - Baú do Tesouro (Pesca)\n🐟 `Peixes` - Baú do Tesouro (Pesca)\n🌹 `Rosas` - Floresta Cammum\n🍎 `Maças` - Floresta Cammum\n🦴 `Ossos` Mineração\n🪨 `Minérios` - Mineração\n💎 `Diamantes` - Mineração'
                 }
             )
-            .setFooter(`${prefix}buy | ${prefix}itens`)
+            .setFooter(`${prefix}buy | ${prefix}itens | ${prefix}vender | ${prefix}doar`)
         return message.inlineReply(loja)
     }
 }

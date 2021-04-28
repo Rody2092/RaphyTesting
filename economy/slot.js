@@ -75,6 +75,11 @@ exports.run = async (client, message, args) => {
     if (machado === null) { machado = "" }
     if (!db.get(`machado_${user.id}`)) { machado = "" }
 
+    let remedio = await db.get(`remedio_${user.id}`)
+    if (remedio) { remedio = "\n💊 Remédio do Velho Welter" }
+    if (remedio === null) { remedio = "" }
+    if (!db.get(`remedio_${user.id}`)) { remedio = "" }
+
     let vara = await db.get(`vara_${user.id}`)
     if (vara) { vara = "\n🎣 Vara de pesca" }
     if (vara === null) { vara = "" }
@@ -129,7 +134,7 @@ exports.run = async (client, message, args) => {
         .setColor('BLUE')
         .setTitle(`📖 **Inventário de ${user.user.username}**`)
         .addField('Itens Comprados', `${nada}${arma}${picareta}${vara}${machado}${cartas}`)
-    if (!medalha) { Embed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}${bola}${cachorro}`) }
+    if (!medalha) { Embed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}${bola}${cachorro}${remedio}`) }
     if (medalha) { Embed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}\n🏅 Medalha Cammum${dogname}`) }
     Embed.addField('Mantimentos', `🐟 ${peixes} Peixes\n🥘 ${comida} Comidas\n🪱 ${iscas} Iscas\n🥤 ${agua} Água\n🎟️ ${fichas} Fichas\n🍤 ${camarao} Camarões\n🦴 ${ossos} Ossos\n🌹 ${rosas} Rosas\n🍎 ${apple} Maça\n🪨 ${minerio} Minérios\n💎 ${diamond} Diamantes`)
     await message.inlineReply(Embed)
