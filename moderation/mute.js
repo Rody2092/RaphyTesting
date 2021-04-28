@@ -66,9 +66,14 @@ exports.run = async (client, message, args) => {
             await channel.createOverwrite(muterole, {
                SEND_MESSAGES: false,
                ADD_REACTIONS: false,
-               SPEAK: false,
                SEND_TTS_MESSAGES: false,
                MANAGE_MESSAGES: false,
+               MANAGE_ROLES: false
+            })
+         })
+         message.guild.channels.cache.filter(c => c.type === 'voice').forEach(async (channel, id) => {
+            await channel.createOverwrite(muterole, {
+               SPEAK: false,
                CONNECT: false,
                MANAGE_ROLES: false
             })
@@ -155,7 +160,7 @@ exports.run = async (client, message, args) => {
                msg.delete().catch(err => { return })
                return message.inlineReply(troll)
             }
-            if (reaction.emoji.name === '❌') { // MPEmbed
+            if (reaction.emoji.name === '❌') { 
                msg.delete().catch(err => { return })
             }
          })
@@ -234,8 +239,7 @@ exports.run = async (client, message, args) => {
    }
 
    let reason = args.slice(2).join(" ")
-   if (!reason)
-      reason = `Razão não especificada por ${message.author.username}.`
+   if (!reason) reason = `Razão não especificada por ${message.author.username}.`
 
    let muteembed = new Discord.MessageEmbed()
       .setAuthor(`Sistema de Mute - ${member.guild.name}`)
@@ -301,7 +305,7 @@ exports.run = async (client, message, args) => {
                msg.delete().catch(err => { return })
 
                member.roles.remove(role).then(x => x.roles.add(role))
-
+               if (member.voice.channel) { member.voice.kick() }
                setTimeout(function () {
                   member.roles.remove(role) //Ação Desmute
                   client.channels.cache.get(logchannel).send(unmuteembed)
@@ -319,7 +323,7 @@ exports.run = async (client, message, args) => {
                }, 3500)
                return message.inlineReply(rela)
             }
-            if (reaction.emoji.name === '❌') { // MPEmbed
+            if (reaction.emoji.name === '❌') { 
                msg.delete().catch(err => { return })
             }
          })
@@ -342,7 +346,8 @@ exports.run = async (client, message, args) => {
             if (reaction.emoji.name === '✅') { // Sim
                msg.delete().catch(err => { return })
 
-               member.roles.add(role) // Ação Mute
+               member.roles.add(role)
+               if (member.voice.channel) { member.voice.kick() }
                setTimeout(function () {
                   member.roles.remove(role) //Ação Desmute
                   client.channels.cache.get(logchannel).send(unmuteembed)
@@ -356,7 +361,7 @@ exports.run = async (client, message, args) => {
                message.inlineReply(rela)
                client.channels.cache.get(logchannel).send(muteembed)
             }
-            if (reaction.emoji.name === '❌') { // MPEmbed
+            if (reaction.emoji.name === '❌') { 
                msg.delete().catch(err => { return })
             }
          })
