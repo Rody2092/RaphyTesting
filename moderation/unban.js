@@ -81,7 +81,7 @@ exports.run = async (client, message, args) => {
     message.guild.fetchBans().then(bans => {
       message.guild.members.unban(member).catch(err => {
         if (err) {
-          let linksupport = 'https://discord.gg/TC26m4ZRV3'
+          let linksupport = 'https://discord.gg/YpFWgJuuUV'
           let discordserver = 'https://discord.gg/YpFWgJuuUV'
           let errorembed = new Discord.MessageEmbed()
             .setColor('#FF0000')

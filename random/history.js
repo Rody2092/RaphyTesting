@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
   let historys = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setTitle('História escritadas por membros do Discord')
-    .setDescription(`Quer sua história aqui? Envie no [suporte](https://discord.gg/TC26m4ZRV3)`)
+    .setDescription(`Quer sua história aqui? Envie no [suporte](https://discord.gg/YpFWgJuuUV)`)
     .addFields(
       {
         name: 'Wattpad',

@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     let historys = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('📝 Listinha de Servidores TOP\'s')
-        .setDescription(`Envie seu servidor no [suporte](https://discord.gg/TC26m4ZRV3)`)
+        .setDescription(`Envie seu servidor no [suporte](https://discord.gg/YpFWgJuuUV)`)
         .addFields(
             {
                 name: 'Servidores Otakus',
