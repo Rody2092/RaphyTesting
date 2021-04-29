@@ -126,7 +126,7 @@ exports.run = async (client, message, args) => {
          .addFields(
             {
                name: 'Suba meu cargo',
-               value: '1 - Configurações do Servidor\n2 - Cargos\n3 - Procure meu cargo "Maya"\n4 - Arraste meu cargo para um dos primeiros\n5 - Salve as alterações e tente novamente.'
+               value: '1 - Configurações do Servidor\n2 - Cargos\n3 - Procure meu cargo "Naya"\n4 - Arraste meu cargo para um dos primeiros\n5 - Salve as alterações e tente novamente.'
             }
          )
 
@@ -202,15 +202,15 @@ exports.run = async (client, message, args) => {
             },
             {
                name: '🆕 Novos canais de texto/voz',
-               value: 'O Discord ainda não permite a auto atualização de roles.\nSempre que você criar um canal de texto/voz, atualize o mute da Maya para perfeito funcionamento.'
+               value: 'O Discord ainda não permite a auto atualização de roles.\nSempre que você criar um canal de texto/voz, atualize o mute da Naya para perfeito funcionamento.'
             },
             {
                name: '📑 Canal Log',
                value: 'Neste canal, mandarei todos os detalhes do mute. Você pode deixar este canal público ou privado alterando as permissões dele.\nClaro, não vá me privar dele, né?.'
             },
             {
-               name: '⬆️ Maya Role',
-               value: 'É extremamente importe que o meu cargo, "Maya" esteja acima de todas as outras roles, para que eu possa efetuar meus comandos com maestria.'
+               name: '⬆️ Naya Role',
+               value: 'É extremamente importe que o meu cargo, "Naya" esteja acima de todas as outras roles, para que eu possa efetuar meus comandos com maestria.'
             }
          )
          .setTimestamp()

@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
 
     let embed = new Discord.MessageEmbed()
         .setColor("GREEN")
-        .setTitle("Whitelist Maya Protection")
+        .setTitle("Whitelist Naya Protection")
     lb.forEach(d => {
         embed.addField(`${d.user.tag}`, `ID: ${d.user.id}`)
     })

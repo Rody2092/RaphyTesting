@@ -75,7 +75,7 @@ exports.run = async (client, message, args) => {
             embedxp.addField(`${d.rank}. ${d.user.tag}`, `🆔 *(${d.user.id})*\n💸 Carteira - ${d.level} <:StarPoint:766794021128765469>MPoints\n🏦 Banco - ${d.xp} <:StarPoint:766794021128765469>MPoints`)
         })
         embedxp.setFooter(`Seu ranking: ${myrank}`)
-        embedxp.addField('Loteria Maya', `Prêmio Atual: ${db.get('loteria')} <:StarPoint:766794021128765469>MPoints`)
+        embedxp.addField('Loteria Naya', `Prêmio Atual: ${db.get('loteria')} <:StarPoint:766794021128765469>MPoints`)
         return message.channel.send(embedxp)
     }
 

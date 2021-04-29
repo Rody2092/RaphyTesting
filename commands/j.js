@@ -28,17 +28,17 @@ exports.run = async (client, message, args) => {
         const lose = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('😭 | Eu Perdiiii')
-            .setDescription('Você 👊 x ✌️ Maya\nVocê ganhou 10<:StarPoint:766794021128765469>MPoints')
+            .setDescription('Você 👊 x ✌️ Naya\nVocê ganhou 10<:StarPoint:766794021128765469>MPoints')
 
         const win = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('😌 | Eu Ganheeei')
-            .setDescription('Você 👊 x ✋ Maya\nVocê perdeu 10<:StarPoint:766794021128765469>MPoints')
+            .setDescription('Você 👊 x ✋ Naya\nVocê perdeu 10<:StarPoint:766794021128765469>MPoints')
 
         const draw = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('😕 | Deu empate')
-            .setDescription('Você 👊 x 👊 Maya\nNinguém ganhou nada que pena')
+            .setDescription('Você 👊 x 👊 Naya\nNinguém ganhou nada que pena')
 
 
         if (result === 'win') {
@@ -58,17 +58,17 @@ exports.run = async (client, message, args) => {
         const lose = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('😭 | Eu Perdiiii')
-            .setDescription('Você ✋ x 👊 Maya\nVocê ganhou 10<:StarPoint:766794021128765469>MPoints')
+            .setDescription('Você ✋ x 👊 Naya\nVocê ganhou 10<:StarPoint:766794021128765469>MPoints')
 
         const win = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('😌 | Eu Ganheeei')
-            .setDescription('Você ✋ x ✌️ Maya\nVocê perdeu 10<:StarPoint:766794021128765469>MPoints')
+            .setDescription('Você ✋ x ✌️ Naya\nVocê perdeu 10<:StarPoint:766794021128765469>MPoints')
 
         const draw = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('😕 | Deu empate')
-            .setDescription('Você ✋ x ✋ Maya\nNinguém ganhou nada que pena')
+            .setDescription('Você ✋ x ✋ Naya\nNinguém ganhou nada que pena')
 
         if (result === 'win') {
             db.subtract(`mpoints_${message.author.id}`, 10)
@@ -87,17 +87,17 @@ exports.run = async (client, message, args) => {
         const lose = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('😭 | Eu Perdiiii')
-            .setDescription('Você ✌️ x ✋ Maya\nVocê ganhou 10<:StarPoint:766794021128765469>MPoints')
+            .setDescription('Você ✌️ x ✋ Naya\nVocê ganhou 10<:StarPoint:766794021128765469>MPoints')
 
         const win = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('😌 | Eu Ganheeei')
-            .setDescription('Você ✌️ x 👊 Maya\nVocê perdeu 10<:StarPoint:766794021128765469>MPoints')
+            .setDescription('Você ✌️ x 👊 Naya\nVocê perdeu 10<:StarPoint:766794021128765469>MPoints')
 
         const draw = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('😕 | Deu empate')
-            .setDescription('Você ✌️ x ✌️ Maya\nNinguém ganhou nada que pena')
+            .setDescription('Você ✌️ x ✌️ Naya\nNinguém ganhou nada que pena')
 
         if (result === 'win') {
             db.subtract(`mpoints_${message.author.id}`, 10)

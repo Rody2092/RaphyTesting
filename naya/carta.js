@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
 
     let help = new Discord.MessageEmbed()
         .setColor('BLUE')
-        .setTitle('💌 Carta de Amor ~ Maya')
+        .setTitle('💌 Carta de Amor ~ Naya')
         .setDescription('Envie cartas de amor para a pessoa que você ama. Se não tem coragem de dizer pessoalmente, deixa que eu envio a carta pra você.')
         .addField('Comando', '`' + prefix + 'carta @user A sua mensagem em diante`')
         .setFooter('A pessoa que receber a carta, recebe +5 Reputação')
@@ -59,7 +59,7 @@ exports.run = async (client, message, args) => {
                 msg.delete().catch(err => { return })
                 db.subtract(`cartas_${message.author.id}`, 1)
                 db.add(`rp_${message.author.id}`, 5)
-                message.mentions.members.first().send("A Maya não se responsabiliza pelo conteúdo presente nesta carta.\nVocê recebeu mais 5 reputação.", embedlove).catch(err => {
+                message.mentions.members.first().send("A Naya não se responsabiliza pelo conteúdo presente nesta carta.\nVocê recebeu mais 5 reputação.", embedlove).catch(err => {
                     if (err) {
                         let errorembed = new Discord.MessageEmbed()
                             .setColor('#FF0000')

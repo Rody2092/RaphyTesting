@@ -3,7 +3,7 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    let gitlink = "https://github.com/rodycouto/Maya-GitHub.git"
+    let gitlink = "https://github.com/rodycouto/Naya-GitHub.git"
     let linksupport = "https://docs.google.com/forms/d/e/1FAIpQLSeEMnYYmlaVv_nG4PBdPD8CA6Q-MdBi-9KW_xVrqjs2MG5AqQ/viewform?usp=sf_link"
     let gitdance = "https://imgur.com/C78LrtY.gif"
 
@@ -13,8 +13,8 @@ exports.run = async (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
         .setColor('BLUE')
-        .setTitle('Repositório Maya no GitHub')
-        .setDescription('Caso você queira acesso ao código fonte da Maya, ele está disponível no Github\n⠀⠀⠀⠀⠀⠀⠀⠀')
+        .setTitle('Repositório Naya no GitHub')
+        .setDescription('Caso você queira acesso ao código fonte da Naya, ele está disponível no Github\n⠀⠀⠀⠀⠀⠀⠀⠀')
         .setThumbnail(gitdance)
         .addFields(
             {
@@ -28,12 +28,12 @@ exports.run = async (client, message, args) => {
                 inline: true
             },
             {
-                name: 'Suporte Maya',
+                name: 'Suporte Naya',
                 value: `[Clique aqui](${linksupport})`,
                 inline: true
             }
         )
-        .setFooter('Apoio Maya - Developers')
+        .setFooter('Apoio Naya - Developers')
 
     return message.inlineReply(embed)
 }

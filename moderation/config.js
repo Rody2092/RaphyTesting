@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const db = require('quick.db')
-let linkgit = 'https://github.com/rodycouto/MayaCommands/blob/main/README.md#%EF%B8%8F-comandos-administrativos'
+let linkgit = 'https://github.com/rodycouto/NayaCommands/blob/main/README.md#%EF%B8%8F-comandos-administrativos'
 
 exports.run = async (client, message, args) => {
 

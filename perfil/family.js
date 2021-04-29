@@ -8,7 +8,7 @@ exports.run = async (client, message, args) => {
 
     let embed = new Discord.MessageEmbed()
         .setColor("BLUE")
-        .setTitle('💖 Maya Family System')
+        .setTitle('💖 Naya Family System')
         .setDescription('Chame seus amigos mais próximos para sua familia.')
         .addFields(
             {

@@ -27,7 +27,7 @@ exports.run = async (client, message, args) => {
         if (!args[0]) {
             const noargs = new Discord.MessageEmbed()
                 .setColor('BLUE')
-                .setTitle('<:StarPoint:766794021128765469> Sistema de Compras Maya')
+                .setTitle('<:StarPoint:766794021128765469> Sistema de Compras Naya')
                 .setDescription('Aqui você pode comprar os itens da lojinha. É muito simples, basta usar o comando, assim você compra itens e pode usa-lo.\n \nDigite o nome do item com meu prefixo que eu te falo mais informações sobre ele.')
                 .addField('Comando', '`' + prefix + 'buy Nome do item`')
                 .addField('Todos os itens', '`' + prefix + 'loja`')

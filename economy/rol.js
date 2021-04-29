@@ -41,11 +41,11 @@ exports.run = async (client, message, args) => {
 
             let roletaembed = new Discord.MessageEmbed()
                 .setColor('BLUE')
-                .setTitle('🎲 Roleta Maya')
-                .setDescription('<:pikachu:833378638291271680> Seja muito bem vindo a Roleta Maya!\n \n❓ **O que é a Roleta Maya?**\n- A Roleta é um simples jogo onde você ganha ou perde dinheiro.\n \nA Roleta consiste em uma variavel de sorte, onde depende de um resultado aleatório para você ganhar.')
+                .setTitle('🎲 Roleta Naya')
+                .setDescription('<:pikachu:833378638291271680> Seja muito bem vindo a Roleta Naya!\n \n❓ **O que é a Roleta Naya?**\n- A Roleta é um simples jogo onde você ganha ou perde dinheiro.\n \nA Roleta consiste em uma variavel de sorte, onde depende de um resultado aleatório para você ganhar.')
                 .addField('📜 Como jogar', '1. Compre algumas fichas na `' + prefix + 'loja`\n2. Digite `' + prefix + 'roleta Valor que quer apostar`\n Prontinho, é só isso.')
                 .addField('📌 Informações adicionais', '**1.** Todo o dinheiro perdido, vai para o meu banco\n**2.** O resultado de vitória é de 20%, derrota é de 40% e empate 40%\n**3. Resultado**\nVitória: Recebe de volta até o dobro do valor apostado\nEmpate: Recebe de volta o dinheiro apostado\nDerrota: O dinheiro apostado vai para o meu banco.')
-                .setFooter('A Maya não se responsabiliza por dinheiro perdido.')
+                .setFooter('A Naya não se responsabiliza por dinheiro perdido.')
 
             if (['all', 'tudo', 'ALL', 'All', 'Tudo', 'TUDO'].includes(args[0])) {
                 if (args[1]) { return message.inlineReply('<:xis:835943511932665926> Nada além do "all", coisas a mais atrapalha meu processamento.') }

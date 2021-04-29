@@ -46,7 +46,7 @@ exports.run = async (client, message, args) => {
 
   if (!user) {return message.reply('`' + prefix + 'saudar @user`')  }
 
-  if (user.id === '821471191578574888') { // Maya
+  if (user.id === '821471191578574888') { // Naya
     let avatar = message.author.displayAvatarURL({ format: 'png' })
     let embed1 = new Discord.MessageEmbed()
       .setColor('BLUE')

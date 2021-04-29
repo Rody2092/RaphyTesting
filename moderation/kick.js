@@ -140,7 +140,7 @@ exports.run = async (client, message, args) => {
                             },
                             {
                                 name: 'Dica o que houve no suporte',
-                                value: `[Suporte Maya](${support})`
+                                value: `[Suporte Naya](${support})`
                             }
                         )
                     return message.inlineReply(errorembed)

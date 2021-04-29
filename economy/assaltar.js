@@ -94,7 +94,7 @@ exports.run = async (client, message, args) => {
                         .setColor('#FF0000')
                         .setTitle('🚑 Você levou um tiro!')
                         .setDescription(`${user} atirou em você! Você está ferido e precisa de tratamentos rápido!`)
-                        .addField('🏥 Maya Hospital', `Debitamos ${tratamento}<:StarPoint:766794021128765469>MPoints de sua conta do banco para salvar sua vida.`)
+                        .addField('🏥 Naya Hospital', `Debitamos ${tratamento}<:StarPoint:766794021128765469>MPoints de sua conta do banco para salvar sua vida.`)
 
                     if (result == 'win') {
                         setTimeout(function () {

@@ -19,7 +19,7 @@ exports.run = async (client, message, args) => {
 
   let gay = new Discord.MessageEmbed()
     .setColor(calors)
-    .setTitle('🏳️‍🌈 Maya Gaymometro')
+    .setTitle('🏳️‍🌈 Naya Gaymometro')
     .setDescription(`Pela minha análise, ${user} é ${num}% gay.`)
   if (num > 80) { gay.setImage(gif) }
   return message.inlineReply(gay)

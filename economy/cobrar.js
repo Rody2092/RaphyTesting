@@ -35,7 +35,7 @@ exports.run = async (client, message, args) => {
                 .setTitle('💸 Sistema de cobrança')
                 .setDescription('Cobre as pessoas que te devem ou apenas peça dinheiro, você que sabe.')
                 .addField('Comando', '`' + prefix + 'cobrar @user Valor`')
-                .setFooter('A Maya não se responsabiliza por dinheiro perdido ou mal usado.')
+                .setFooter('A Naya não se responsabiliza por dinheiro perdido ou mal usado.')
             return message.inlineReply(cobre)
         }
 
@@ -77,7 +77,7 @@ exports.run = async (client, message, args) => {
             )
             .setFooter("Auto delete em 1 minuto.")
 
-        await message.channel.send('A Maya não se responsabiliza por dinheiro perdido.', cobrando).then(msg => {
+        await message.channel.send('A Naya não se responsabiliza por dinheiro perdido.', cobrando).then(msg => {
             msg.react('✅') // Check
             msg.react('❌') // X
             msg.delete({ timeout: 60000 })

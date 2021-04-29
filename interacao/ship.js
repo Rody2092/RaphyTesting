@@ -19,19 +19,19 @@ exports.run = async (client, message, args) => {
     .setColor("RED")
 
   if (love > 70) {
-    embed.setTitle('<:zeroheart:833378638475821088> Medidor de Amor Maya')
+    embed.setTitle('<:zeroheart:833378638475821088> Medidor de Amor Naya')
     embed.setThumbnail(gif70)
     embed.setDescription(`${user} & ${message.author}\nHuuum... Eu vejo futuro.\n${loveLevel}⠀${Math.floor(love)}% `)
   }
 
   if (love > 40 && love < 70) {
-    embed.setTitle('<:zerocute:832643202321874956> Medidor de Amor Maya')
+    embed.setTitle('<:zerocute:832643202321874956> Medidor de Amor Naya')
     embed.setThumbnail(gif40)
     embed.setDescription(`${user} & ${message.author}\nhmm... Ainda acho que pode sair algo.\n${loveLevel}⠀${Math.floor(love)}% `)
   }
 
   if (love < 40) {
-    embed.setTitle('<:sleep:833378639302754354> Medidor de Amor Maya')
+    embed.setTitle('<:sleep:833378639302754354> Medidor de Amor Naya')
     embed.setThumbnail(gif00)
     embed.setDescription(`${user} & ${message.author}\n... Que pena.\n${loveLevel}⠀${Math.floor(love)}% `)
   }

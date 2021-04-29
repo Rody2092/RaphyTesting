@@ -65,7 +65,7 @@ exports.run = async (client, message, args) => {
           },
           {
             name: 'Algum outro erro?',
-            value: `[Support Maya](${linksupport})`
+            value: `[Support Naya](${linksupport})`
           }
         )
 

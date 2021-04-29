@@ -343,7 +343,7 @@ exports.run = async (client, message, args) => {
     .setColor('BLUE')
     .addFields(
       {
-        name: 'Maya Indica :hearts:',
+        name: 'Naya Indica :hearts:',
         value: `Nome: ${rand}`
       }
     )
@@ -361,7 +361,7 @@ exports.run = async (client, message, args) => {
           .setColor('BLUE')
           .addFields(
             {
-              name: 'Maya Indica :hearts:',
+              name: 'Naya Indica :hearts:',
               value: `Nome: ${list[Math.floor(Math.random() * list.length)]}`
             }
           )

@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     const linkserver = 'https://discord.gg/YpFWgJuuUV'
     const embed = new Discord.MessageEmbed()
         .setColor('#1e3ddf')
-        .setTitle('BETA - Dicas da Maya - Random  Result')
+        .setTitle('BETA - Dicas da Naya - Random  Result')
         .setDescription('Consiga um resultado randomico (aleatório) dentro de um array')
         .addFields(
             {
@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
                 inline: true
             }
         )
-        .setFooter('Apoio Maya - Developers')
+        .setFooter('Apoio Naya - Developers')
 
     message.inlineReply(embed)
     setTimeout(function () { message.inlineReply("```js\n let resultado = ARRAY[Math.floor(Math.random() * ARRAY.length)]\n```") }, 1000)

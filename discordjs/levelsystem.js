@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     let linkserver = 'https://discord.gg/YpFWgJuuUV'
     const embed = new Discord.MessageEmbed()
         .setColor('#1e3ddf')
-        .setTitle('BETA - Dicas da Maya - Global Level System')
+        .setTitle('BETA - Dicas da Naya - Global Level System')
         .setDescription('Sistema de XP Global')
         .addFields(
             {
@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
                 inline: true
             }
         )
-        .setFooter('Apoio Maya - Developers')
+        .setFooter('Apoio Naya - Developers')
 
     message.inlineReply(embed)
     setTimeout(function () { message.inlineReply("```js\n function xp(message) {\n            if (message) {\n                let xp = db.add(`xp_${message.author.id}`, 2)\n                let level = Math.floor(0.5 * Math.sqrt(xp))\n                let lvl = db.get(`level_${message.author.id}`) || db.set(`level_${message.author.id}`, 1)\n                if (level > lvl) {\n                    let newLevel = db.set(`level_${message.author.id}`, level)\n                    let xpchannel = db.get(`xpchannel_${message.guild.id}`)\n                    if (xpchannel === null) { return }\n                    if (!db.get(`xpchannel_${message.guild.id}`)) { return false }\n                    if (client.channels.cache.get(xpchannel)) {\n                        const newlevel = new Discord.MessageEmbed()\n                            .setColor('GREEN')\n                            .setDescription(`:tada: ${message.author}, você subiu para o level ${newLevel}!`)\n                        client.channels.cache.get(xpchannel).send(newlevel)\n                    }\n                }\n            }\n        }\n```") }, 1000)

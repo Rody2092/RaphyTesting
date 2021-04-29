@@ -25,7 +25,7 @@ exports.run = async (client, message, args) => {
         if (!args[0]) {
             let noargs = new Discord.MessageEmbed()
                 .setColor('BLUE')
-                .setTitle('<:StarPoint:766794021128765469> Sistema de Vendas Maya')
+                .setTitle('<:StarPoint:766794021128765469> Sistema de Vendas Naya')
                 .setDescription('Aqui você pode vender seus itens em troca de MPoints. É muito simples, basta usar o comando, assim você pode vender os itens obtidos.\n \nDigite o nome do item com meu prefixo que eu te falo mais informações sobre ele.')
                 .addField('Comando', '`' + prefix + 'vender NomeDoItem Quantidade`')
                 .addField('Todos os itens', '`' + prefix + 'loja`')

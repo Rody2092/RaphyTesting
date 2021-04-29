@@ -75,7 +75,7 @@ exports.run = async (client, message, args) => {
         .addFields(
           {
             name: 'Suba meu cargo',
-            value: '1 - Configurações do Servidor\n2 - Cargos\n3 - Procure meu cargo "Maya"\n4 - Arraste meu cargo para um dos primeiros\n5 - Salve as alterações e tente novamente.'
+            value: '1 - Configurações do Servidor\n2 - Cargos\n3 - Procure meu cargo "Naya"\n4 - Arraste meu cargo para um dos primeiros\n5 - Salve as alterações e tente novamente.'
           }
         )
 
@@ -137,7 +137,7 @@ exports.run = async (client, message, args) => {
         .addFields(
           {
             name: 'Suba meu cargo',
-            value: '1 - Configurações do Servidor\n2 - Cargos\n3 - Procure meu cargo "Maya"\n4 - Arraste meu cargo para um dos primeiros\n5 - Salve as alterações e tente novamente.'
+            value: '1 - Configurações do Servidor\n2 - Cargos\n3 - Procure meu cargo "Naya"\n4 - Arraste meu cargo para um dos primeiros\n5 - Salve as alterações e tente novamente.'
           }
         )
 
@@ -172,7 +172,7 @@ exports.run = async (client, message, args) => {
           .addFields(
             {
               name: 'Suba meu cargo',
-              value: '1 - Configurações do Servidor\n2 - Cargos\n3 - Procure meu cargo "Maya"\n4 - Arraste meu cargo para um dos primeiros\n5 - Salve as alterações e tente novamente.'
+              value: '1 - Configurações do Servidor\n2 - Cargos\n3 - Procure meu cargo "Naya"\n4 - Arraste meu cargo para um dos primeiros\n5 - Salve as alterações e tente novamente.'
             }
           )
         const sobcarg = new Discord.MessageEmbed()
@@ -234,7 +234,7 @@ exports.run = async (client, message, args) => {
           .addFields(
             {
               name: 'Suba meu cargo',
-              value: '1 - Configurações do Servidor\n2 - Cargos\n3 - Procure meu cargo "Maya"\n4 - Arraste meu cargo para um dos primeiros\n5 - Salve as alterações e tente novamente.'
+              value: '1 - Configurações do Servidor\n2 - Cargos\n3 - Procure meu cargo "Naya"\n4 - Arraste meu cargo para um dos primeiros\n5 - Salve as alterações e tente novamente.'
             }
           )
         const sobcarg = new Discord.MessageEmbed()

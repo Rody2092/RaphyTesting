@@ -27,8 +27,8 @@ exports.run = async (client, message, args) => {
 
         let loja = new Discord.MessageEmbed()
             .setColor('YELLOW')
-            .setTitle('🏪 Lojinha Maya 24h')
-            .setDescription('Aqui na Lojinha Maya, você pode comprar várias coisas para ter acesso a comandos e funções incriveis.')
+            .setTitle('🏪 Lojinha Naya 24h')
+            .setDescription('Aqui na Lojinha Naya, você pode comprar várias coisas para ter acesso a comandos e funções incriveis.')
             .addFields(
                 {
                     name: 'Disponiveis',
