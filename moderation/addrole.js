@@ -16,7 +16,7 @@ exports.run = async (client, message, args) => {
     if (!role) { return message.inlineReply(('`' + prefix + 'addrole @user @cargo`')) }
     if (user.roles.cache.has(role.id)) { return message.inlineReply(`${user.user.username} já possui este cargo.`) }
 
-    if (!message.guild.owner) {
+    if (message.author.id !== message.guild.owner.id) {
         if (role.comparePositionTo(message.member.roles.highest) > -1) {
             return message.inlineReply(`<:xis:835943511932665926> Você não tem permissão para gerenciar o cargo ${role}.`)
         }

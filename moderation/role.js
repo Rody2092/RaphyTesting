@@ -64,10 +64,8 @@ exports.run = async (client, message, args) => {
     let RoleToDelete = message.mentions.roles.first() || message.guild.roles.cache.get(args[1]) || message.guild.roles.cache.find(r => r.name == args[1])
     if (!RoleToDelete) { return message.channel.send(formato) }
 
-    if (!message.guild.owner) {
-      if (RoleToDelete.comparePositionTo(message.member.roles.highest) > 0) {
-        return message.inlineReply(`<:xis:835943511932665926> Você não tem permissão para gerenciar o cargo ${RoleToDelete}.`)
-      }
+    if (message.author.id !== message.guild.owner.id) {
+      if (RoleToDelete.comparePositionTo(message.member.roles.highest) > 0) { return message.inlineReply(`<:xis:835943511932665926> Você não tem permissão para gerenciar o cargo ${RoleToDelete}.`) }
     }
 
     if (!RoleToDelete.editable) {
@@ -126,9 +124,9 @@ exports.run = async (client, message, args) => {
     let RoleToEdit = message.mentions.roles.first() || message.guild.roles.cache.get(args[1]) || message.guild.roles.cache.find(r => r.name == args[1])
     let FormatoName = "Siga o formato correto: `" + prefix + 'role edit name/color @role Novo Nome/Cor`'
     let FormatoColor = "Siga o formato correto: `" + prefix + 'role edit color @role #C0D1G0 (Use "default" para a cor padrão) `'
-    if (!args[1]) { return message.inlineReply('Mude o nome e a cor do cargo com este comando. Use `' + prefix + 'help doar`') }
+    if (!args[1]) { return message.inlineReply('Mude o nome e a cor do cargo com este comando. Use `' + prefix + 'help role`') }
 
-    if (!message.guild.owner) {
+    if (message.author.id !== message.guild.owner.id) {
       if (RoleToEdit.comparePositionTo(message.member.roles.highest) > -1) {
         return message.inlineReply(`<:xis:835943511932665926> Você não tem permissão para gerenciar o cargo ${RoleToEdit}.`)
       }
@@ -165,7 +163,7 @@ exports.run = async (client, message, args) => {
       if (!NovoNome) { return message.inlineReply(FormatoName) }
       if (NovoNome.length > 20) { return message.inlineReply('<:xis:835943511932665926> O novo nome não pode ultrapassar mais de 20 caracteres.') }
 
-      if (!message.guild.owner) {
+      if (message.author.id !== message.guild.owner.id) {
         if (RoleToEdit.comparePositionTo(message.member.roles.highest) > -1) {
           return message.inlineReply(`<:xis:835943511932665926> Você não tem permissão para gerenciar o cargo ${RoleToEdit}.`)
         }
@@ -229,7 +227,7 @@ exports.run = async (client, message, args) => {
       if (NovaCor > 16777215) { return message.inlineReply('<:xis:835943511932665926> Esse código HEX é muito grande! O limite é de 0 a 16777215.') }
       if (NovaCor <= 0) { return message.inlineReply('<:xis:835943511932665926> Esse código HEX é muito curto! O limite é de 0 a 16777215.') }
 
-      if (!message.guild.owner) {
+      if (message.author.id !== message.guild.owner.id) {
         if (RoleToEdit.comparePositionTo(message.member.roles.highest) > -1) {
           return message.inlineReply(`<:xis:835943511932665926> Você não tem permissão para gerenciar o cargo ${RoleToEdit}.`)
         }

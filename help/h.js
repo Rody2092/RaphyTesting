@@ -17,7 +17,7 @@ exports.run = async (client, message, args) => {
       .setTitle('⭐ Centralzinha de Ajuda da Naya ⭐')
       .setDescription('Use `' + `${prefix}help categoria` + '` para as pastas de comandos')
       .addField('Acesso rápido', `<a:engrenagem:836101651331940383> [Lista de Comandos](${linkgithub})\n<a:support:836302810495713301> [Suporte](${linksupport})\n<a:pin:836305960385249280> [Meu servidor](${linkservidor})\n<a:setinha:836308178190729256> [Me adicione](${invitebot})`)
-      .addField('Me ajude a ficar online', `<a:MoneyWings:834899137991540797> [Doar R$1,00](${mercadopago})\n <a:moneyjump:836308674506129408> Loteria: ${db.get('loteria')} <:StarPoint:766794021128765469>MPoints`, true)
+      .addField('Me ajude a ficar online', `<:mercadopago:837459585077870592> [Doar R$1,00](${mercadopago}) no Mercado Pago\n<:picpay:837458560904462356> Doe via PIX para o meu PicPay ` + '`' + prefix + 'pix`' + `\n <a:moneyjump:836308674506129408> Loteria: ${db.get('loteria')} <:StarPoint:766794021128765469>MPoints`, true)
       .setFooter(`${prefix}gif | ${prefix}ideianaya | ${prefix}bug`)
     return message.inlineReply(`Heey! Tudo bem ${message.author}?`, newhelp)
   }

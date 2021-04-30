@@ -150,7 +150,7 @@ exports.run = async (client, message, args) => {
    if (member.id === '837147659898191902') { return message.inlineReply('<:zeroT:832643202439708682> iiiii quer mutar, vê se pode.') }
    if (member.hasPermission('ADMINISTRATOR')) { return message.inlineReply('<:xis:835943511932665926> Este pessoa é um administrador. Eu não posso continuar o mute.') }
 
-   if (!message.guild.owner) {
+   if (message.author.id !== message.guild.owner.id) {
       if (member.roles.highest.comparePositionTo(message.member.roles.highest) > -1) { return message.inlineReply(`<:xis:835943511932665926> Você não pode mutar alguém com o mesmo cargo ou um cargo maior que o seu.`) }
    }
 
