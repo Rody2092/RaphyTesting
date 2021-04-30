@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
 	if (!args[0]) {
 		let noargs = new Discord.MessageEmbed()
 			.setColor('BLUE')
-			.setTitle('Casamento')
+			.setTitle('💍 Casamento')
 			.setDescription('Você pode se casar no Sistema Naya. Siga o comando e se case. Veja também em `' + prefix + 'perfil`')
 			.addFields(
 				{

@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
     let noargs = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('🎉 Data de Aniversário')
-        .setDescription('Defina sua data de aniversário no seu perfil atráves deste comando. Claro, é tudo opicional.\n \nObs: É obrigatório seguir o formato do exemplo! Com espaçamento e no formato DD/MM/AAAA')
+        .setDescription('Defina sua data de aniversário no seu perfil atráves deste comando. Claro, é tudo opicional.\n \nObs: É obrigatório seguir o formato do exemplo! Com **espaçamento** e no **formato DD / MM / AAAA**')
         .addField('`' + prefix + 'setniver 15 / 03 / 2007`', '**Desative**\n`' + prefix + 'setniver off`')
         .setFooter('Siga o formato, ok?')
 
@@ -54,24 +54,19 @@ exports.run = async (client, message, args) => {
     if (isNaN(args[0])) { return message.inlineReply('Números por favor, números.', erro) }
     if (args[0].length > 2) { return message.inlineReply('Hey, esse dia não existe nos meses', erro) }
     if (args[0].length < 2) { return message.inlineReply('Hey, esse dia não existe nos meses', erro) }
-
     if (args[1] !== "/") { return message.inlineReply(erro) }
-
     if (args[2] > 12) { return message.inlineReply('Quantos meses tem seu ano?', erro) }
-    if (args[2] === 02 && args[0] > 28) { return message.inlineReply('Fevereiro não tem mais de 28 dias', erro) }
+    if (args[0] > 28  && args[2] === '02') { return message.inlineReply('Fevereiro não tem mais de 28 dias', erro) }
     if (args[2] < 1) { return message.inlineReply('Qual é, colabora!', erro) }
     if (isNaN(args[2])) { return message.inlineReply('Sem letras poxa', erro) }
     if (args[2].length < 2) { return message.inlineReply('Não trolla', erro) }
     if (args[2].length > 2) { return message.inlineReply('Tá de zoeira né?', erro) }
-
     if (args[3] !== "/") { return message.inlineReply('Qual é, colabora!', erro) }
-
     if (args[4] > 2014) { return message.inlineReply('Calminha, você tem menos de 7 anos? Você não deveria estar usando o Discord') }
     if (args[4] < 1902) { return message.inlineReply('Eu acho que você não é a pessoa mais velha do mundo...') }
     if (isNaN(args[4])) { return message.inlineReply('N Ú M E R O S....') }
     if (args[4].length > 4) { return message.inlineReply('Tá de zoeira né?', erro) }
     if (args[4].length < 4) { return message.inlineReply('Qual é...', erro) }
-
     if (args[5]) { return message.inlineReply('Espera um pouco, essa data não é válida!', erro) }
 
     let atual = db.get(`aniversario_${message.author.id}`)
