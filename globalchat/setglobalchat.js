@@ -3,35 +3,24 @@ const db = require('quick.db')
 
 exports.run = async (client, message, args) => {
 
-    if (!message.member.hasPermission('MANAGE_CHANNELS')) { return message.inlineReply('Permissão Necessária: Gerenciar Canais') }
+    if (!message.member.hasPermission('MANAGE_CHANNELS')) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Gerenciar Canais') }
 
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    if (message.mentions.channels.first().name !== "naya-global-chat") {
-        return message.inlineReply('<:xis:835943511932665926> Por favor, selecione o canal com o nome "**naya-global-chat**"')
-    }
-
-    let CanalServer = message.guild.channels.cache.find(ch => ch.name === "naya-global-chat")
-    if (!CanalServer) {
-
-        const SemCanal = new Discord.MessageEmbed()
-            .setColor('BLUE')
-            .setTitle('📢 Naya Global Chat System')
-            .setDescription('Com este comando, ativa o canal, para o comando global não ser usado fora deste canal.')
-            .addField('Crie o canal', '`' + prefix + 'createchannel naya-global-chat`')
-            .setFooter('Links não são permitidos.')
-
-        return message.inlineReply('<:xis:835943511932665926> O canal Global Chat não existe neste servidor!', SemCanal)
-    }
-
-    const GlobalChatEmbed = new Discord.MessageEmbed()
+    const SetGlobalChatEmbed = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('💬 Naya Global Chat System')
-        .setDescription('Fale com os outros servidores em um único chat. Isso é um experiência diferenciada.')
-        .addField('Comando de ativação', '`' + prefix + 'setglobalchat #canal`')
+        .setDescription('Fale com os outros servidores em um único chat. Isso é um experiência única!')
+        .addField('Crie o canal', '`' + prefix + 'createchannel naya-global-chat`')
+        .addField('Valide o canal', '`' + prefix + 'setglobalchat #naya-global-chat`')
+        .addField('Desative o Canal', '`' + prefix + 'setglobalchat off` ou `' + prefix + 'deletechannel #naya-global-chat`')
 
-    if (!args[0]) { return message.inlineReply(GlobalChatEmbed) }
+    if (!args[0]) { return message.inlineReply(SetGlobalChatEmbed) }
+
+    let canalzin = message.mentions.channels.first()
+
+    if (args[1]) { return message.inlineReply('<:xis:835943511932665926> Por favor, marque apenas o canal **naya-global-chat**, nada além disso.') }
 
     if (args[0] === 'off') {
         let canal = db.get(`globalchat_${message.guild.id}`)
@@ -48,6 +37,19 @@ exports.run = async (client, message, args) => {
                 .setTitle('Global Chat desativado.')
             return message.inlineReply(comcanal)
         }
+    }
+
+    const SemCanal = new Discord.MessageEmbed()
+        .setColor('BLUE')
+        .setTitle('📢 Naya Global Chat System')
+        .setDescription('Este comando garante que ninguém use o comando `' + prefix + 'chat` fora do canal **#naya-global-chat**.')
+        .addField('Crie o canal', '`' + prefix + 'createchannel naya-global-chat`')
+        .addField('Valide o canal', '`' + prefix + 'setglobalchat #naya-global-chat`')
+
+    if (!canalzin) {
+        return message.inlineReply(SemCanal)
+    } else if (message.mentions.channels.first().name !== "naya-global-chat") {
+        return message.inlineReply('<:xis:835943511932665926> Por favor, selecione o canal com o nome "**#naya-global-chat**"')
     }
 
     let channel = message.mentions.channels.first()
