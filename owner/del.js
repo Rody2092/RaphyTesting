@@ -199,6 +199,7 @@ exports.run = async (client, message, args) => {
         db.delete(`slut_${user.id}`)
         db.delete(`preso_${user.id}`)
         db.delete(`pego_${user.id}`)
+        db.delete(`globaltiming_${user.id}`)
         db.delete(`esmolatimeout_${user.id}`)
         db.delete(`lancetimeout_${user.id}`)
         db.delete(`procurado_${user.id}`)
