@@ -32,19 +32,19 @@ exports.run = async (client, message, args) => {
             return message.inlineReply(embedtime)
         } else {
 
-            let formato = '`' + prefix + 'rob @user`'
+            let formato = '`' + prefix + 'roubar @user`'
             let user = message.mentions.members.first()
-
             if (!user) { return message.inlineReply(formato) }
+
+            let usermoney = db.get(`mpoints_${user.id}`)
+            let autormoney = db.get(`mpoints_${message.author.id}`)
+
+            if (usermoney == null) usermoney = 0
+            if (autormoney == null) autormoney = 0
             if (user.id === '837147659898191902') { return message.inlineReply('❓ Você realmente quer me roubar?') }
             if (user.id === message.author.id) { return message.inlineReply(`<:xis:835943511932665926> Você não pode roubar você mesmo.`) }
             if (usermoney === 0) { return message.inlineReply(`<:xis:835943511932665926> ${user} não possui dinheiro.`) }
             if (usermoney < 0) { return message.inlineReply(`<:xis:835943511932665926> ${user} está negativado.`) }
-            
-            let usermoney = db.get(`mpoints_${user.id}`)
-            let autormoney = db.get(`mpoints_${message.author.id}`)
-            if (usermoney == null) usermoney = 0
-            if (autormoney == null) autormoney = 0
 
             let luck = ['win', 'lose']
             let result = luck[Math.floor(Math.random() * luck.length)]

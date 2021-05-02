@@ -95,6 +95,56 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Uma loli adicionada ao slot de ${user}`)
     }
 
+    if (['estrela1'].includes(args[0])) {
+
+        if (!user) { return message.channel.send('`' + prefix + 'give estrela1 @user`') }
+
+        db.set(`estrela1_${user.id}`, "ON")
+        return message.channel.send(`<:starM:832974891635572787> Estrela 1 adicionada ao slot de ${user}`)
+    }
+
+    if (['estrela2'].includes(args[0])) {
+
+        if (!user) { return message.channel.send('`' + prefix + 'give estrela1 @user`') }
+
+        db.set(`estrela1_${user.id}`, "ON")
+        db.set(`estrela2_${user.id}`, "ON")
+        return message.channel.send(`<:starM:832974891635572787> Estrela 2 adicionada ao slot de ${user}`)
+    }
+
+    if (['estrela3'].includes(args[0])) {
+
+        if (!user) { return message.channel.send('`' + prefix + 'give estrela1 @user`') }
+
+        db.set(`estrela1_${user.id}`, "ON")
+        db.set(`estrela2_${user.id}`, "ON")
+        db.set(`estrela3_${user.id}`, "ON")
+        return message.channel.send(`<:starM:832974891635572787> Estrela 3 adicionada ao slot de ${user}`)
+    }
+
+    if (['estrela4'].includes(args[0])) {
+
+        if (!user) { return message.channel.send('`' + prefix + 'give estrela1 @user`') }
+
+        db.set(`estrela1_${user.id}`, "ON")
+        db.set(`estrela2_${user.id}`, "ON")
+        db.set(`estrela3_${user.id}`, "ON")
+        db.set(`estrela4_${user.id}`, "ON")
+        return message.channel.send(`<:starM:832974891635572787> Estrela 4 adicionada ao slot de ${user}`)
+    }
+
+    if (['estrela5'].includes(args[0])) {
+
+        if (!user) { return message.channel.send('`' + prefix + 'give estrela1 @user`') }
+
+        db.set(`estrela1_${user.id}`, "ON")
+        db.set(`estrela2_${user.id}`, "ON")
+        db.set(`estrela3_${user.id}`, "ON")
+        db.set(`estrela4_${user.id}`, "ON")
+        db.set(`estrela5_${user.id}`, "ON")
+        return message.channel.send(`<:starM:832974891635572787> Estrela 5 adicionada ao slot de ${user}`)
+    }
+
     if (['fossil'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'give fossil @user`') }
