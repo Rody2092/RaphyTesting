@@ -3,8 +3,8 @@ const db = require("quick.db")
 
 exports.run = async (client, message, args) => {
 
-    if (!message.member.hasPermission('MANAGE_GUILD')) { return message.inlineReply('<:xis:835943511932665926 Permissão Necessária: Gerenciar Servidor') }
-    if (!message.guild.me.hasPermission('MANAGE_GUILD')) { return message.inlineReply('<:xis:835943511932665926 Permissão Necessária: Gerenciar Servidor') }
+    if (!message.member.hasPermission('MANAGE_GUILD')) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Gerenciar Servidor') }
+    if (!message.guild.me.hasPermission('MANAGE_GUILD')) { return message.inlineReply('<:xis:835943511932665926> Permissão Necessária: Gerenciar Servidor') }
 
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
