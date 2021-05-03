@@ -3,7 +3,7 @@ const db = require("quick.db")
 const ms = require("parse-ms")
 
 exports.run = async (client, message, args) => {
-    message.delete({ timeout: 7000 }).catch(err => { return })
+    message.delete({ timeout: 3000 }).catch(err => { return })
 
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
@@ -39,6 +39,16 @@ exports.run = async (client, message, args) => {
 
             let CanalDoGlobalChat = db.get(`globalchat_${message.guild.id}`)
             let CanalServer = message.channel.id === CanalDoGlobalChat
+            
+            const SemCanalDefinido = new Discord.MessageEmbed()
+                .setColor('BLUE')
+                .setTitle('📢 Naya Global Chat System')
+                .setDescription('Com este comando, você consegue conversar com todos os servidores que eu estou.\nLinks não são permitidos.')
+                .addField('Crie o canal', '`' + prefix + 'createchannel NomeDoCanal`')
+                .addField('Valide o canal', '`' + prefix + 'setglobalchat #canal`')
+                .addField('Desative o Canal', '`' + prefix + 'setglobalchat off` ou `' + prefix + 'deletechannel #canal`')
+
+            if (CanalDoGlobalChat === null) { return message.channel.send('<:xis:835943511932665926> O canal não foi autenticado!', SemCanalDefinido) }
 
             let ConfirmaCanal = message.channel.id === db.get(`globalchat_${message.guild.id}`)
             if (!ConfirmaCanal) { return message.channel.send(`<:xis:835943511932665926> Este não é o Global Chat! Vem cá, é aqui: ${client.channels.cache.get(CanalDoGlobalChat)}`).then(msg => msg.delete({ timeout: 7000 }).catch(err => { return })) }
@@ -55,16 +65,6 @@ exports.run = async (client, message, args) => {
 
                 return message.channel.send('<:xis:835943511932665926> O Global Chat não existe neste servidor!', SetGlobalChatEmbed)
             }
-
-            const SemCanalDefinido = new Discord.MessageEmbed()
-                .setColor('BLUE')
-                .setTitle('📢 Naya Global Chat System')
-                .setDescription('Com este comando, você consegue conversar com todos os servidores que eu estou.\nLinks não são permitidos.')
-                .addField('Crie o canal', '`' + prefix + 'createchannel NomeDoCanal`')
-                .addField('Valide o canal', '`' + prefix + 'setglobalchat #canal`')
-                .addField('Desative o Canal', '`' + prefix + 'setglobalchat off` ou `' + prefix + 'deletechannel #canal`')
-
-            if (CanalDoGlobalChat === null) { return message.channel.send('<:xis:835943511932665926> O canal não foi autenticado!', SemCanalDefinido) }
 
             if (!db.get(`globalchat_${message.guild.id}`)) {
                 return message.channel.send('<:xis:835943511932665926> Parece que o Global Chat foi excluido... Use `' + prefix + 'setglobalchat` Para mais informações.')
