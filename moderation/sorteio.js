@@ -47,7 +47,7 @@ exports.run = async (client, message, args) => {
     if (m.reactions.cache.get("🎉").count <= 1) { return channel.send('<:xis:835943511932665926> Sorteio cancelado por falta de participantes.') }
 
     let winner = m.reactions.cache.get("🎉").users.cache.filter((u) => !u.bot).random()
-    let avatar = winner.displayAvatarURL({ format: 'png' })
+    let avatar = winner.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
 
     let winembed = new Discord.MessageEmbed()
       .setColor(`#067aff`)

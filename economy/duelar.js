@@ -83,13 +83,13 @@ exports.run = async (client, message, args) => {
                     let result = winlose[Math.floor(Math.random() * winlose.length)]
 
                     if (result === 'win') {
-                        WinEmbed.setDescription(`${message.author.username} recebeu: ${cache}<:NPoints:837666759389347910>NPoints`)
+                        WinEmbed.setDescription(`${message.author} recebeu: ${cache}<:NPoints:837666759389347910>NPoints`)
                         db.add(`mpoints_${message.author.id}`, cache)
                         return message.inlineReply(WinEmbed).then(() => db.delete(`cachebattle_${message.author.id}`))
                     }
 
                     if (result === 'lose') {
-                        WinEmbed.setDescription(`${user.user.username} recebeu: ${cache}<:NPoints:837666759389347910>NPoints`)
+                        WinEmbed.setDescription(`${user} recebeu: ${cache}<:NPoints:837666759389347910>NPoints`)
                         db.add(`mpoints_${message.mentions.members.first().id}`, cache)
                         return message.inlineReply(WinEmbed).then(() => db.delete(`cachebattle_${message.author.id}`))
                     }
