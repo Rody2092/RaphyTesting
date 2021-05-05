@@ -49,12 +49,12 @@ exports.run = async (client, message, args) => {
 
   if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
 
-  let embed = new Discord.MessageEmbed()
+  const embed = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setDescription(`Highfive ${user}?`)
     .setFooter('Clique em 🔁 para aceitar o highfive')
 
-  let embed2 = new Discord.MessageEmbed()
+  const embed2 = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setDescription(`${message.author.username} & ${user.username} mandaram um HIGHFIVE!`)
     .setImage(rand1)

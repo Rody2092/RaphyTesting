@@ -21,7 +21,6 @@ exports.run = async (client, message, args) => {
       'https://imgur.com/NaD26Am.gif'
    ]
 
-
    let rand = list[Math.floor(Math.random() * list.length)]
    let rand1 = list1[Math.floor(Math.random() * list1.length)]
    let user = message.mentions.users.first()
@@ -34,7 +33,8 @@ exports.run = async (client, message, args) => {
    if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
 
    let avatar = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
-   let avatar1 = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
+   let avatar1 = user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
+
    let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setAuthor(message.author.username + ` está lambendo ${user.username}`, avatar)

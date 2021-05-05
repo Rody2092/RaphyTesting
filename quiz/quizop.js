@@ -20,7 +20,7 @@ exports.run = async (client, message, args) => {
         message.channel.awaitMessages(filter, { max: 1, time: 15000, errors: ['time'] })
             .then(collected => {
 
-                const amount = Math.floor(Math.random() * 200) + 1
+                const amount = Math.floor(Math.random() * 20) + 1
                 db.add(`mpoints_${collected.first().author.id}`, amount)
 
                 let resposta = new Discord.MessageEmbed()

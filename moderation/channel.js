@@ -14,6 +14,7 @@ exports.run = async (client, message, args) => {
         .setTitle('🛠️ Gerenciamento de Canais')
         .setDescription('Com este comando você pode gerenciar os canais rapidamente.')
         .addField('Mute o Nome', '`' + prefix + 'channel name #canal NomeDoCanal` Edite o nome do canal\n')
+        .addField('Mute o Tópico', '`' + prefix + 'channel topic O novo tópico irado do canal`')
         .addField('Crie e Delete', '`' + prefix + 'channel create text/voice NomeDoCanal` Crie canais\n' + '`' + prefix + 'channel delete NomeDoCanal` Crie canais\n')
         .setFooter(`Precisa de Ajuda? ${prefix}support`)
 
@@ -34,6 +35,18 @@ exports.run = async (client, message, args) => {
             .setColor('GREEN')
             .setDescription(`<a:Check:836347816036663309> Canal renomeado para **${NovoNome}**`)
         return message.inlineReply(sucess)
+    } else if (['tópico', 'topic'].includes(args[0])) {
+
+        const TopicoDoCanal = args.slice(1).join(" ")
+        if (!TopicoDoCanal) { return message.inlineReply('<:xis:835943511932665926> Você não disse o tópico do canal.\n`' + prefix + 'channel topic O tópico do canal em diante.`') }
+        if (TopicoDoCanal.length > 1024) { return message.inlineReply('<:xis:835943511932665926> O nome do canal não pode ultrapassar **1024 caracteres**') }
+
+        message.channel.setTopic(TopicoDoCanal)
+        const sucess = new Discord.MessageEmbed()
+            .setColor('GREEN')
+            .setDescription('<a:Check:836347816036663309> Tópico do Canal alterado com sucesso.')
+        return message.inlineReply(sucess)
+
     } else if (['create', 'criar'].includes(args[0])) {
 
         if (!args[1]) { return message.inlineReply('<:xis:835943511932665926> Por favor, siga o formato correto.\n`' + prefix + 'channel create text/voice NomeDoCanal`') }

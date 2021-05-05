@@ -38,7 +38,7 @@ exports.run = async (client, message, args) => {
     if (isNaN(args[1])) { return message.inlineReply('`' + prefix + 'clear @user Quantidade` Máx: 100') }
     if (args[1] > 100) return message.channel.send('Me fala um número até 100, ok?')
 
-    let userMessages = await message.channel.messages.fetch({ limit: parseInt(amountToDelete) })
+    let userMessages = await message.channel.messages.fetch({ limit: parseInt(amountToDelete) }).catch(err => { return })
     let userFilter = userMessages.filter(obj => obj.author.id === message.mentions.users.first().id)
 
     message.channel.bulkDelete(userFilter).catch(err => { return })
@@ -46,7 +46,7 @@ exports.run = async (client, message, args) => {
   }
 
   if (['bot', "bots"].includes(args[0])) {
-    let awaitBotMessages = await message.channel.messages.fetch({ limit: 100 })
+    let awaitBotMessages = await message.channel.messages.fetch({ limit: 100 }).catch(err => { return })
     let botFilter = awaitBotMessages.filter(obj => obj.author.bot)
 
     message.channel.bulkDelete(botFilter).catch(err => { return })
@@ -68,7 +68,7 @@ exports.run = async (client, message, args) => {
     let messages = 0
     let i = true
     while (i) {
-      let deleteAble = await message.channel.messages.fetch({ limit: 100 })
+      let deleteAble = await message.channel.messages.fetch({ limit: 100 }).catch(err => { return })
       if (deleteAble.size < 100) {
         await message.channel.bulkDelete(deleteAble).catch(err => { return })
         messages += deleteAble.size

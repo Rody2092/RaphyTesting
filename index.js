@@ -86,12 +86,13 @@ client.on("message", async (message) => {
                 db.add(`mpoints_${message.author.id}`, 500)
                 let xpchannel = db.get(`xpchannel_${message.guild.id}`)
                 if (xpchannel === null) { return }
+                if (!client.channels.cache.get(xpchannel)) { return }
                 if (!db.get(`xpchannel_${message.guild.id}`)) { return }
                 if (xpchannel) {
                     const newlevel = new Discord.MessageEmbed()
                         .setColor('GREEN')
                         .setDescription(`:tada: ${message.author}, você subiu para o level ${newLevel}!\nBônus: 500 <:NPoints:837666759389347910>NPoints`)
-                    client.channels.cache.get(xpchannel).send(newlevel)
+                    client.channels.cache.get(xpchannel).send(newlevel).catch(err => { return })
                 }
             }
         }
@@ -232,7 +233,7 @@ client.on("message", async (message) => {
 
         let respostinhas1 = ['Ué... Eu não tenho esse comando.', 'Eita, comando desconhecido!', 'Não existe esse comando na minha lista...', 'Viish... Esse comando não existe.', 'Não tenho esse comando não...']
         let reposta1 = respostinhas1[Math.floor(Math.random() * respostinhas1.length)]
-    
+
         return message.inlineReply(`<:xis:835943511932665926> | ${reposta1}`).then(msg => msg.delete({ timeout: 6000 })).catch(err => { return })
     }
 }) // Fim do Client.on('Message')

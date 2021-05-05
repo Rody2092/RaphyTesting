@@ -55,7 +55,7 @@ exports.run = async (client, message, args) => {
             const embed = new Discord.MessageEmbed()
                 .setColor('GREEN')
                 .setDescription('```fix\n' + `${content1}` + '```')
-            return message.inlineReply(`<a:Check:836347816036663309> Você ativou o modo AFK Global.`, embed)
+            return message.inlineReply(`<a:Check:836347816036663309> Você ativou o modo AFK Global.`)
         }
     }
 
@@ -64,6 +64,6 @@ exports.run = async (client, message, args) => {
         const embed = new Discord.MessageEmbed()
             .setColor('GREEN')
             .setDescription('```fix\n' + `${content}` + '```')
-        return message.inlineReply(`<a:Check:836347816036663309> Você ativou o modo AFK no Servidor.`, embed)
+        return message.inlineReply(`<a:Check:836347816036663309> Você ativou o modo AFK no Servidor.`)
     }
 }

@@ -45,22 +45,22 @@ exports.run = async (client, message, args) => {
   if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
 
   let avatar = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
-  let avatar1 = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
-  let embed = new Discord.MessageEmbed()
+  let avatar1 = user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
+  const embed = new Discord.MessageEmbed()
     .setColor('BLUE')
-    .setDescription(`${message.author} está te dando carinho ${user}`, avatar)
+    .setAuthor(`${message.author.username} está te dando carinho ${user.username}`, avatar)
     .setImage(rand)
     .setFooter('Clique em 🔁 para retribuir')
 
-  let embed2 = new Discord.MessageEmbed()
+  const embed2 = new Discord.MessageEmbed()
     .setColor('BLUE')
-    .setDescription(`${user} também acariciou você ${message.author} `, avatar1)
+    .setAuthor(`${user.username} também acariciou você ${message.author.username} `, avatar1)
     .setImage(rand1)
 
   await message.inlineReply(embed).then(msg => {
     msg.react('🔁').catch(err => { return })
     setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 15000)
-    
+
     msg.awaitReactions((reaction, user) => {
       if (message.mentions.users.first().id !== user.id) return
 

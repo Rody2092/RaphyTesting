@@ -21,10 +21,11 @@ exports.run = async (client, message, args) => {
   if (!user) { return message.inlineReply('`' + prefix + 'implorar @user`') }
   if (user.id === '837147659898191902') { return message.inlineReply('Porque imploras a mim?') }
   if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
+  let avatar = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
 
-  let embed = new Discord.MessageEmbed()
+  const embed = new Discord.MessageEmbed()
     .setColor('#000000')
-    .setDescription(`${message.author} esta implorando ${user}`)
+    .setAuthor(`${message.author.username} esta implorando ${user.username}`, avatar)
     .setImage(rand)
   return message.inlineReply(embed)
 }

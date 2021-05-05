@@ -1,12 +1,19 @@
 const Discord = require("discord.js")
 const db = require("quick.db")
 const ms = require("parse-ms")
+const PalavrinhasFeias = require("./filterchat.json")
 
 exports.run = async (client, message, args) => {
     message.delete({ timeout: 3000 }).catch(err => { return })
 
+    let lock = db.get('lockglobal')
+    if (lock) { return message.inlineReply("🔒 O canal global está fechado no momento.").then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })) }
+
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
+
+    let color = await db.get(`color_${message.author.id}`)
+    if (color === null) color = '#6F6C6C'
 
     if (db.get(`noglobalchat_${message.author.id}`)) {
         message.delete().catch(err => { return })
@@ -22,7 +29,7 @@ exports.run = async (client, message, args) => {
 
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
-        return message.channel.send(`${message.author}, <:xis:835943511932665926> Espere o sistema global esfriar os motores... ${time.minutes}m e ${time.seconds}s`).then(msg => msg.delete({ timeout: 5000 }).catch(err => { return }))
+        return message.channel.send(`<:xis:835943511932665926> Espere o sistema global esfriar os motores... ${time.minutes}m e ${time.seconds}s`).then(msg => msg.delete({ timeout: 5000 }).catch(err => { return }))
     } else {
 
         let timing = db.fetch(`timemuteglobal_${message.author.id}`)
@@ -44,29 +51,15 @@ exports.run = async (client, message, args) => {
                 .setColor('BLUE')
                 .setTitle('📢 Raphy Global Chat System')
                 .setDescription('Com este comando, você consegue conversar com todos os servidores que eu estou.\nLinks não são permitidos.')
-                .addField('Crie o canal', '`' + prefix + 'createchannel NomeDoCanal`')
+                .addField('Crie o canal', '`' + prefix + 'channel create text NomeDoCanal`')
                 .addField('Valide o canal', '`' + prefix + 'setglobalchat #canal`')
                 .addField('Desative o Canal', '`' + prefix + 'setglobalchat off` ou `' + prefix + 'deletechannel #canal`')
 
             if (CanalDoGlobalChat === null) { return message.channel.send('<:xis:835943511932665926> O canal não foi autenticado!', SemCanalDefinido) }
+            if (!client.channels.cache.get(CanalDoGlobalChat)) { return message.channel.send('<:xis:835943511932665926> O Global Chat não existe neste servidor!', SemCanalDefinido) } if (!db.get(`globalchat_${message.guild.id}`)) { return message.channel.send(`<:xis:835943511932665926> Este não é o Global Chat! Vem cá, é aqui: ${client.channels.cache.get(CanalDoGlobalChat)}`).then(msg => msg.delete({ timeout: 7000 }).catch(err => { return })) }
+            if (!CanalServer) { return message.channel.send(`<:xis:835943511932665926> Este não é o Global Chat! Vem cá, é aqui: ${client.channels.cache.get(CanalDoGlobalChat)}`).then(msg => msg.delete({ timeout: 7000 }).catch(err => { return })) }
 
-            let ConfirmaCanal = message.channel.id === db.get(`globalchat_${message.guild.id}`)
-            if (!ConfirmaCanal) { return message.channel.send(`<:xis:835943511932665926> Este não é o Global Chat! Vem cá, é aqui: ${client.channels.cache.get(CanalDoGlobalChat)}`).then(msg => msg.delete({ timeout: 7000 }).catch(err => { return })) }
-
-            if (!CanalServer) {
-
-                const SetGlobalChatEmbed = new Discord.MessageEmbed()
-                    .setColor('BLUE')
-                    .setTitle('💬 Raphy Global Chat System')
-                    .setDescription('Fale com os outros servidores em um único chat. Isso é um experiência única!')
-                    .addField('Crie o canal', '`' + prefix + 'createchannel NomeDoCanal`')
-                    .addField('Valide o canal', '`' + prefix + 'setglobalchat #canal`')
-                    .addField('Desative o Canal', '`' + prefix + 'setglobalchat off` ou `' + prefix + 'deletechannel #canal`')
-
-                return message.channel.send('<:xis:835943511932665926> O Global Chat não existe neste servidor!', SetGlobalChatEmbed)
-            }
-
-            if (!db.get(`globalchat_${message.guild.id}`)) {
+            if (!CanalDoGlobalChat) {
                 return message.channel.send('<:xis:835943511932665926> Parece que o Global Chat foi excluido... Use `' + prefix + 'setglobalchat` Para mais informações.')
             } else {
 
@@ -87,39 +80,42 @@ exports.run = async (client, message, args) => {
                 if (MensagemGlobal.length > 300) { return message.channel.send('<:xis:835943511932665926> Heeey! A mensagem não pode ter mais que **300 caracteres**.').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })) }
                 if (MensagemGlobal.length < 3) { return message.channel.send('<:xis:835943511932665926> Heeey! A mensagem não pode ter menos que **3 caracteres**.').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })) }
                 if (AchaLink(MensagemGlobal) === true) { return message.channel.send(`${message.author}, Por favor, não envie links no Global Chat.`).then(msg => msg.delete({ timeout: 5000 }).catch(err => { return })) }
-                if (['xvideos', 'pornhub', 'redtube', 'loli', 'poha', 'porra', 'caralho', 'fdp', 'filho da puta', 'vagabundo'].includes(MensagemGlobal)) {
+
+                let PalavrasMuitoFeias = false
+                var i
+                for (i = 0; i < PalavrinhasFeias.length; i++) {
+                    if (MensagemGlobal.content.toLowerCase().includes(PalavrinhasFeias[i].toLowerCase()))
+                        PalavrasMuitoFeias = true
+                }
+
+                if (PalavrasMuitoFeias) {
                     message.delete().catch(err => { return })
-                    message.channel.send('<:xis:835943511932665926> Essa mensagens comtém palavras que não podem ser enviadas.').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return }))
+                    message.channel.send('<:xis:835943511932665926> Essa mensagem contém palavras feias...').then(msg => msg.delete({ timeout: 5000 }).catch(err => { return }))
                 } else {
 
                     let ServidoresAtivados = db.fetch(`globalchat_${message.guild.id}`)
                     if (message.channel.id === ServidoresAtivados) {
 
-                        let GlobalChatEmbedMensagem = new Discord.MessageEmbed()
-                            .setColor('BLUE')
+                        const GlobalChatEmbedMensagem = new Discord.MessageEmbed()
+                            .setColor(color)
                             .setAuthor(`${message.author.tag} | ${message.guild.name}`, avatar)
                             .setDescription(`\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
-                            .setFooter(`${prefix}chat sua mensagem | ${message.author.id}`)
+                            .setFooter(`${prefix}chat | ${message.author.id}`)
 
                         if (vip) {
-                            GlobalChatEmbedMensagem.setColor('#FDFF00')
                             GlobalChatEmbedMensagem.setDescription(`<a:vip:837441854332338227> Membro VIP\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
-                            GlobalChatEmbedMensagem.setFooter(`${prefix}chat sua mensagem | ${prefix}vip | ${message.author.id}`)
                         }
 
                         if (moderador) {
-                            GlobalChatEmbedMensagem.setColor('#FF7D00')
                             GlobalChatEmbedMensagem.setDescription(`🎖️ Moderador Chat Global Raphy\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
                         }
 
                         if (ModeradorServidor) {
-                            GlobalChatEmbedMensagem.setColor('#00FF1A')
                             GlobalChatEmbedMensagem.setDescription(`✨ Staff Servidor Raphy's House\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
                         }
 
                         if (rody) {
-                            GlobalChatEmbedMensagem.setColor('#FF0000')
-                            GlobalChatEmbedMensagem.setDescription(`<a:engrenagem:836101651331940383> Criador da Raphy\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
+                            GlobalChatEmbedMensagem.setDescription(`<a:engrenagem:836101651331940383> Desenvolvedor\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
                         }
 
                         client.guilds.cache.forEach(Canal => {

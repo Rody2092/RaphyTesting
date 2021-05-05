@@ -35,16 +35,16 @@ exports.run = async (client, message, args) => {
   if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
 
   let avatar = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
-  let avatar1 = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
+  let avatar1 = user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
   let embed = new Discord.MessageEmbed()
     .setColor('BLUE')
-    .setDescription(`${message.author} está pisando em você ${user}`, avatar)
+    .setAuthor(`${message.author.username} está pisando em você ${user.username}`, avatar)
     .setImage(rand)
     .setFooter('Clique em 🔁 para retribuir')
 
   let embed2 = new Discord.MessageEmbed()
     .setColor('BLUE')
-    .setDescription(`${user} devolveu as pisadas ${message.author} `, avatar1)
+    .setAuthor(`${user.username} devolveu as pisadas ${message.author.username} `, avatar1)
     .setImage(rand1)
 
   await message.inlineReply(embed).then(msg => {

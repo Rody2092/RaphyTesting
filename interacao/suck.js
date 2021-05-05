@@ -33,7 +33,7 @@ exports.run = async (client, message, args) => {
    if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
 
    let avatar = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
-   let avatar1 = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
+   let avatar1 = user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
    let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
       .setDescription(`${message.author} está chupando ${user}`, avatar)
@@ -48,7 +48,7 @@ exports.run = async (client, message, args) => {
    await message.inlineReply(embed).then(msg => {
       msg.react('🔁').catch(err => { return })
       setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 15000)
-      
+
       msg.awaitReactions((reaction, user) => {
          if (message.mentions.users.first().id !== user.id) return
 

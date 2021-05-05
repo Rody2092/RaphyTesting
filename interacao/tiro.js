@@ -39,16 +39,17 @@ exports.run = async (client, message, args) => {
   if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
 
   let avatar = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
-  let avatar1 = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
-  let embed = new Discord.MessageEmbed()
+  let avatar1 = user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
+
+  const embed = new Discord.MessageEmbed()
     .setColor('BLUE')
-    .setDescription(`${message.author} está atirando em você ${user}`, avatar)
+    .setAuthor(`${message.author.username} está atirando em você ${user.username}`, avatar)
     .setImage(rand)
     .setFooter('Clique em 🔁 para retribuir')
 
-  let embed2 = new Discord.MessageEmbed()
+  const embed2 = new Discord.MessageEmbed()
     .setColor('BLUE')
-    .setDescription(`${user} levou a sério e está devolvendo os tiros ${message.author} `, avatar1)
+    .setAuthor(`${user.username} levou a sério e está devolvendo os tiros ${message.author.username} `, avatar1)
     .setImage(rand1)
 
   await message.inlineReply(embed).then(msg => {

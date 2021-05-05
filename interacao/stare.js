@@ -22,10 +22,11 @@ exports.run = async (client, message, args) => {
   if (!user) {return message.reply('`' + prefix + 'stare @user`')  }
   if (user.id === '837147659898191902') {return message.inlineReply('O que foi que eu fiz? o-o')  }
   if (user.id === message.author.id) {    return message.inlineReply('Você não pode usar este comando com você mesmo.')  }
+  let avatar = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
 
-  let embed = new Discord.MessageEmbed()
+  const embed = new Discord.MessageEmbed()
     .setColor('#000000')
-    .setDescription(`${message.author} estou de olho em você ${user}`)
+    .setAuthor(`${message.author.username} estou de olho em você ${user.username}`, avatar)
     .setImage(rand)
   return message.inlineReply(embed)
 }

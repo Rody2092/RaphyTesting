@@ -41,11 +41,11 @@ exports.run = async (client, message, args) => {
   if (user.id === message.author.id) {    return message.inlineReply('Você não pode usar este comando com você mesmo.')  }
   if (message.mentions.bot) {    return message.inlineReply('Você não pode beijar bots.')  }
 
-  let avatar1 = message.author.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
+  let avatar = user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
 
-  let embed = new Discord.MessageEmbed()
+  const embed = new Discord.MessageEmbed()
     .setColor('BLUE')
-    .setAuthor(user.username + ` aceitou o beijo de ${message.author.username}`, avatar1)
+    .setAuthor(user.username + ` aceitou o beijo de ${message.author.username}`, avatar)
     .setImage(rand1)
 
   await message.inlineReply(`${user}, aceita beijar ${message.author.username}?`,).then(msg => {

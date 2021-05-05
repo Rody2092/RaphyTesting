@@ -21,27 +21,27 @@ exports.run = async (client, message, args) => {
         .setTitle('🖌️ Cores Raphy')
         .setDescription('Mude a cor das suas embeds com este comando.')
         .addField('Comando', '`' + prefix + 'setcolor cor`')
-        .setFooter(`${prefix}slot colors`)
+        .setFooter(`${prefix}slot vip`)
 
     if (!args[0]) return message.inlineReply(NoArgsEmbed)
     if (args[1]) return message.inlineReply('<:xis:835943511932665926> Nada além da sua cor, por favor.')
-    if (!['red', 'vermelho', 'branco', 'white', 'laranja', 'yellow'].includes(args[0].toLowerCase())) return message.inlineReply('<:xis:835943511932665926> Esta cor não tem no registro vip.')
 
     if (['red', 'vermelho'].includes(args[0].toLowerCase())) {
         if (vermelho === null) return message.inlineReply('<:xis:835943511932665926> Você não tem a cor vermelha, compre ela na `' + prefix + 'loja vip`')
-        db.set(`color_${message.author.id}`, vermelho)
+        db.set(`color_${message.author.id}`, `#B62A2A`)
         return message.inlineReply('<a:Check:836347816036663309> Cor definida com sucesso!')
-    }
 
-    if (['branco', 'white'].includes(args[0].toLowerCase())) {
+    } else if (['branco', 'white'].includes(args[0].toLowerCase())) {
         if (branco === null) return message.inlineReply('<:xis:835943511932665926> Você não tem a cor branca, compre ela na `' + prefix + 'loja vip`')
-        db.set(`color_${message.author.id}`, branco)
+        db.set(`color_${message.author.id}`, `#F0EBEB`)
         return message.inlineReply('<a:Check:836347816036663309> Cor definida com sucesso!')
-    }
 
-    if (['laranja', 'orange'].includes(args[0].toLowerCase())) {
-        if (laranja === null) return message.inlineReply('<:xis:835943511932665926> Você não tem a cor amarela, compre ela na `' + prefix + 'loja vip`')
-        db.set(`color_${message.author.id}`, laranja)
+    } else if (['laranja', 'orange'].includes(args[0].toLowerCase())) {
+        if (laranja === null) return message.inlineReply('<:xis:835943511932665926> Você não tem a cor laranja, compre ela na `' + prefix + 'loja vip`')
+        db.set(`color_${message.author.id}`, `#E7850E`)
         return message.inlineReply('<a:Check:836347816036663309> Cor definida com sucesso!')
+        
+    } else {
+        return message.inlineReply('<:xis:835943511932665926> Esta cor não tem no registro vip.')
     }
 }

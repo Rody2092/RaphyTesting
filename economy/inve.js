@@ -8,6 +8,9 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) { prefix = "-" }
 
+    let color = await db.get(`color_${user.id}`)
+    let vip = await db.get(`vip_${user.id}`)
+
     let title = await db.get(`title_${user.id}`)
     if (title) (title = "🔰 Título")
     if (title === null) { title = "" }
@@ -133,13 +136,42 @@ exports.run = async (client, message, args) => {
     if (nada2) { nada2 = 'Não há nada aqui' }
     if (!nada2) { nada2 = '' }
 
-    let Embed = new Discord.MessageEmbed()
-        .setColor('BLUE')
-        .setTitle(`📖 **Inventário de ${user.user.username}**`)
-        .addField('Itens Comprados', `${nada}${arma}${picareta}${vara}${machado}${cartas}`)
-        .setFooter(`${prefix}buy | ${prefix}itens | ${prefix}vender | ${prefix}shop | ${prefix}doar`)
-    if (!medalha) { Embed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}${bola}${cachorro}${remedio}`) }
-    if (medalha) { Embed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}\n🏅 Medalha Cammum${dogname}`) }
-    Embed.addField('Mantimentos', `🐟 ${peixes} Peixes\n🥘 ${comida} Comidas\n🪱 ${iscas} Iscas\n🥤 ${agua} Água\n🎟️ ${fichas} Fichas\n🍤 ${camarao} Camarões\n🦴 ${ossos} Ossos\n🌹 ${rosas} Rosas\n🍎 ${apple} Maça\n🪨 ${minerio} Minérios\n💎 ${diamond} Diamantes`)
-    await message.inlineReply(Embed)
+    let vermelho = db.get(`red_${user.id}`)
+    if (vermelho) { vermelho = '🟥 Vermelho' }
+    if (vermelho === null) { vermelho = '' }
+
+    let branco = db.get(`white_${user.id}`)
+    if (branco) { branco = '\n⬜ Branco' }
+    if (branco === null) { branco = '' }
+
+    let laranja = db.get(`orange_${user.id}`)
+    if (laranja) { laranja = '\n🟧 Laranja' }
+    if (laranja === null) { laranja = '' }
+
+    let nada3 = !vermelho && !branco && !laranja
+    if (nada3) { nada3 = 'Nenhuma cor foi comprada ainda.' }
+    if (!nada3) { nada3 = '' }
+
+    let avatar = user.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
+
+    if (args[0] === 'vip') {
+        const VipEmbed = new Discord.MessageEmbed()
+            .setColor(color)
+            .setAuthor(`Inventário VIP de ${user.user.username}`, avatar)
+            .addField('Cores Liberadas', `${nada3}${vermelho}${branco}${laranja}`)
+            .setFooter(`${prefix}buy | ${prefix}itens | ${prefix}shop vip`)
+        return message.inlineReply(VipEmbed)
+    }
+
+    if (args[0] !== 'vip') {
+        const NormalSlotEmbed = new Discord.MessageEmbed()
+            .setColor(color)
+            .setAuthor(`Inventário de ${user.user.username}`, avatar)
+            .addField('Itens Comprados', `${nada}${arma}${picareta}${vara}${machado}${cartas}`)
+            .setFooter(`${prefix}buy | ${prefix}itens | ${prefix}vender | ${prefix}shop | ${prefix}doar | ${prefix}slot vip`)
+        if (!medalha) { NormalSlotEmbed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}${bola}${cachorro}${remedio}`) }
+        if (medalha) { NormalSlotEmbed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}\n🏅 Medalha Cammum${dogname}`) }
+        NormalSlotEmbed.addField('Mantimentos', `🐟 ${peixes} Peixes\n🥘 ${comida} Comidas\n🪱 ${iscas} Iscas\n🥤 ${agua} Água\n🎟️ ${fichas} Fichas\n🍤 ${camarao} Camarões\n🦴 ${ossos} Ossos\n🌹 ${rosas} Rosas\n🍎 ${apple} Maça\n🪨 ${minerio} Minérios\n💎 ${diamond} Diamantes`)
+        return message.inlineReply(NormalSlotEmbed)
+    }
 }
