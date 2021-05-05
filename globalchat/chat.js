@@ -42,7 +42,7 @@ exports.run = async (client, message, args) => {
 
             const SemCanalDefinido = new Discord.MessageEmbed()
                 .setColor('BLUE')
-                .setTitle('📢 Naya Global Chat System')
+                .setTitle('📢 Raphy Global Chat System')
                 .setDescription('Com este comando, você consegue conversar com todos os servidores que eu estou.\nLinks não são permitidos.')
                 .addField('Crie o canal', '`' + prefix + 'createchannel NomeDoCanal`')
                 .addField('Valide o canal', '`' + prefix + 'setglobalchat #canal`')
@@ -57,7 +57,7 @@ exports.run = async (client, message, args) => {
 
                 const SetGlobalChatEmbed = new Discord.MessageEmbed()
                     .setColor('BLUE')
-                    .setTitle('💬 Naya Global Chat System')
+                    .setTitle('💬 Raphy Global Chat System')
                     .setDescription('Fale com os outros servidores em um único chat. Isso é um experiência única!')
                     .addField('Crie o canal', '`' + prefix + 'createchannel NomeDoCanal`')
                     .addField('Valide o canal', '`' + prefix + 'setglobalchat #canal`')
@@ -109,17 +109,17 @@ exports.run = async (client, message, args) => {
 
                         if (moderador) {
                             GlobalChatEmbedMensagem.setColor('#FF7D00')
-                            GlobalChatEmbedMensagem.setDescription(`🎖️ Moderador Chat Global Naya\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
+                            GlobalChatEmbedMensagem.setDescription(`🎖️ Moderador Chat Global Raphy\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
                         }
 
                         if (ModeradorServidor) {
                             GlobalChatEmbedMensagem.setColor('#00FF1A')
-                            GlobalChatEmbedMensagem.setDescription(`✨ Staff Servidor Naya's House\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
+                            GlobalChatEmbedMensagem.setDescription(`✨ Staff Servidor Raphy's House\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
                         }
 
                         if (rody) {
                             GlobalChatEmbedMensagem.setColor('#FF0000')
-                            GlobalChatEmbedMensagem.setDescription(`<a:engrenagem:836101651331940383> Criador da Naya\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
+                            GlobalChatEmbedMensagem.setDescription(`<a:engrenagem:836101651331940383> Criador da Raphy\n\`\`\`txt\n${MensagemGlobal}\n\`\`\``)
                         }
 
                         client.guilds.cache.forEach(Canal => {
