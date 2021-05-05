@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
   const nochannel = new Discord.MessageEmbed()
     .setColor('BLUE')
     .setTitle('❌ Nenhum canal de ideias/sugestões definido.')
-    .setDescription('Graças ao sistema de organização da Naya, este é um dos comandos que requer um canal especifico para funcionamento.\n \nAs ideias e sugestões dos membros ficará em um canal para serem votadas pelos os outros membros. Bem... Se a administração do servidor quiser é claro.')
+    .setDescription('Graças ao sistema de organização da Raphy, este é um dos comandos que requer um canal especifico para funcionamento.\n \nAs ideias e sugestões dos membros ficará em um canal para serem votadas pelos os outros membros. Bem... Se a administração do servidor quiser é claro.')
     .addFields(
       {
         name: 'Comando de Ativação',

@@ -12,7 +12,7 @@ exports.run = async (client, message, args) => {
 
     const VipEmbed = new Discord.MessageEmbed()
         .setColor('#FDFF00')
-        .setTitle(`${VipEmoji} VIP System Naya`)
+        .setTitle(`${VipEmoji} VIP System Raphy`)
         .setDescription(`*Antes de tudo, fique ciente de que o VIP System não dá previlégios ou vantagens a ninguém. O VIP System é uma forma de agradecimento e libera funções que não dão vantagens, apenas é legal tê-las.*`)
         .addField(`❓ O que eu ganho com o VIP?`, 'Os comandos VIPs estão sendo produzidos um a um. `' + prefix + 'esmola` e a `-buy estrela5` são dois deles.')
         .addField(`❓ Como obter o VIP?`, `Simples! Você pode fazer uma doação de [R$1,00](${link1Real}) no Mercado Pago ou fazer um PIX para o meu PicPay, basta digitar ` + '`' + prefix + 'pix`.\n' + '`' + prefix + 'donate` para mais informações')

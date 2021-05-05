@@ -59,7 +59,7 @@ exports.run = async (client, message, args) => {
             .addField('Informações', `Pagar **${args[1]}<:NPoints:837666759389347910>NPoints** para ${user} ?`)
             .setFooter('Auto delete em 30 segundos.')
 
-        await message.inlineReply('A Naya não se responsabiliza por dinheiro perdido.', confirm).then(msg => {
+        await message.inlineReply('A Raphy não se responsabiliza por dinheiro perdido.', confirm).then(msg => {
             msg.react('✅').catch(err => { return }) // Check
             msg.react('❌').catch(err => { return }) // X
             msg.delete({ timeout: 30000 }).catch(err => { return })

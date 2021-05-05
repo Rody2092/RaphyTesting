@@ -599,57 +599,6 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<a:Check:836347816036663309> Sucesso!`)
     }
 
-    if (['colorid'].includes(args[0].toLowerCase())) {
-
-        let id = args[1]
-        if (!id) { return message.inlineReply('`' + prefix + 'remove colorid ID Color`') }
-        if (id.length < 17) { return message.channel.send("Isso não é um ID") }
-        if (isNaN(id)) { return message.channel.send(`<:xis:835943511932665926> **${args[1]}** não é um número.`) }
-
-        if (!['orange', 'laranja', 'vermelho', 'red', 'white', 'branco'].includes(args[2].toLowerCase())) {
-            return message.inlineReply('<:xis:835943511932665926> Apenas laranja, vermelho e branco.')
-        }
-
-        if (['orange', 'laranja'].includes(args[2].toLowerCase())) {
-            db.delete(`orange_${id}`)
-            return message.channel.send(`<@${id}> *(${id})* teve a cor laranja removida sucesso!`)
-        }
-
-        if (['white', 'branco'].includes(args[2].toLowerCase())) {
-            db.delete(`white_${id}`)
-            return message.channel.send(`<@${id}> *(${id})* teve a cor branca removida sucesso!`)
-        }
-
-        if (['red', 'vermelho'].includes(args[2].toLowerCase())) {
-            db.delete(`red_${id}`)
-            return message.channel.send(`<@${id}> *(${id})* teve a cor vermelha removida sucesso!`)
-        }
-    }
-
-    if (['color'].includes(args[0].toLowerCase())) {
-
-        if (!user) { return message.channel.send('`' + prefix + 'remove bank @user cor`') }
-
-        if (!['orange', 'laranja', 'vermelho', 'red', 'white', 'branco'].includes(args[2].toLowerCase())) {
-            return message.inlineReply('<:xis:835943511932665926> Apenas laranja, vermelho e branco.')
-        }
-
-        if (['orange', 'laranja'].includes(args[2].toLowerCase())) {
-            db.delete(`orange_${id}`)
-            return message.channel.send(`${user} teve a cor vermelha removida sucesso!`)
-        }
-
-        if (['white', 'branco'].includes(args[2].toLowerCase())) {
-            db.delete(`white_${id}`)
-            return message.channel.send(`${user} teve a cor branca removida sucesso!`)
-        }
-
-        if (['red', 'vermelho'].includes(args[2].toLowerCase())) {
-            db.delete(`red_${id}`)
-            return message.channel.send(`${user} teve a cor vermelha removida sucesso!`)
-        }
-    }
-
     if (['commandstotal', 'commands'].includes(args[0])) {
 
         let amount = args[1]
@@ -667,7 +616,7 @@ exports.run = async (client, message, args) => {
         if (isNaN(amount)) { return message.channel.send(`**${args[1]}** não é um número.`) }
 
         db.subtract('CommandCountDaily', amount)
-        return message.channel.send(`<a:Check:836347816036663309> Feito!`)
+        return message.channel.send(`Feito!`)
     }
 
     if (['camarão', 'camarao'].includes(args[0])) {

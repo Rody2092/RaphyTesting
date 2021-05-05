@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
         if (!args[0]) { return message.inlineReply('Não sabe usar o comando doar?\n' + '`' + prefix + 'help doar`') } // Ativação a baixo
 
         if (!user) { return message.inlineReply('Não sabe usar o comando doar? ' + '`' + prefix + 'help doar`') }
-        if (user.id === "837147659898191902") { return message.inlineReply('<:xis:835943511932665926> Sorry, mas não quero doações.') } // Naya ID
+        if (user.id === "837147659898191902") { return message.inlineReply('<:xis:835943511932665926> Sorry, mas não quero doações.') } // Raphy ID
         if (user.id == message.author.id) { return message.inlineReply('<:xis:835943511932665926> Você não pode doar para você mesmo.') }
         if (message.mentions.members.bot) { return message.inlineReply('<:xis:835943511932665926> Você não pode doar para bots.') }
 

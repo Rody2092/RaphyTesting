@@ -203,7 +203,7 @@ client.on("message", async (message) => {
         } catch (err) { }
 
         try {
-            const commandFile = require(`./naya/${command}.js`)
+            const commandFile = require(`./raphy/${command}.js`)
             return commandFile.run(client, message, args)
         } catch (err) { }
 
@@ -273,7 +273,7 @@ client.on("ready", () => {
 
 client.on('guildCreate', guild => {
     let channel = guild.channels.cache.find(channel => channel.type === 'text' && channel.permissionsFor(guild.me).has('SEND_MESSAGES'))
-    let helpgit = 'https://github.com/rodycouto/NayaCommands/blob/main/README.md'
+    let helpgit = 'https://github.com/rodycouto/RaphyCommands/blob/main/README.md'
 
     const newguild = new Discord.MessageEmbed()
         .setColor('BLUE')

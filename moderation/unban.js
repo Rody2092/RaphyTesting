@@ -91,7 +91,7 @@ exports.run = async (client, message, args) => {
             .addFields(
               {
                 name: 'Caso não saiba resolver, fale conosco',
-                value: `[Support Naya](${linksupport}) | [Discord Server](${discordserver})\nMeu criador: Rody#1000`
+                value: `[Support Raphy](${linksupport}) | [Discord Server](${discordserver})\nMeu criador: Rody#1000`
               }
             )
           let erro = new Discord.MessageEmbed()

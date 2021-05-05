@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
 
     const CantadasEmbed = new Discord.MessageEmbed()
         .setColor('BLUE')
-        .setTitle('❤️ Cantadas Naya')
+        .setTitle('❤️ Cantadas Raphy')
         .setDescription(Cantadas)
 
     return message.inlineReply(CantadasEmbed)

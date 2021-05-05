@@ -9,7 +9,7 @@ exports.run = async (client, message, args) => {
 
   const noargs = new Discord.MessageEmbed()
     .setColor('BLUE')
-    .setTitle('⛅ Estação de Tempo da Naya')
+    .setTitle('⛅ Estação de Tempo da Raphy')
     .setDescription('• Aqui você pode ver o clima de qualquer lugar do mundo, explore o clima dos paises e cidades.')
     .addField("Comando", '`' + prefix + 'clima SP/RJ/MG ou o nome da Cidade/Estado`')
     .addField("Exemplo", '`' + prefix + 'clima SP ou São Paulo`')

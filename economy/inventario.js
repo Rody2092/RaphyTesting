@@ -103,10 +103,10 @@ exports.run = async (client, message, args) => {
     if (cachorro === null) { cachorro = "" }
     if (!db.get(`cachorro_${user.id}`)) { cachorro = "" }
 
-    let dogname = await `\n<:doguinho:836393852889202698> ${db.get(`dogname_${user.id}`)}`
+    let dogname = await `\n<:doguinho:836393852889202698> ${db.get(`dogname_${message.author.id}`)}`
     if (dogname === "\n<:doguinho:836393852889202698> ON") { dogname = "\n<:doguinho:836393852889202698> Doguinho sem nome" }
     if (dogname === null) { dogname = "" }
-    if (!db.get(`dogname_${user.id}`)) { dogname = "" }
+    if (!db.get(`dogname_${message.author.id}`)) { dogname = "" }
 
     let medalha = await db.get(`medalha_${user.id}`)
 
@@ -133,44 +133,13 @@ exports.run = async (client, message, args) => {
     if (nada2) { nada2 = 'Não há nada aqui' }
     if (!nada2) { nada2 = '' }
 
-    let vermelho = await db.get(`red_${user.id}`)
-    if (vermelho) { vermelho = "🟥 Vermelho" }
-    if (vermelho === null) { vermelho = "" }
-
-    let branco = await db.get(`white_${user.id}`)
-    if (branco) { branco = '\n⬜ Branco' }
-    if (branco === null) { branco = "" }
-
-    let laranja = await db.get(`orange_${user.id}`)
-    if (laranja) { branco = '\n🟧 laranja' }
-    if (laranja === null) { laranja = "" }
-
-    let nada3 = !vermelho && !branco && !laranja
-    if (nada3) { nada3 = 'Não há nada aqui' }
-    if (!nada3) { nada3 = '' }
-
-    let color = await db.get(`color${user.id}`)
-    if (!color) color = '#6F6C6C'
-
-    if (['colors', 'cores', 'cor'].includes(args[0])) {
-
-        const SlotEmbedColors = new Discord.MessageEmbed()
-            .setColor(color)
-            .setTitle(`🖌️ **Inventário de ${user.user.username}**`)
-            .addField('Cores', `${nada3}${vermelho}${branco}${laranja}`)
-            .setFooter(`${prefix}buy | ${prefix}itens | ${prefix}vender | ${prefix}shop vip | ${prefix}setcolor`)
-        return message.inlineReply(SlotEmbedColors)
-
-    } else if (!['colors', 'cores', 'cor'].includes(args[0])) {
-
-        const SlotEmbed = new Discord.MessageEmbed()
-            .setColor(color)
-            .setTitle(`📖 **Inventário de ${user.user.username}**`)
-            .addField('Itens Comprados', `${nada}${arma}${picareta}${vara}${machado}${cartas}`)
-            .setFooter(`${prefix}buy | ${prefix}itens | ${prefix}vender | ${prefix}shop | ${prefix}doar`)
-        if (!medalha) { SlotEmbed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}${bola}${cachorro}${remedio}`) }
-        if (medalha) { SlotEmbed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}\n🏅 Medalha Cammum${dogname}`) }
-        SlotEmbed.addField('Mantimentos', `🐟 ${peixes} Peixes\n🥘 ${comida} Comidas\n🪱 ${iscas} Iscas\n🥤 ${agua} Água\n🎟️ ${fichas} Fichas\n🍤 ${camarao} Camarões\n🦴 ${ossos} Ossos\n🌹 ${rosas} Rosas\n🍎 ${apple} Maça\n🪨 ${minerio} Minérios\n💎 ${diamond} Diamantes`)
-        return message.inlineReply(SlotEmbed)
-    }
+    let Embed = new Discord.MessageEmbed()
+        .setColor('BLUE')
+        .setTitle(`📖 **Inventário de ${user.user.username}**`)
+        .addField('Itens Comprados', `${nada}${arma}${picareta}${vara}${machado}${cartas}`)
+        .setFooter(`${prefix}buy | ${prefix}itens | ${prefix}vender | ${prefix}shop | ${prefix}doar`)
+    if (!medalha) { Embed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}${bola}${cachorro}${remedio}`) }
+    if (medalha) { Embed.addField('Itens Obtidos', `${nada2}${title}${faca}${loli}${fossil}${mamute}\n🏅 Medalha Cammum${dogname}`) }
+    Embed.addField('Mantimentos', `🐟 ${peixes} Peixes\n🥘 ${comida} Comidas\n🪱 ${iscas} Iscas\n🥤 ${agua} Água\n🎟️ ${fichas} Fichas\n🍤 ${camarao} Camarões\n🦴 ${ossos} Ossos\n🌹 ${rosas} Rosas\n🍎 ${apple} Maça\n🪨 ${minerio} Minérios\n💎 ${diamond} Diamantes`)
+    await message.inlineReply(Embed)
 }

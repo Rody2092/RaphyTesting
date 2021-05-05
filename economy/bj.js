@@ -179,7 +179,7 @@ exports.run = async (client, message, args) => {
         .setColor('BLUE')
         .setAuthor(`${message.author.username} começou um BlackJack!`, message.author.displayAvatarURL())
         .addField('Suas Cartas', '**' + cardsMsg + '**')
-        .addField('Cartas da Naya', '**' + dealerMsg + '**')
+        .addField('Cartas da Raphy', '**' + dealerMsg + '**')
         .addField(title, msg)
         .setFooter('21 Pontos - Blackjack')
 

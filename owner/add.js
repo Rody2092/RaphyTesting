@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
 
     let user = message.mentions.members.first()
 
-    if (['banco', 'bank'].includes(args[0].toLowerCase())) {
+    if (['banco', 'bank'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add bank @user Valor`') }
 
@@ -34,7 +34,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`O dinheiro foi adicionado no banco de ${user}`)
     }
 
-    if (['bancoid', 'bankid'].includes(args[0].toLowerCase())) {
+    if (['bancoid', 'bankid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add bancoid ID Valor`') }
@@ -49,58 +49,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu o valor no banco com sucesso!`)
     }
 
-    if (['colorid'].includes(args[0].toLowerCase())) {
-
-        let id = args[1]
-        if (!id) { return message.inlineReply('`' + prefix + 'add colorid ID Color`') }
-        if (id.length < 17) { return message.channel.send("Isso não é um ID") }
-        if (isNaN(id)) { return message.channel.send(`<:xis:835943511932665926> **${args[1]}** não é um número.`) }
-
-        if (!['orange', 'laranja', 'vermelho', 'red', 'white', 'branco'].includes(args[2].toLowerCase())) {
-            return message.inlineReply('<:xis:835943511932665926> Apenas laranja, vermelho e branco.')
-        }
-
-        if (['orange', 'laranja'].includes(args[2].toLowerCase())) {
-            db.set(`orange_${id}`, "#FF780F")
-            return message.channel.send(`<@${id}> *(${id})* recebeu a cor laranja com sucesso!`)
-        }
-
-        if (['white', 'branco'].includes(args[2].toLowerCase())) {
-            db.set(`white_${id}`, "#FFFFF")
-            return message.channel.send(`<@${id}> *(${id})* recebeu a cor branca com sucesso!`)
-        }
-
-        if (['red', 'vermelho'].includes(args[2].toLowerCase())) {
-            db.set(`red_${id}`, "#B33535")
-            return message.channel.send(`<@${id}> *(${id})* recebeu a cor vermelha com sucesso!`)
-        }
-    }
-
-    if (['color'].includes(args[0].toLowerCase())) {
-
-        if (!user) { return message.channel.send('`' + prefix + 'add bank @user cor`') }
-
-        if (!['orange', 'laranja', 'vermelho', 'red', 'white', 'branco'].includes(args[2].toLowerCase())) {
-            return message.inlineReply('<:xis:835943511932665926> Apenas laranja, vermelho e branco.')
-        }
-
-        if (['orange', 'laranja'].includes(args[2].toLowerCase())) {
-            db.set(`orange_${user.id}`, "#FF780F")
-            return message.channel.send(`${user.id} recebeu a cor laranja com sucesso!`)
-        }
-
-        if (['white', 'branco'].includes(args[2].toLowerCase())) {
-            db.set(`white_${user.id}`, "#FFFFF")
-            return message.channel.send(`${user.id} recebeu a cor branca com sucesso!`)
-        }
-
-        if (['red', 'vermelho'].includes(args[2].toLowerCase())) {
-            db.set(`red_${user.id}`, "#B33535")
-            return message.channel.send(`${user.id} recebeu a cor vermelha com sucesso!`)
-        }
-    }
-
-    if (['iscas', 'isca'].includes(args[0].toLowerCase())) {
+    if (['iscas', 'isca'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add iscas @user Valor`') }
 
@@ -112,7 +61,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} iscas foram adicionadas ao slot de ${user}.`)
     }
 
-    if (['iscasid', 'iscaid'].includes(args[0].toLowerCase())) {
+    if (['iscasid', 'iscaid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add iscasid ID Valor`') }
@@ -127,7 +76,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu as iscas com sucesso!`)
     }
 
-    if (['comida', 'food'].includes(args[0].toLowerCase())) {
+    if (['comida', 'food'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add comida @user Valor`') }
 
@@ -139,7 +88,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} comidas foram adicionadas ao slot de ${user}.`)
     }
 
-    if (['comidaid', 'foodid'].includes(args[0].toLowerCase())) {
+    if (['comidaid', 'foodid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add comidaid ID Valor`') }
@@ -154,7 +103,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu as comidas com sucesso!`)
     }
 
-    if (['fichas', 'ficha'].includes(args[0].toLowerCase())) {
+    if (['fichas', 'ficha'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add fichas @user Valor`') }
 
@@ -166,7 +115,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} fichas foram adicionadas ao slot de ${user}.`)
     }
 
-    if (['fichasid', 'fichaid'].includes(args[0].toLowerCase())) {
+    if (['fichasid', 'fichaid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add fichasid ID Valor`') }
@@ -181,7 +130,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu as fichas com sucesso!`)
     }
 
-    if (['np', 'money'].includes(args[0].toLowerCase())) {
+    if (['np', 'money'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add money @user Valor`') }
 
@@ -193,7 +142,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Dinheiro adicionado a conta de ${user}.`)
     }
 
-    if (['npid', 'moneyid'].includes(args[0].toLowerCase())) {
+    if (['npid', 'moneyid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add moneyid ID Valor`') }
@@ -208,7 +157,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu o dinheiro com sucesso!`)
     }
 
-    if (['peixe', 'peixes', 'fish'].includes(args[0].toLowerCase())) {
+    if (['peixe', 'peixes', 'fish'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add peixes @user Valor`') }
 
@@ -220,7 +169,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} peixes foram adicionados ao slot de ${user}.`)
     }
 
-    if (['peixeid', 'peixesid'].includes(args[0].toLowerCase())) {
+    if (['peixeid', 'peixesid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add peixesid ID Valor`') }
@@ -235,7 +184,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu os peixes com sucesso!`)
     }
 
-    if (['rp', 'reputação'].includes(args[0].toLowerCase())) {
+    if (['rp', 'reputação'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add rp @user Valor`') }
 
@@ -247,7 +196,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} reputações foram adicionadas ao perfil de ${user}.`)
     }
 
-    if (['rpid', 'reputaçãoid'].includes(args[0].toLowerCase())) {
+    if (['rpid', 'reputaçãoid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add rpid ID Valor`') }
@@ -262,7 +211,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu as reputações com sucesso!`)
     }
 
-    if (['xp'].includes(args[0].toLowerCase())) {
+    if (['xp'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add xp @user Valor`') }
         let amount = args[2]
@@ -273,7 +222,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Experiência adicionada ao perfil de ${user}.`)
     }
 
-    if (['xpid'].includes(args[0].toLowerCase())) {
+    if (['xpid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add xpid ID Valor`') }
@@ -288,7 +237,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu as experiências com sucesso!`)
     }
 
-    if (['agua', 'água', 'water'].includes(args[0].toLowerCase())) {
+    if (['agua', 'água', 'water'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add água @user Valor`') }
 
@@ -300,7 +249,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} águas foram adicionadas ao slot de ${user}.`)
     }
 
-    if (['aguaid', 'waterid'].includes(args[0].toLowerCase())) {
+    if (['aguaid', 'waterid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add aguaid ID Valor`') }
@@ -315,7 +264,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu as águas com sucesso!`)
     }
 
-    if (['minerio', 'minério'].includes(args[0].toLowerCase())) {
+    if (['minerio', 'minério'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add minério @user Valor`') }
 
@@ -327,7 +276,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} minérios foram adicionadas ao slot de ${user}.`)
     }
 
-    if (['minerioid'].includes(args[0].toLowerCase())) {
+    if (['minerioid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add minerioid ID Valor`') }
@@ -342,7 +291,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu os minérios com sucesso!`)
     }
 
-    if (['diamantes', 'diamante', 'diamond'].includes(args[0].toLowerCase())) {
+    if (['diamantes', 'diamante', 'diamond'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add diamantes @user Valor`') }
 
@@ -354,7 +303,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} diamantes foram adicionadas ao slot de ${user}.`)
     }
 
-    if (['diamantesid'].includes(args[0].toLowerCase())) {
+    if (['diamantesid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add diamantesid ID Valor`') }
@@ -369,7 +318,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu os minérios com sucesso!`)
     }
 
-    if (['ossos', 'bone', 'osso'].includes(args[0].toLowerCase())) {
+    if (['ossos', 'bone', 'osso'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add ossos @user Valor`') }
 
@@ -381,7 +330,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} ossos foram adicionadas ao slot de ${user}.`)
     }
 
-    if (['ossosid'].includes(args[0].toLowerCase())) {
+    if (['ossosid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add ossosid ID Valor`') }
@@ -396,7 +345,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu os ossos com sucesso!`)
     }
 
-    if (['maça', 'apple', 'maças'].includes(args[0].toLowerCase())) {
+    if (['maça', 'apple', 'maças'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add maça @user Valor`') }
 
@@ -408,7 +357,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} maças foram adicionadas ao slot de ${user}.`)
     }
 
-    if (['maçaid'].includes(args[0].toLowerCase())) {
+    if (['maçaid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add maçaid ID Valor`') }
@@ -423,7 +372,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu as maças com sucesso!`)
     }
 
-    if (['madeira', 'wood', 'madeiras'].includes(args[0].toLowerCase())) {
+    if (['madeira', 'wood', 'madeiras'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add madeiras @user Valor`') }
 
@@ -435,7 +384,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} madeiras foram adicionadas ao slot de ${user}.`)
     }
 
-    if (['madeiraid'].includes(args[0].toLowerCase())) {
+    if (['madeiraid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add madeiraid ID Valor`') }
@@ -450,7 +399,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu as madeiras com sucesso!`)
     }
 
-    if (['commandstotal', 'commands'].includes(args[0].toLowerCase())) {
+    if (['commandstotal', 'commands'].includes(args[0])) {
 
         let amount = args[1]
         if (!amount) { return message.channel.send('`' + prefix + 'add commands Valor`') }
@@ -460,7 +409,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Feito!`)
     }
 
-    if (['commandsdaily'].includes(args[0].toLowerCase())) {
+    if (['commandsdaily'].includes(args[0])) {
 
         let amount = args[1]
         if (!amount) { return message.channel.send('`' + prefix + 'add commandsdaily Valor`') }
@@ -470,7 +419,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`Feito!`)
     }
 
-    if (['camarão', 'camarao'].includes(args[0].toLowerCase())) {
+    if (['camarão', 'camarao'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add camarão @user Valor`') }
 
@@ -482,7 +431,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${args[2]} camarões foram adicionadas ao slot de ${user}.`)
     }
 
-    if (['camaraoid', 'caramarãoid'].includes(args[0].toLowerCase())) {
+    if (['camaraoid', 'caramarãoid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add camaraoid ID Valor`') }
@@ -497,7 +446,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> *(${id})* recebeu os camarões com sucesso!`)
     }
 
-    if (['blacklist'].includes(args[0].toLowerCase())) {
+    if (['blacklist'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add blacklist @user`') }
 
@@ -505,7 +454,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${user} foi adicionado a blacklist com sucesso!`)
     }
 
-    if (['blacklistid'].includes(args[0].toLowerCase())) {
+    if (['blacklistid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add blacklistid ID`') }
@@ -516,7 +465,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> foi adicionado a blacklist com sucesso!`)
     }
 
-    if (['whitelistid'].includes(args[0].toLowerCase())) {
+    if (['whitelistid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add whitelistid ID`') }
@@ -527,7 +476,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> foi adicionado a whitelist com sucesso!`)
     }
 
-    if (['nochat', 'noglobal', 'ban', 'block', 'banlist', 'nogloabalchat', 'banchat'].includes(args[0].toLowerCase())) {
+    if (['nochat', 'noglobal', 'ban', 'block', 'banlist', 'nogloabalchat', 'banchat'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add banchat ID`') }
@@ -538,7 +487,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> foi adicionado ao No Global Chat com sucesso e não consegue mais falar no chat global!`)
     }
 
-    if (['moderadorglobal', 'modglobal', 'modchat', 'modchatglobal'].includes(args[0].toLowerCase())) {
+    if (['moderadorglobal', 'modglobal', 'modchat', 'modchatglobal'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add modglobal @user`') }
 
@@ -546,7 +495,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${user} foi autenticado como Moderador do Chat Global!`)
     }
 
-    if (['vip'].includes(args[0].toLowerCase())) {
+    if (['vip'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add vip @user`') }
 
@@ -554,7 +503,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${user} foi adicionado a lista vip com sucesso!`)
     }
 
-    if (['vipid'].includes(args[0].toLowerCase())) {
+    if (['vipid'].includes(args[0])) {
 
         let id = args[1]
         if (!id) { return message.inlineReply('`' + prefix + 'add vipid ID`') }
@@ -565,7 +514,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`<@${id}> foi adicionado a list vip com sucesso!`)
     }
 
-    if (['modserver', 'servermod', 'serverstaff', 'staffserver', 'serveradm'].includes(args[0].toLowerCase())) {
+    if (['modserver', 'servermod', 'serverstaff', 'staffserver', 'serveradm'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add staffserver @user`') }
 
@@ -573,7 +522,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${user} foi adicionado a lista moderadores do servidor!`)
     }
 
-    if (['whitelist'].includes(args[0].toLowerCase())) {
+    if (['whitelist'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'add whitelist @user`') }
 
@@ -581,7 +530,7 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`${user} foi adicionado a whitelist com sucesso!`)
     }
 
-    if (['loteria', 'lotery'].includes(args[0].toLowerCase())) {
+    if (['loteria', 'lotery'].includes(args[0])) {
 
         let valor = args[1]
         if (!valor) { return message.channel.send('`' + prefix + 'add lotery Valor`') }

@@ -19,10 +19,10 @@ exports.run = async (client, message, args) => {
 
         const NoArgsEmbed = new Discord.MessageEmbed()
             .setColor('BLUE')
-            .setTitle('⚔️ Duelo Naya Arena')
+            .setTitle('⚔️ Duelo Raphy Arena')
             .setDescription('O Duelo é um dos comandos da Classe Arena, onde você disputa com outros membros do servidor por alguma recompensa.\nCom o Duelo, você aposta uma quantia em <:NPoints:837666759389347910>NPoints, e o vencedor que tiver mais sorte ganha.')
             .addField('Comando', '`' + prefix + 'duelar @user quantia`')
-            .setFooter('A Naya não se responsabiliza por dinheiro perdido.')
+            .setFooter('A Raphy não se responsabiliza por dinheiro perdido.')
 
         if (!args[0]) { return message.inlineReply(NoArgsEmbed) }
 
@@ -85,7 +85,7 @@ exports.run = async (client, message, args) => {
 
                     const BattleEmbed = new Discord.MessageEmbed()
                         .setColor('#8B0000')
-                        .setTitle('Arena Naya ~ Batalhando...')
+                        .setTitle('Arena Raphy ~ Batalhando...')
                         .setDescription(`${message.author} <a:espadas:837699539884179516> ${message.mentions.members.first()}`)
 
                     const WinEmbed = new Discord.MessageEmbed()

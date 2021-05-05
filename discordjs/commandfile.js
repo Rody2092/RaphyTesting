@@ -10,7 +10,7 @@ exports.run = async (client, message, args) => {
     let linkserver = 'https://discord.gg/YpFWgJuuUV'
     const embed = new Discord.MessageEmbed()
         .setColor('#1e3ddf')
-        .setTitle('BETA - Dicas da Naya - CommandFile')
+        .setTitle('BETA - Dicas da Raphy - CommandFile')
         .setDescription('Permite você usar comandos em outras pastas e diminuir o tamanho do index')
         .addFields(
             {
@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
                 inline: true
             }
         )
-        .setFooter('Apoio Naya - Developers')
+        .setFooter('Apoio Raphy - Developers')
 
     message.inlineReply(embed)
     setTimeout(function () { message.inlineReply("```js\n    try {\n      const commandFile = require(`./NOME DA PASTA AQUI/${command}.js`)\n      commandFile.run(client, message, args)\n    } catch (err) { }\n```") }, 1000)

@@ -33,7 +33,7 @@ exports.run = async (client, message, args) => {
 
             const loja = new Discord.MessageEmbed()
                 .setColor(color)
-                .setTitle('🏪 Lojinha VIP Naya 24h')
+                .setTitle('🏪 Lojinha VIP Raphy 24h')
                 .setDescription('Aqui na Lojinha VIP, você pode comprar itens exclusivos que né... Só os vips podem.')
                 .addFields(
                     {
@@ -52,8 +52,8 @@ exports.run = async (client, message, args) => {
 
             const loja = new Discord.MessageEmbed()
                 .setColor(color)
-                .setTitle('🏪 Lojinha Naya 24h')
-                .setDescription('Aqui na Lojinha Naya, você pode comprar várias coisas para ter acesso a comandos e funções incriveis.')
+                .setTitle('🏪 Lojinha Raphy 24h')
+                .setDescription('Aqui na Lojinha Raphy, você pode comprar várias coisas para ter acesso a comandos e funções incriveis.')
                 .addFields(
                     {
                         name: 'Disponiveis',

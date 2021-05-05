@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
 
     let embed = new Discord.MessageEmbed()
         .setColor("#8B0000")
-        .setTitle("Blacklist Naya blocksystem")
+        .setTitle("Blacklist Raphy blocksystem")
     lb.forEach(d => {
         embed.addField(`${d.user.tag}`, `🆔 ${d.user.id}`)
     })

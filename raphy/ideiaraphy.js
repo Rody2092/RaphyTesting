@@ -15,8 +15,8 @@ exports.run = async (client, message, args) => {
         .setTitle('<:pikachu:833378638291271680> teve uma ideia daora?')
         .setDescription('Com este comando, você manda sua ideia direto pro meu servidor pro pessoal votar, você também pode entrar usando `' + prefix + 'help`.')
         .addField('Requisitos', `**NADA** pornografico ou de cunho criminoso.\nPara mandar um gif é **${prefix}gif**\nFale bem a sua ideia para todos entenderem\nSua ideia contém imagem? Manda com um link.`)
-        .addField('Comando exemplo', '`' + prefix + 'ideinaya Que tal colocar um comando em que todos podem dar suas ideias pra Naya?`')
-        .addField('Comando exemplo com imagem', '`' + prefix + 'ideinaya Que tal colocar um comando em que todos podem dar suas ideias pra Naya? https://linkdaimagem.com`')
+        .addField('Comando exemplo', '`' + prefix + 'ideiraphy Que tal colocar um comando em que todos podem dar suas ideias pra Raphy?`')
+        .addField('Comando exemplo com imagem', '`' + prefix + 'ideiraphy Que tal colocar um comando em que todos podem dar suas ideias pra Raphy? https://linkdaimagem.com`')
         .setFooter('Limite de 150 caracteres.')
 
     if (!args[0]) { return message.inlineReply(noargs) }

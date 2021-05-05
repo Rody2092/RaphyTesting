@@ -3,7 +3,7 @@ const db = require("quick.db")
 
 exports.run = async (client, message, args) => {
 
-    let gitlink = "https://github.com/rodycouto/Bot-Naya"
+    let gitlink = "https://github.com/rodycouto/Bot-Raphy"
     let linksupport = "https://discord.gg/YpFWgJuuUV"
     let gitdance = "https://imgur.com/C78LrtY.gif"
 
@@ -13,8 +13,8 @@ exports.run = async (client, message, args) => {
 
     const embed = new Discord.MessageEmbed()
         .setColor('BLUE')
-        .setTitle('Repositório Naya no GitHub')
-        .setDescription('Caso você queira acesso ao código fonte da Naya, ele está disponível no Github\n⠀⠀⠀⠀⠀⠀⠀⠀')
+        .setTitle('Repositório Raphy no GitHub')
+        .setDescription('Caso você queira acesso ao código fonte da Raphy, ele está disponível no Github\n⠀⠀⠀⠀⠀⠀⠀⠀')
         .setThumbnail(gitdance)
         .addFields(
             {
@@ -28,12 +28,12 @@ exports.run = async (client, message, args) => {
                 inline: true
             },
             {
-                name: 'Suporte Naya',
+                name: 'Suporte Raphy',
                 value: `[Clique aqui](${linksupport})`,
                 inline: true
             }
         )
-        .setFooter('Apoio Naya - Developers')
+        .setFooter('Apoio Raphy - Developers')
 
     return message.inlineReply(embed)
 }

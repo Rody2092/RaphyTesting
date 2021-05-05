@@ -10,9 +10,9 @@ exports.run = async (client, message, args) => {
 
     const SetGlobalChatEmbed = new Discord.MessageEmbed()
         .setColor('BLUE')
-        .setTitle('💬 Naya Global Chat System')
+        .setTitle('💬 Raphy Global Chat System')
         .setDescription('Fale com os outros servidores em um único chat. Isso é um experiência única!')
-        .addField('Crie o canal', '`' + prefix + 'createchannel NomeDoCanalQueVocêQuer`')
+        .addField('Crie o canal', '`' + prefix + 'channel create text NomeDoCanalQueVocêQuer`')
         .addField('Valide o canal', '`' + prefix + 'setglobalchat #canal`')
         .addField('Desative o Canal', '`' + prefix + 'setglobalchat off` ou `' + prefix + 'deletechannel #canal`')
 
@@ -39,9 +39,9 @@ exports.run = async (client, message, args) => {
 
     const SemCanal = new Discord.MessageEmbed()
         .setColor('BLUE')
-        .setTitle('📢 Naya Global Chat System')
+        .setTitle('📢 Raphy Global Chat System')
         .setDescription('Este comando garante que ninguém use o comando `' + prefix + 'chat` fora do canal definido.')
-        .addField('Crie o canal', '`' + prefix + 'createchannel NomeDoCanal`')
+        .addField('Crie o canal', '`' + prefix + 'channel create text NomeDoCanal`')
         .addField('Valide o canal', '`' + prefix + 'setglobalchat #canal`')
 
     let channel = message.mentions.channels.first()

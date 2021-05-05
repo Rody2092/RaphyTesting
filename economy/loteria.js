@@ -31,8 +31,8 @@ exports.run = async (client, message, args) => {
 
         let embed = new Discord.MessageEmbed()
             .setColor(color)
-            .setTitle('💰 LOTERIA NAYA')
-            .setDescription('<:02zero:832667759800352838> Seja bem vindo a Loteria Naya!\nSe você quiser concorrer ao prêmio, compre tickets na `' + prefix + 'loja`')
+            .setTitle('💰 LOTERIA RAPHY')
+            .setDescription('<:02zero:832667759800352838> Seja bem vindo a Loteria Raphy!\nSe você quiser concorrer ao prêmio, compre tickets na `' + prefix + 'loja`')
             .addField('Valor atual', `${prize}<:NPoints:837666759389347910>NPoints`)
             .addField('Data do Sorteio', `${data}`)
             .setFooter(`${prefix}buy ticket | Sorteio ocorrem no meu servidor`)

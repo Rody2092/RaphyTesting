@@ -15,7 +15,7 @@ exports.run = async (client, message, args) => {
 
     let quiztime = new Discord.MessageEmbed()
         .setColor('#DCDCDC')
-        .setTitle(`NAYA QUIZ TIME!`)
+        .setTitle(`RAPHY QUIZ TIME!`)
         .setDescription('Prepare-se! Você tem apenas 15 segundos.')
 
     message.channel.send(quiztime).then(msg => msg.delete({ timeout: 5000 })).then(msg => message.channel.send(pergunta)).then(() => {

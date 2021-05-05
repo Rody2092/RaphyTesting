@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
 
   let CornoEmbed = new Discord.MessageEmbed()
     .setColor('PURPLE')
-    .setTitle('🦌 Naya Cornometro')
+    .setTitle('🦌 Raphy Cornometro')
     .setDescription(`Pelo jeito de ${user}, posso dizer que é ${num}% corno.`)
   return message.inlineReply(CornoEmbed)
 }

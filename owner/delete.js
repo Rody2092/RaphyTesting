@@ -242,18 +242,6 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`O remédio Do Velho Welter foi deletado do slot de <@${id}> *(${id})*.`)
     }
 
-    if (['commandstotal', 'commands'].includes(args[0])) {
-
-        db.delete('CommandCountGeneral')
-        return message.channel.send(`Feito!`)
-    }
-
-    if (['commandsdaily'].includes(args[0])) {
-
-        db.delete('CommandCountDaily')
-        return message.channel.send(`Feito!`)
-    }
-
     if (['niver', 'aniversário', 'aniversario'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'delete niver @user`') }

@@ -14,7 +14,7 @@ exports.run = async (client, message, args) => {
 
   let GadoEmbed = new Discord.MessageEmbed()
     .setColor('PURPLE')
-    .setTitle('🐂 Naya Gadometro')
+    .setTitle('🐂 Raphy Gadometro')
     .setDescription(`Pelo histórico de ${user}, posso afirmar que é ${num}% gado.`)
   return message.inlineReply(GadoEmbed)
 }

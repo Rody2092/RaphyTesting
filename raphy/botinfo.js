@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
         .setThumbnail(client.user.displayAvatarURL())
         .setTitle('📃 Centralzinha de Informações 📃')
         .setColor('BLUE')
-        .setDescription('Meu nome é Naya. Eu fui criada para ser uma bot de diversão e admnistração. Porém tenho alguns recursos além disso. Sou capaz de substituir vááários bots. Minha missão é ser a bot mais completa de todas.')
+        .setDescription('Meu nome é Raphy. Eu fui criada para ser uma bot de diversão e admnistração. Porém tenho alguns recursos além disso. Sou capaz de substituir vááários bots. Minha missão é ser a bot mais completa de todas.')
         .addFields(
             {
                 name: 'Páginas da Centralzinha',
@@ -38,11 +38,11 @@ exports.run = async (client, message, args) => {
         .setColor('GREEN')
         .setThumbnail(client.user.displayAvatarURL())
         .setTitle(':hearts: OBRIGADA a todos que me ajuda a crescer! :hearts:')
-        .setURL('https://github.com/rodycouto/NayaCommands/blob/main/README.md#-naya-assistence')
+        .setURL('https://github.com/rodycouto/RaphyCommands/blob/main/README.md#-raphy-assistence')
         .addFields(
             {
                 name: 'Listinha de pessoas que me ajuda',
-                value: '[Clique aqui pra ver a listinha](https://github.com/rodycouto/NayaCommands/blob/main/README.md#-naya-assistence)'
+                value: '[Clique aqui pra ver a listinha](https://github.com/rodycouto/RaphyCommands/blob/main/README.md#-raphy-assistence)'
             }
         )
         .setFooter('Desativando em 1 minuto...')

@@ -22,7 +22,7 @@ exports.run = async (client, message, args) => {
 
     let embed = new Discord.MessageEmbed()
         .setColor("GREEN")
-        .setTitle("<a:vip:837441854332338227> Vip Naya")
+        .setTitle("<a:vip:837441854332338227> Vip Raphy")
     lb.forEach(d => {
         embed.addField(`${d.user.tag}`, `🆔 ${d.user.id}`)
     })
