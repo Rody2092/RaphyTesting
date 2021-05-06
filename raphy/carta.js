@@ -6,21 +6,21 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    let help = new Discord.MessageEmbed()
+    const help = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('💌 Carta de Amor ~ Raphy')
         .setDescription('Envie cartas de amor para a pessoa que você ama. Se não tem coragem de dizer pessoalmente, deixa que eu envio a carta pra você.')
         .addField('Comando', '`' + prefix + 'carta @user A sua mensagem em diante`')
         .setFooter('A pessoa que receber a carta, recebe +5 Reputação')
 
-    let FormatoCorreto = new Discord.MessageEmbed()
+    const FormatoCorreto = new Discord.MessageEmbed()
         .setColor('#8B0000')
         .setTitle('Siga o formato correto')
         .setDescription('`' + prefix + 'carta @user A sua mensagem em diante`')
 
-    let user = message.mentions.members.first()
-    let bot = message.mentions.bot
-    let comprar = "Você não possui cartas. Mas você pode comprar algumas na `" + prefix + "loja`"
+    const user = message.mentions.members.first()
+    const bot = message.mentions.bot
+    const comprar = "Você não possui cartas. Mas você pode comprar algumas na `" + prefix + "loja`"
 
     let cartas = db.get(`cartas_${message.author.id}`)
 
@@ -33,14 +33,17 @@ exports.run = async (client, message, args) => {
     if (bot) { return message.inlineReply('Você não pode mandar cartas para bots.') }
     if (!args.slice(1).join(" ")) { return message.inlineReply(FormatoCorreto) }
 
-    let embedlove = new Discord.MessageEmbed()
+    let PrivadoDesativado = db.get(`privadooff_${user.id}`)
+    if (PrivadoDesativado) {return message.inlineReply(`<:xis:835943511932665926> ${user} bloqueou minhas mensagens no privado. Mais informações em ` + '`'  + prefix + 'privado`')}
+
+    const embedlove = new Discord.MessageEmbed()
         .setColor('RED')
         .setTitle('💌 Você recebeu uma carta de amor')
         .addField('Autor', `${message.author.tag} *(${message.author.id})*`)
         .addField('Mensagem', args.slice(1).join(" "))
         .setFooter(`Esta carta de amor foi enviada do servidor ${message.guild.name}`)
 
-    let confirm = new Discord.MessageEmbed()
+    const confirm = new Discord.MessageEmbed()
         .setColor('BLUE')
         .setTitle('Você confirma os dados a baixo?')
         .addField('Mandar carta para', user)
@@ -58,7 +61,7 @@ exports.run = async (client, message, args) => {
             if (reaction.emoji.name === '✅') { // Sim
                 msg.delete().catch(err => { return })
                 db.subtract(`cartas_${message.author.id}`, 1)
-                db.add(`rp_${message.author.id}`, 5)
+                db.add(`rp_${user.id}`, 5)
                 message.mentions.members.first().send("A Raphy não se responsabiliza pelo conteúdo presente nesta carta.\nVocê recebeu mais 5 reputação.", embedlove).catch(err => {
                     if (err) {
                         let errorembed = new Discord.MessageEmbed()

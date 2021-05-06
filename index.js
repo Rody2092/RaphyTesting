@@ -260,7 +260,9 @@ client.on("guildMemberAdd", (member) => {
     if (msgwelcome === null) { msgwelcome = 'entrou no servidor.' }
 
     if (canal) { return client.channels.cache.get(canal).send(`📢 ${member} ${msgwelcome}`) }
+})
 
+client.on("guildMemberAdd", (member) => {
     let role = db.get(`autorole_${member.guild.id}`)
     if (role === null) { return }
     return member.roles.add(role)
@@ -304,7 +306,7 @@ client.on('guildDelete', guild => {
 })
 
 client.once("ready", () => {
-    let envi = client.channels.cache.get('837408099781836849')
+    let envi = client.channels.cache.get('838535476516094012')
     console.log('OK!')
 
     client.guilds.cache.forEach(Canal => {
