@@ -15,6 +15,7 @@ exports.run = async (client, message, args) => {
 
     db.delete(`timemuteglobal_${id}`)
     db.delete(`muteglobal_${id}`)
+    db.delete(`muteglobalchat_${id}`)
 
     let ServidoresAtivados = db.fetch(`globalchat_${message.guild.id}`)
     if (message.channel.id === ServidoresAtivados) {

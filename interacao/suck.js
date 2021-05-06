@@ -36,13 +36,13 @@ exports.run = async (client, message, args) => {
    let avatar1 = user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
    let embed = new Discord.MessageEmbed()
       .setColor('BLUE')
-      .setDescription(`${message.author} está chupando ${user}`, avatar)
+      .setAuthor(`${message.author.username} está chupando ${user.username}`, avatar)
       .setImage(rand)
       .setFooter('Clique em 🔁 para retribuir')
 
    let embed2 = new Discord.MessageEmbed()
       .setColor('BLUE')
-      .setDescription(`${user} devolveu a chupada ${message.author}, que safadeza.`, avatar1)
+      .setAuthor(`${user.username} devolveu a chupada ${message.author.username}, que safadeza.`, avatar1)
       .setImage(rand1)
 
    await message.inlineReply(embed).then(msg => {

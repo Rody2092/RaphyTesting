@@ -21,7 +21,7 @@ exports.run = async (client, message, args) => {
     setTimeout(() => {
         db.delete(`timemuteglobal_${id}`),
             db.delete(`muteglobal_${id}`),
-            db.add(`muteglobalchat_${id}`)
+            db.delete(`muteglobalchat_${id}`)
     }, ms(args[1]))
 
     let ServidoresAtivados = db.fetch(`globalchat_${message.guild.id}`)

@@ -9,6 +9,9 @@ exports.run = async (client, message, args) => {
 	let prefix = db.get(`prefix_${message.guild.id}`)
 	if (prefix === null) prefix = "-"
 
+	let color = await db.get(`color_${message.author.id}`)
+	if (color === null) color = '#6F6C6C'
+
 	if (!args[0]) {
 		let noargs = new Discord.MessageEmbed()
 			.setColor('BLUE')
@@ -42,16 +45,17 @@ exports.run = async (client, message, args) => {
 
 	if (member.id === message.author.id) { return message.inlineReply('Você não pode se casar com você mesmo.') }
 
-	let gif = 'https://imgur.com/Ush7ZDy.gif'
-	let casar = new Discord.MessageEmbed()
-		.setColor('BLUE')
+	const gif = 'https://imgur.com/Ush7ZDy.gif'
+	const casar = new Discord.MessageEmbed()
+		.setColor(color)
 		.setTitle('💍Novo Pedido de Casamento💍')
 		.setDescription(`${message.author.username} está pedindo a mão de ${member.user.username} em casamento.\n\n${member}, você aceita se casar com ${message.author}?`)
 		.setThumbnail(gif)
-		.setFooter('Clique no anel para aceitar o pedido de casamento.')
+		.setFooter('Cancelamento em 1 minuto.')
 
 	message.inlineReply(casar).then(msg => {
-		msg.react('💍')
+		msg.react('💍').catch(err => { return })
+		setTimeout(function () { msg.reactions.removeAll().catch(err => { return }) }, 60000)
 
 		let reactions = (reaction, user) =>
 			reaction.emoji.name === '💍' && user.id === member.id
@@ -64,8 +68,8 @@ exports.run = async (client, message, args) => {
 			db.set(`marry_${message.author.id}`, member.id)
 			db.set(`marry_${member.id}`, message.author.id)
 
-			let casados = new Discord.MessageEmbed()
-				.setColor('BLUE')
+			const casados = new Discord.MessageEmbed()
+				.setColor('GREEN')
 				.setTitle(':heart: Um novo casal acaba de se formar :heart:')
 				.setDescription(`${member} aceitou o pedido de casamento de ${message.author}`)
 			message.channel.send(casados)

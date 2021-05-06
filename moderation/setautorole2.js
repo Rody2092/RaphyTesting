@@ -11,35 +11,6 @@ exports.run = async (client, message, args) => {
     let prefix = db.get(`prefix_${message.guild.id}`)
     if (prefix === null) prefix = "-"
 
-    let autorole1 = db.get(`autorole_${message.guild.id}`)
-    if (!autorole1) { return message.inlineReply('<:xis:835943511932665926> O Autorole 1 tem que estar ativado para habilitar o Autorole 2. `' + prefix + 'setautorole`') }
-
-    const adm = new Discord.MessageEmbed()
-        .setColor('#8B0000')
-        .setTitle('Eu preciso da permissão "Gerenciar Cargos" para utilizar esta função.')
-
-    const permss = new Discord.MessageEmbed()
-        .setColor('#8B0000')
-        .setTitle('Permissão Necessária: Gerenciar Roles (cargos)')
-
-    const cargoatual = new Discord.MessageEmbed()
-        .setColor('BLUE')
-        .setDescription(`O autorole 2 atual é: <@&${db.get(`autorole2_${message.guild.id}`)}>`)
-
-    const noargs = new Discord.MessageEmbed()
-        .setColor('BLUE') // red
-        .setTitle('O Autorole System 2 está desativado')
-        .setDescription('Escolha o cargo que todos vão receber assim que entrar no servidor.')
-        .addField('Defina o cargo', '`' + prefix + 'setautorole2 @Cargo`')
-        .addField('Desative o Autorole', '`' + prefix + 'setautorole2 off`')
-
-    if (!botperm) { return message.inlineReply(adm) }
-    if (!userperms) { return message.inlineReply(permss) }
-
-    if (!args[0]) {
-        if (autorole !== null) { return message.inlineReply(cargoatual) } else { return message.inlineReply(noargs) }
-    }
-
     if (args[0] === 'off') {
 
         if (autorole === null) {
@@ -79,6 +50,35 @@ exports.run = async (client, message, args) => {
                 }
             })
         })
+    }
+    
+    let autorole1 = db.get(`autorole_${message.guild.id}`)
+    if (!autorole1) { return message.inlineReply('<:xis:835943511932665926> O Autorole 1 tem que estar ativado para habilitar o Autorole 2. `' + prefix + 'setautorole`') }
+
+    const adm = new Discord.MessageEmbed()
+        .setColor('#8B0000')
+        .setTitle('Eu preciso da permissão "Gerenciar Cargos" para utilizar esta função.')
+
+    const permss = new Discord.MessageEmbed()
+        .setColor('#8B0000')
+        .setTitle('Permissão Necessária: Gerenciar Roles (cargos)')
+
+    const cargoatual = new Discord.MessageEmbed()
+        .setColor('BLUE')
+        .setDescription(`O autorole 2 atual é: <@&${db.get(`autorole2_${message.guild.id}`)}>`)
+
+    const noargs = new Discord.MessageEmbed()
+        .setColor('BLUE') // red
+        .setTitle('O Autorole System 2 está desativado')
+        .setDescription('Escolha o cargo que todos vão receber assim que entrar no servidor.')
+        .addField('Defina o cargo', '`' + prefix + 'setautorole2 @Cargo`')
+        .addField('Desative o Autorole', '`' + prefix + 'setautorole2 off`')
+
+    if (!botperm) { return message.inlineReply(adm) }
+    if (!userperms) { return message.inlineReply(permss) }
+
+    if (!args[0]) {
+        if (autorole !== null) { return message.inlineReply(cargoatual) } else { return message.inlineReply(noargs) }
     }
 
     let norole = new Discord.MessageEmbed()
