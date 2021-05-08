@@ -6,9 +6,11 @@ exports.run = async (client, message, args) => {
   let list = ['https://imgur.com/t7z3ahp.gif', 'https://imgur.com/NYLxoNs.gif', 'https://imgur.com/iRh8iXc.gif', 'https://imgur.com/cdW9wbV.gif', 'https://imgur.com/0UDpkEr.gif', 'https://imgur.com/7mk656G.gif', 'https://imgur.com/z9m6vfN.gif', 'https://imgur.com/dEjgdqD.gif', 'https://imgur.com/iuCM9BD.gif']
   let list1 = ['https://imgur.com/t7z3ahp.gif', 'https://imgur.com/NYLxoNs.gif', 'https://imgur.com/iRh8iXc.gif', 'https://imgur.com/cdW9wbV.gif', 'https://imgur.com/0UDpkEr.gif', 'https://imgur.com/7mk656G.gif', 'https://imgur.com/z9m6vfN.gif', 'https://imgur.com/dEjgdqD.gif', 'https://imgur.com/iuCM9BD.gif']
 
-
   let prefix = db.get(`prefix_${message.guild.id}`)
   if (prefix === null) prefix = "-"
+
+  let color = await db.get(`color_${message.author.id}`)
+  if (color === null) color = '#6F6C6C'
 
   let rand = list[Math.floor(Math.random() * list.length)]
   let rand1 = list1[Math.floor(Math.random() * list1.length)]
@@ -18,14 +20,17 @@ exports.run = async (client, message, args) => {
   if (user.id === '837147659898191902') { return message.inlineReply('**NÃO** é pra atirar em mim, que isso? Ligando 190...') }
   if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
 
-  let embed = new Discord.MessageEmbed()
-    .setColor('BLUE')
+  let color1 = await db.get(`color_${user.id}`)
+  if (color1 === null) color1 = '#6F6C6C'
+  
+  const embed = new Discord.MessageEmbed()
+    .setColor(color)
     .setDescription(`${message.author} está atirando em você ${user}`, message.author.displayAvatarURL({ format: 'png' }))
     .setImage(rand)
     .setFooter('Clique em 🔁 para retribuir')
 
-  let embed2 = new Discord.MessageEmbed()
-    .setColor('BLUE')
+  const embed2 = new Discord.MessageEmbed()
+    .setColor(color1)
     .setDescription(`${user} levou a sério e está devolvendo os tiros ${message.author} `, user.displayAvatarURL({ format: 'png' }))
     .setImage(rand1)
 

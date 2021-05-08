@@ -19,9 +19,22 @@ exports.run = async (client, message, args) => {
   if (!user) { return message.reply('Hey, quem você quer chamar de baka? `-baka @user`') }
 
   if (user.id === message.author.id) { return message.inlineReply('Você não pode usar este comando com você mesmo.') }
+  
+  let avatar1 = client.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024 })
 
-  let embed = new Discord.MessageEmbed()
-    .setColor('BLUE')
+  const Embed = new Discord.MessageEmbed()
+    .setColor('#EE00FF')
+    .setDescription('Você que é baka!')
+    .setThumbnail(avatar1)
+    .setImage('https://imgur.com/scWqe1q.gif')
+
+  if (user.id === '837147659898191902') { return message.inlineReply(Embed) }
+
+  let color = await db.get(`color_${message.author.id}`)
+  if (color === null) color = '#6F6C6C'
+
+  const embed = new Discord.MessageEmbed()
+    .setColor(color)
     .setAuthor(`${message.author.username} chamou ${user.username} de baka`, avatar)
     .setImage(rand)
   await message.inlineReply(embed)
