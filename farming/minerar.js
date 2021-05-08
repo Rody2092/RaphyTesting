@@ -9,8 +9,7 @@ exports.run = async (client, message, args) => {
 
     if (author2 !== null && timeout2 - (Date.now() - author2) > 0) {
         let time = ms(timeout2 - (Date.now() - author2))
-
-        return message.inlineReply(`Espere mais ${time.seconds}s`)
+        return 
     } else {
 
         let timeout1 = 9140000
@@ -26,13 +25,13 @@ exports.run = async (client, message, args) => {
 
             return message.inlineReply(presomax)
         } else {
-
+            
             let prefix = db.get(`prefix_${message.guild.id}`)
             if (prefix === null) { prefix = "-" }
 
             let canal = db.get(`minechannel_${message.guild.id}`)
             if (canal === null) {
-                let nocanal = new Discord.MessageEmbed()
+                const nocanal = new Discord.MessageEmbed()
                     .setColor('#8B0000')
                     .setTitle('Canal de Mineração não definido')
                     .setDescription('Peça para algúm administrador digitar o comando para habilitar o Canal de Mineração')
@@ -41,7 +40,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (!db.get(`minechannel_${message.guild.id}`)) {
-                let notcanal = new Discord.MessageEmbed()
+                const notcanal = new Discord.MessageEmbed()
                     .setColor('#8B0000')
                     .setTitle('Canal de Mineração excluido.')
                     .setDescription('Parece que o Canal de Mineração foi desativado ou excluido.')
@@ -57,7 +56,7 @@ exports.run = async (client, message, args) => {
 
             let picareta = db.get(`minechannel_${message.guild.id}`)
             if (picareta === null) {
-                let nopicareta = new Discord.MessageEmbed()
+                const nopicareta = new Discord.MessageEmbed()
                     .setColor('#8B0000')
                     .setTitle('❌ Comando bloqueado')
                     .setDescription(`${message.author}, você precisa de uma picareta. Compre uma na ${prefix}loja`)
@@ -65,7 +64,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (!db.get(`picareta_${message.author.id}`)) {
-                let nopicareta = new Discord.MessageEmbed()
+                const nopicareta = new Discord.MessageEmbed()
                     .setColor('#8B0000')
                     .setTitle('❌ Comando bloqueado')
                     .setDescription(`${message.author}, você precisa de uma picareta. Compre uma na ${prefix}loja`)
@@ -74,7 +73,7 @@ exports.run = async (client, message, args) => {
 
             let agua = db.get(`agua_${message.author.id}`)
             if (agua === null) {
-                let nopicareta = new Discord.MessageEmbed()
+                const nopicareta = new Discord.MessageEmbed()
                     .setColor('#8B0000')
                     .setTitle('❌ Comando bloqueado')
                     .setDescription(`${message.author}, você não possui copos de água. Compre alguns na ${prefix}loja`)
@@ -84,7 +83,7 @@ exports.run = async (client, message, args) => {
             if (!db.get(`agua_${message.author.id}`)) { agua = 0 }
 
             if (agua == 0) {
-                let nopicareta = new Discord.MessageEmbed()
+                const nopicareta = new Discord.MessageEmbed()
                     .setColor('#8B0000')
                     .setTitle('❌ Comando bloqueado')
                     .setDescription(`${message.author}, você não possui copos de água. Compre alguns na ${prefix}loja`)
@@ -187,20 +186,20 @@ exports.run = async (client, message, args) => {
                     if (randa === "mamute") {
                         if (mamute === null) {
                             db.set(`mamute_${message.author.id}`, "Mamute")
-                            let pescaembed = new Discord.MessageEmbed()
+                            const pescaembed = new Discord.MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle('⭐ Você adquiriu um item de Clase Especial')
                                 .setDescription(`**Mamute Pré Histórico:** 🦣, *sons de mamute*`)
                             return message.inlineReply(pescaembed)
                         } else if (!db.get(`mamute_${message.author.id}`)) {
                             db.set(`mamute_${message.author.id}`, "Mamute")
-                            let pescaembed = new Discord.MessageEmbed()
+                            const pescaembed = new Discord.MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle('⭐ Você adquiriu um item de Clase Especial')
                                 .setDescription(`**Mamute Pré Histórico:** 🦣, *sons de mamute*`)
                             return message.inlineReply(pescaembed)
                         } else {
-                            let looli = new Discord.MessageEmbed()
+                            const looli = new Discord.MessageEmbed()
                                 .setColor('BLUE')
                                 .setTitle('Há um mamute por perto')
                                 .setDescription(`🦣 *Sons de mamute*`)
@@ -209,7 +208,7 @@ exports.run = async (client, message, args) => {
                     }
 
                     if (randa === "nomamute") {
-                        let looli = new Discord.MessageEmbed()
+                        const looli = new Discord.MessageEmbed()
                             .setColor('BLUE')
                             .setTitle('Há um mamute por perto')
                             .setDescription(`🦣 *Sons de mamute*`)
@@ -221,12 +220,8 @@ exports.run = async (client, message, args) => {
                     let dinh = Math.floor(Math.random() * 70) + 1
                     let minerios = Math.floor(Math.random() * 2) + 1
                     db.subtract(`agua_${message.author.id}`, 1)
-                    db.add(`minerio_${message.author.id}`, minerios)
-                    let pescaembed = new Discord.MessageEmbed()
-                        .setColor('GREEN')
-                        .setTitle('⛏️ Você minerou com sucesso!')
-                        .setDescription(`Com a mineração, você obteve 🪨 ${minerios} minerios.`)
-                    return message.inlineReply(pescaembed)
+                    db.add(`minerio_${message.author.id}`, minerios).setDescription
+                    return message.inlineReply(`⛏️ Com a mineração, você obteve 🪨 ${minerios} minerios.`)
                 }
             } else { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem águas suficiente.`) }
         }

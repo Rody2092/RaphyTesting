@@ -150,7 +150,7 @@ exports.run = async (client, message, args) => {
                                 .setColor('BLUE')
                                 .setTitle('🐶 Você achou o Brown!!!')
                                 .setDescription('Ele está com medo! Dê 5 🦴 `Ossos` para ele se acalmar.')
-                                .setFooter('Você tem 20 segundos até as reações sumir!')
+                                .setFooter('Você tem 20 segundos até as reações sumirem!')
 
                             await message.inlineReply(embed).then(msg => {
                                 msg.react('✅').catch(err => { return }) // Check
@@ -192,7 +192,7 @@ exports.run = async (client, message, args) => {
                                 .setColor('BLUE')
                                 .setTitle('🐶 Você achou o Brown!!!')
                                 .setDescription('Ele está com medo! Dê 5 🦴 `Ossos` para ele se acalmar.')
-                                .setFooter('Você tem 20 segundos até as reações sumir!')
+                                .setFooter('Você tem 20 segundos até as reações sumirem!')
 
                             await message.inlineReply(embed).then(msg => {
                                 msg.react('✅').catch(err => { return }) // Check
@@ -215,7 +215,7 @@ exports.run = async (client, message, args) => {
                                             const FlorestaEmbed = new Discord.MessageEmbed()
                                                 .setColor('GREEN')
                                                 .setTitle('🌲 Você adquiriu um item de Clase Especial')
-                                                .setDescription(`🐶 Au au au!`)
+                                                .setDescription(`🐶 Brown! Au au au!`)
                                             return message.inlineReply(FlorestaEmbed)
                                         } else {
                                             message.inlineReply('Algo deu errado! Digite `' + prefix + 'help` e adquira suporte no servidor. Prints são bem vindos :hearts: #516485')
@@ -227,12 +227,7 @@ exports.run = async (client, message, args) => {
                                     }
                                 })
                             })
-                        } else {
-                            const PegadasEmbed = new Discord.MessageEmbed()
-                                .setColor('BLUE')
-                                .setTitle('🐾 Você encontrou pegadas do Brown.')
-                            return message.inlineReply(PegadasEmbed)
-                        }
+                        } else { return message.inlineReply('🐾 Você encontrou pegadas do Brown.') }
                     }
 
                     let remedio = db.get(`remedio_${message.author.id}`)
@@ -243,7 +238,6 @@ exports.run = async (client, message, args) => {
                                 .setColor('BLUE')
                                 .setTitle('💊 Remédio!!')
                                 .setDescription('Você achou o Remédio do Velho Welter!')
-
                             db.set(`remedio_${message.author.id}`, "ON")
 
                             return message.inlineReply(embed)
@@ -254,16 +248,10 @@ exports.run = async (client, message, args) => {
                                 .setColor('BLUE')
                                 .setTitle('💊 Remédio!!')
                                 .setDescription('Você achou o Remédio do Velho Welter!')
-
                             db.set(`remedio_${message.author.id}`, "ON")
 
                             return message.inlineReply(embed)
-                        } else {
-                            const PegadasEmbed = new Discord.MessageEmbed()
-                                .setColor('BLUE')
-                                .setTitle('💊 Você encontrou pilulas quebradas.')
-                            return message.inlineReply(PegadasEmbed)
-                        }
+                        } else { return message.inlineReply('💊 Você encontrou pilulas quebradas.') }
                     }
 
                     if (randa === "nodog") {
@@ -280,12 +268,7 @@ exports.run = async (client, message, args) => {
                     return message.inlineReply(`🍎 Você encontrou ${apple} maças!`)
                 }
 
-            } else {
-                const NoFood = new Discord.MessageEmbed()
-                    .setColor('#8B0000')
-                    .setDescription(`<: xis: 835943511932665926 > ${message.author}, você não tem comida para buscar o Brown.`)
-                return message.inlineReply(NoFood)
-            }
+            } else { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não tem comida para buscar o Brown.`) }
         }
     }
 }

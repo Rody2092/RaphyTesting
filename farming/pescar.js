@@ -14,15 +14,15 @@ exports.run = async (client, message, args) => {
 
         let timeout1 = 9140000
         let author1 = await db.fetch(`pego_${message.author.id}`)
-      
+
         if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
             let time = ms(timeout1 - (Date.now() - author1))
-      
-            let presomax = new Discord.MessageEmbed()
+
+            const presomax = new Discord.MessageEmbed()
                 .setColor('#8B0000')
                 .setTitle('🚨 Você está em prisão máxima!')
                 .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
-      
+
             return message.inlineReply(presomax)
         } else {
             let prefix = db.get(`prefix_${message.guild.id}`)
@@ -30,7 +30,7 @@ exports.run = async (client, message, args) => {
 
             let canal = db.get(`pescachannel_${message.guild.id}`)
             if (canal === null) {
-                let nocanal = new Discord.MessageEmbed()
+                const nocanal = new Discord.MessageEmbed()
                     .setColor('#8B0000')
                     .setTitle('Canal de pesca não definido')
                     .setDescription('Peça para algúm administrador digitar o comando para habilitar o Canal de Pesca')
@@ -39,7 +39,7 @@ exports.run = async (client, message, args) => {
             }
 
             if (!db.get(`pescachannel_${message.guild.id}`)) {
-                let notcanal = new Discord.MessageEmbed()
+                const notcanal = new Discord.MessageEmbed()
                     .setColor('#8B0000')
                     .setTitle('Canal de pesca excluido.')
                     .setDescription('Parece que o Canal de Pesca foi desativado ou excluido.')
@@ -54,14 +54,14 @@ exports.run = async (client, message, args) => {
             }
 
             let vara = db.get(`vara_${message.author.id}`)
-            if (vara === null) { return message.inlineReply(`❌ ${message.author}, você precisa de uma vara de pesca. Compre uma na ${prefix}loja`) }
+            if (vara === null) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você precisa de uma vara de pesca. Compre uma na ${prefix}loja`) }
 
-            if (!db.get(`vara_${message.author.id}`)) { return message.inlineReply(`❌ ${message.author}, você precisa de uma vara de pesca. Compre uma na ${prefix}loja`) }
+            if (!db.get(`vara_${message.author.id}`)) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você precisa de uma vara de pesca. Compre uma na ${prefix}loja`) }
 
             let iscas = db.get(`iscas_${message.author.id}`)
             if (!iscas) { iscas = 0 }
-            if (iscas === null) { return message.inlineReply(`❌ ${message.author}, você não possui iscas para pescar. Compre algumas na ${prefix}loja`) }
-            if (iscas == 0) { return message.inlineReply(`❌ ${message.author}, você não possui iscas para pescar. Compre algumas na ${prefix}loja`) }
+            if (iscas === null) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não possui iscas para pescar. Compre algumas na ${prefix}loja`) }
+            if (iscas == 0) { return message.inlineReply(`<:xis:835943511932665926> ${message.author}, você não possui iscas para pescar. Compre algumas na ${prefix}loja`) }
 
             if (iscas > 0) {
                 let num = ['win', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose', 'lose']
@@ -88,7 +88,7 @@ exports.run = async (client, message, args) => {
                             db.add(`mpoints_${message.author.id}`, dinh)
                             db.set(`faca_${message.author.id}`, "Faca")
                             db.set(`pescatimeout_${message.author.id}`, Date.now())
-                            let pescaembed = new Discord.MessageEmbed()
+                            const pescaembed = new Discord.MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle('⭐ Você adquiriu um item de Classe Especial')
                                 .addField('Classe Especial: 🔪 Faca', `Você obteve: ${dinh}<:RPoints:837666759389347910>RPoints, ${peixes} 🐟 peixes, ${iiscas} 🪱 Iscas e ${camarao} 🍤 Camarões`)
@@ -105,7 +105,7 @@ exports.run = async (client, message, args) => {
                             db.add(`mpoints_${message.author.id}`, dinh)
                             db.set(`faca_${message.author.id}`, "Faca")
                             db.set(`pescatimeout_${message.author.id}`, Date.now())
-                            let pescaembed = new Discord.MessageEmbed()
+                            const pescaembed = new Discord.MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle('⭐ Você adquiriu um item de Classe Especial')
                                 .addField('Classe Especial: 🔪 Faca', `Você obteve: ${dinh}<:RPoints:837666759389347910>RPoints, ${peixes} 🐟 peixes, ${iiscas} 🪱 Iscas e ${camarao} 🍤 Camarões`)
@@ -122,7 +122,7 @@ exports.run = async (client, message, args) => {
                             db.add(`camarao_${message.author.id}`, camarao)
                             db.add(`mpoints_${message.author.id}`, dinh)
                             db.set(`pescatimeout_${message.author.id}`, Date.now())
-                            let pescaembed = new Discord.MessageEmbed()
+                            const pescaembed = new Discord.MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle('🎣 Você pescou com sucesso!')
                                 .addField('<:RPoints:837666759389347910> <:RPoints:837666759389347910> Você achou um baú do tesouro! <:RPoints:837666759389347910> <:RPoints:837666759389347910>', `Você obteve: ${dinh}<:RPoints:837666759389347910>RPoints, ${peixes} 🐟 peixes, ${iiscas} 🪱 Iscas e ${camarao} 🍤 Camarões`)
@@ -141,7 +141,7 @@ exports.run = async (client, message, args) => {
                         db.add(`camarao_${message.author.id}`, camarao)
                         db.add(`mpoints_${message.author.id}`, din)
                         db.set(`pescatimeout_${message.author.id}`, Date.now())
-                        let pescaembed = new Discord.MessageEmbed()
+                        const pescaembed = new Discord.MessageEmbed()
                             .setColor('GREEN')
                             .setTitle('🎣 Você pescou com sucesso')
                             .addField('<:RPoints:837666759389347910> <:RPoints:837666759389347910> Você achou um baú do tesouro! <:RPoints:837666759389347910> <:RPoints:837666759389347910>', `Você obteve: ${din}<:RPoints:837666759389347910>RPoints, ${peixes} 🐟 peixes, ${iiscas} 🪱 Iscas e ${camarao} 🍤 Camarões `)
@@ -152,14 +152,14 @@ exports.run = async (client, message, args) => {
                     if (randa === "loli") {
                         if (loli === null) {
                             db.set(`loli_${message.author.id}`, "Loli")
-                            let pescaembed = new Discord.MessageEmbed()
+                            const pescaembed = new Discord.MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle('⭐ Você adquiriu um item de Clase Especial')
                                 .setDescription(`**Loli:** <:Loli:831571527744356422> Oooi ${message.author}, tudo bem com você? De agora em diante eu vou ser a sua parceira :heart:`)
                             return message.inlineReply(pescaembed)
                         } else if (!db.get(`loli_${message.author.id}`)) {
                             db.set(`loli_${message.author.id}`, "Loli")
-                            let pescaembed = new Discord.MessageEmbed()
+                            const pescaembed = new Discord.MessageEmbed()
                                 .setColor('GREEN')
                                 .setTitle('⭐ Você adquiriu um item de Clase Especial')
                                 .setDescription(`**Loli:** <:Loli:831571527744356422> Oooi ${message.author}, tudo bem com você? De agora em diante eu vou ser a sua parceira :heart:`)
@@ -167,7 +167,7 @@ exports.run = async (client, message, args) => {
                         } else {
                             let frase = ['Oii, sabia que eu gosto de passear enquanto vejo os passarinhos?', 'Sabia que um dia eu cai da cama e machuquei meu braço?', 'Ei, eu tenho medo de pessoas más.']
                             let result = frase[Math.floor(Math.random() * frase.length)]
-                            let looli = new Discord.MessageEmbed()
+                            const looli = new Discord.MessageEmbed()
                                 .setColor('BLUE')
                                 .setTitle('Uma garotinha atrapalhou sua pesca.')
                                 .setDescription(`<:Loli:831571527744356422> ${result}`)
@@ -178,7 +178,7 @@ exports.run = async (client, message, args) => {
                     if (randa === "nololi") {
                         let frase = ['Oii, sabia que eu gosto de passear enquanto vejo os passarinhos?', 'Sabia que um dia eu cai da cama e machuquei meu braço?', 'Ei, eu tenho medo de pessoas más.']
                         let result = frase[Math.floor(Math.random() * frase.length)]
-                        let looli = new Discord.MessageEmbed()
+                        const looli = new Discord.MessageEmbed()
                             .setColor('BLUE')
                             .setTitle('Uma garotinha atrapalhou sua pesca.')
                             .setDescription(`<:Loli:831571527744356422> ${result}`)
@@ -191,19 +191,9 @@ exports.run = async (client, message, args) => {
                     db.subtract(`iscas_${message.author.id}`, 1)
                     db.add(`peixes_${message.author.id}`, peixes)
                     db.set(`pescatimeout_${message.author.id}`, Date.now())
-                    let pescaembed = new Discord.MessageEmbed()
-                        .setColor('GREEN')
-                        .setTitle('🎣 Você pescou com sucesso!')
-                        .setDescription(`Com a pesca, você obteve ${peixes} peixes.`)
-                    return message.inlineReply(pescaembed)
+                    return message.inlineReply(`🎣 Com a pesca, você obteve ${peixes} peixes.`)
                 }
-            } else {
-                let novara = new Discord.MessageEmbed()
-                    .setColor('#8B0000')
-                    .setTitle('❌ Comando bloqueado')
-                    .setDescription(`${message.author}, você não tem iscas suficiente.`)
-                return message.inlineReply(novara)
-            }
+            } else { return message.inlineReply(`<:xis:835943511932665926> | ${message.author}, você não tem iscas suficiente. Compre mais na **${prefix}loja**`) }
         }
     }
 }
