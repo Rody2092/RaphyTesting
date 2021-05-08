@@ -5,6 +5,7 @@ const client = new Discord.Client({})
 const { token } = require("./config.json")
 const db = require("quick.db")
 const ms = require("parse-ms")
+const { palavraum } = require("./palavrasfeias.json") // Filtro Palavrões JSON
 client.commands = new Discord.Collection()
 client.aliases = new Discord.Collection()
 
@@ -59,6 +60,26 @@ client.on("message", async (message) => {
                 .setColor('#B98823')
                 .setDescription('```fix\n' + `${db.get(`afk_${message.mentions.members.first().id}+${message.guild.id}`)}` + '```')
             message.inlineReply(`🔇 ${message.mentions.members.first().user.username} está offline.`, off).then(msg => msg.delete({ timeout: 8000 })).catch(err => { return })
+        }
+    }
+
+    if (db.get(`nobadwords_${message.guild.id}`)) {
+        if (!message.guild.me.hasPermission('MANAGE_MESSAGES')) return // Sem permissão não tem como deletar a menssagem
+
+        if (!message.member.hasPermission("ADMINISTRATOR")) {
+            let confirm = false
+
+            var i
+            for (i = 0; i < palavraum.length; i++) {
+
+                if (message.content.toLowerCase().includes(palavraum[i].toLowerCase()))
+                    confirm = true
+            }
+
+            if (confirm) {
+                message.delete().catch(err => { return })
+                return message.channel.send(`<:xis:835943511932665926> | Não diga palavras feias ${message.author}!`).then(msg => msg.delete({ timeout: 4000 }))
+            }
         }
     }
 
