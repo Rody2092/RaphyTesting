@@ -6,15 +6,15 @@ exports.run = async (client, message, args) => {
 
     let timeout1 = 9140000
     let author1 = await db.fetch(`pego_${message.author.id}`)
-  
+
     if (author1 !== null && timeout1 - (Date.now() - author1) > 0) {
         let time = ms(timeout1 - (Date.now() - author1))
-  
+
         let presomax = new Discord.MessageEmbed()
             .setColor('#8B0000')
             .setTitle('🚨 Você está em prisão máxima!')
             .setDescription(`Liberdade em: ${time.hours}h ${time.minutes}m e ${time.seconds}s`)
-  
+
         return message.inlineReply(presomax)
     } else {
 
@@ -28,14 +28,14 @@ exports.run = async (client, message, args) => {
         let prefix = db.get(`prefix_${message.guild.id}`)
         if (prefix === null) prefix = "-"
 
-        let noargs = new Discord.MessageEmbed()
+        const noargs = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('💸 Sistema de Pagamento')
             .setDescription('Page a galera, é simples e rápido!\n \n*RPoints perdidos não serão recuperados. Cuidado para não ser enganado*')
             .addField('Comando', '`' + prefix + 'pay @user quantia`\n' + '`' + prefix + 'pay @user all/tudo`')
             .setFooter('Apenas o dinheiro na carteira será válido para pagamentos.')
 
-        let formato = new Discord.MessageEmbed()
+        const formato = new Discord.MessageEmbed()
             .setColor('#8B0000')
             .setTitle('Siga o formato correto')
             .setDescription('`' + prefix + 'pay @user Valor`')
@@ -52,7 +52,7 @@ exports.run = async (client, message, args) => {
         let cache = db.get(`cachepay_${message.author.id}`)
 
 
-        let confirm = new Discord.MessageEmbed()
+        const confirm = new Discord.MessageEmbed()
             .setColor('BLUE')
             .setTitle('Você confirma os dados a baixo?')
             .setDescription('O dinheiro pago não retornará para você a menos que te devolvam.')
@@ -72,10 +72,7 @@ exports.run = async (client, message, args) => {
                     db.add(`mpoints_${message.mentions.members.first().id}`, cache)
                     db.delete(`cachepay_${message.author.id}`)
 
-                    let embed = new Discord.MessageEmbed()
-                        .setColor('#efff00')
-                        .setDescription(`${message.author} pagou ${args[1]}<:RPoints:837666759389347910>RPoints para ${message.mentions.members.first()}`)
-                    return message.inlineReply(embed)
+                    return message.inlineReply(`<a:Check:836347816036663309> | ${message.author} pagou ${args[1]}<:RPoints:837666759389347910>RPoints para ${message.mentions.members.first()}`)
                 }
                 if (reaction.emoji.name === '❌') { // Não
                     msg.delete().catch(err => { return })
