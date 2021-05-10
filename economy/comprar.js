@@ -277,7 +277,7 @@ exports.run = async (client, message, args) => {
                 const BuyColorEmbed = new Discord.MessageEmbed()
                     .setColor('GREEN')
                     .setTitle('<a:Check:836347816036663309> Compra aprovada')
-                    .setDescription(`${message.author}, você comprou a cor Azul.\n` + '`' + prefix + 'setcolor`')
+                    .setDescription(`${message.author}, você comprou a cor Rosa.\n` + '`' + prefix + 'setcolor`')
                 return message.inlineReply(BuyColorEmbed)
             }
         }
