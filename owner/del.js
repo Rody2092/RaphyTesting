@@ -42,6 +42,25 @@ exports.run = async (client, message, args) => {
         return message.channel.send(`O banco de ${user} foi deletado`)
     }
 
+    if (['cachorro', 'doguinho', 'dog'].includes(args[0])) {
+
+        if (!user) { return message.channel.send('`' + prefix + 'del cachorro @user`') }
+
+        db.delete(`cachorro_${user.id}`)
+        return message.channel.send(`Cachorrinho Brown foi deletado do slot de ${user}`)
+    }
+
+    if (['cachorroid', 'doguinhoid', 'dogid'].includes(args[0])) {
+
+        let id = args[1]
+        if (!id) { return message.channel.send('`' + prefix + 'del cachorroid ID`') }
+        if (id.length < 17) { return message.channel.send("<:xis:835943511932665926> Isso não é um ID") }
+        if (isNaN(id)) { return message.channel.send('<:xis:835943511932665926> Esse ID não é um número.') }
+
+        db.set(`cachorro_${id}`)
+        return message.channel.send(`Cachorrinho Brown foi deletado do slot de <@${id}> *(${id})*.`)
+    }
+
     if (['estrelas', 'estrela'].includes(args[0])) {
 
         if (!user) { return message.channel.send('`' + prefix + 'del estrelas @user`') }
@@ -107,25 +126,6 @@ exports.run = async (client, message, args) => {
         db.delete(`xp_${id}`)
         db.delete(`level_${id}`)
         return message.channel.send(`O level de <@${id}> *(${id})* foi deletado.`)
-    }
-
-    if (['cachorro', 'doguinho', 'dog'].includes(args[0])) {
-
-        if (!user) { return message.channel.send('`' + prefix + 'del cachorro @user`') }
-
-        db.delete(`cachorro_${user.id}`)
-        return message.channel.send(`Cachorrinho Brown foi deletado do slot de ${user}`)
-    }
-
-    if (['cachorroid', 'doguinhoid', 'dogid'].includes(args[0])) {
-
-        let id = args[1]
-        if (!id) { return message.channel.send('`' + prefix + 'del cachorroid ID`') }
-        if (id.length < 17) { return message.channel.send("<:xis:835943511932665926> Isso não é um ID") }
-        if (isNaN(id)) { return message.channel.send('<:xis:835943511932665926> Esse ID não é um número.') }
-
-        db.set(`cachorro_${id}`)
-        return message.channel.send(`Cachorrinho Brown foi deletado do slot de <@${id}> *(${id})*.`)
     }
 
     if (['marry', 'casal', 'casamento'].includes(args[0])) {
