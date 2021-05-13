@@ -75,6 +75,7 @@ exports.run = async (client, message, args) => {
 
         if (!user) { return message.channel.send('`' + prefix + 'del medalha @user`') }
 
+        db.delete(`MedalhaAcess_${user.id}`)
         db.delete(`medalha_${user.id}`)
         return message.channel.send(`A medalha de ${user} foi deletada com sucesso!`)
     }
@@ -86,6 +87,7 @@ exports.run = async (client, message, args) => {
         if (id.length < 17) { return message.channel.send("<:xis:835943511932665926> Isso não é um ID") }
         if (isNaN(id)) { return message.channel.send('<:xis:835943511932665926> Esse ID não é um número.') }
 
+        db.delete(`MedalhaAcess_${id}`)
         db.delete(`medalha_${id}`)
         return message.channel.send(`A medalha de <@${id}> *(${id})* foi deletada com sucesso!.`)
     }
