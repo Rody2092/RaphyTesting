@@ -120,6 +120,7 @@ client.on("message", async (message) => {
     if (message.content.startsWith('-_-')) return
     if (message.content.startsWith("-'")) return
     if (message.content.startsWith("-.-")) return
+    if (message.content.startsWith("-,-")) return
 
     if (!message.member.hasPermission("ADMINISTRATOR")) {
         if (db.get(`blockchannel_${message.channel.id}`)) {
